@@ -34,6 +34,6 @@ trait InvoicesTrait
 
     protected function generateTable(): string
     {
-        return PackageConfig::tableName(BillingModels::CONSENTS, InvoiceLines::TABLE);
+        return PackageConfig::tableName(BillingModels::INVOICES, Invoices::TABLE);
     }
 }

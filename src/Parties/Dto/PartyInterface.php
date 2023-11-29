@@ -1,8 +1,8 @@
 <?php
 
-namespace Marktic\Billing\InvoiceParties\Dto;
+namespace Marktic\Billing\Parties\Dto;
 
-interface InvoicePartyInterface
+interface PartyInterface
 {
     public function isCompany(): bool;
 

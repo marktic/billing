@@ -26,8 +26,8 @@ final class BillingInvoicesTable extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('owner_id', 'integer', ['null' => true])
-            ->addColumn('owner', 'string', ['null' => true])
+            ->addColumn('id_invoice', 'integer', ['null' => false])
+            ->addColumn('name', 'string', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',

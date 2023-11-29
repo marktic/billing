@@ -1,20 +1,22 @@
 <?php
 
-namespace Marktic\Billing\InvoiceParties\Models;
+namespace Marktic\Billing\Parties\Models;
 
 use Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRepositoryTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
+use Marktic\Billing\LegalEntities\ModelsRelated\HasLegalEntity\HasLegalEntityRepositoryTrait;
 use Marktic\Billing\Utility\BillingModels;
 use Marktic\Billing\Utility\PackageConfig;
 
-trait InvoicePartiesTrait
+trait PartiesTrait
 {
     use HasOwnerRepositoryTrait;
+    use HasLegalEntityRepositoryTrait;
     use TimestampableManagerTrait;
     use HasDatabaseConnectionTrait;
 
-    protected function bootBillingConsentsTrait()
+    protected function bootPartiesTrait()
     {
 //        static::updating(function ($event) {
 //            /** @var Event $event */
@@ -34,6 +36,6 @@ trait InvoicePartiesTrait
 
     protected function generateTable(): string
     {
-        return PackageConfig::tableName(BillingModels::CONSENTS, InvoiceParties::TABLE);
+        return PackageConfig::tableName(BillingModels::PARTIES, Parties::TABLE);
     }
 }

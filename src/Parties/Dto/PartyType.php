@@ -1,6 +1,6 @@
 <?php
 
-namespace Marktic\Billing\InvoiceParties\Dto;
+namespace Marktic\Billing\Parties\Dto;
 
 enum PartyType: string
 {

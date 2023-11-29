@@ -1,18 +1,20 @@
 <?php
 
-namespace Marktic\Billing\InvoiceLines\Models;
+namespace Marktic\Billing\LegalEntities\Models;
 
+use Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRepositoryTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
 use Marktic\Billing\Utility\BillingModels;
 use Marktic\Billing\Utility\PackageConfig;
 
-trait InvoiceLinesTrait
+trait LegalEntitiesTrait
 {
+    use HasOwnerRepositoryTrait;
     use TimestampableManagerTrait;
     use HasDatabaseConnectionTrait;
 
-    protected function bootBillingConsentsTrait()
+    protected function bootLegalEntitiesTrait()
     {
 //        static::updating(function ($event) {
 //            /** @var Event $event */
@@ -27,11 +29,11 @@ trait InvoiceLinesTrait
 
     public function generatePrimaryFK()
     {
-        return 'consent_id';
+        return 'legal_entity_id';
     }
 
     protected function generateTable(): string
     {
-        return PackageConfig::tableName(BillingModels::INVOICE_LINES, InvoiceLines::TABLE);
+        return PackageConfig::tableName(BillingModels::LEGAL_ENTITIES, LegalEntities::TABLE);
     }
 }

@@ -8,6 +8,8 @@ use ByTIC\PackageBase\Utility\ModelFinder;
 use Marktic\Billing\BillingServiceProvider;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLines;
 use Marktic\Billing\Invoices\Models\Invoices;
+use Marktic\Billing\LegalEntities\Models\LegalEntities;
+use Marktic\Billing\Parties\Models\Parties;
 use Nip\Records\RecordManager;
 
 /**
@@ -15,9 +17,10 @@ use Nip\Records\RecordManager;
  */
 class BillingModels extends ModelFinder
 {
-    public const INVOICES = 'carts';
+    public const INVOICES = 'invoice';
     public const INVOICE_LINES = 'invoice_lines';
-    public const INVOICE_PARTIES = 'invoice_parties';
+    public const PARTIES = 'parties';
+    public const LEGAL_ENTITIES = '';
 
     public static function invoices(): Invoices|RecordManager
     {
@@ -32,9 +35,19 @@ class BillingModels extends ModelFinder
         return static::getModels(self::INVOICE_LINES, InvoiceLines::class);
     }
 
-    public static function invoiceParties(): InvoiceLines|RecordManager
+    public static function parties(): Parties|RecordManager
     {
-        return static::getModels(self::INVOICE_PARTIES, InvoiceLines::class);
+        return static::getModels(self::PARTIES, Parties::class);
+    }
+
+    public static function legalEntities(): Parties|RecordManager
+    {
+        return static::getModels(self::LEGAL_ENTITIES, LegalEntities::class);
+    }
+
+    public static function legalEntitiesClass(): string
+    {
+        return static::getConfigVar('models.' . self::LEGAL_ENTITIES, LegalEntities::class);
     }
 
     protected static function packageName(): string

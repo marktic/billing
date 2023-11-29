@@ -19,7 +19,7 @@ final class BillingInvoicesTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = 'mkt_billing_invoices';
+        $table_name = 'mkt_billing_invoice_parties';
         $exists = $this->hasTable($table_name);
         if ($exists) {
             return;
@@ -28,9 +28,8 @@ final class BillingInvoicesTable extends AbstractMigration
         $table
             ->addColumn('owner_id', 'integer', ['null' => true])
             ->addColumn('owner', 'string', ['null' => true])
-            ->addColumn('number', 'string', ['null' => true, 'limit' => 50])
-            ->addColumn('series', 'string', ['null' => true, 'limit' => 50])
-            ->addColumn('issued_at', 'date', ['null' => true])
+            ->addColumn('identification', 'string', ['null' => false])
+            ->addColumn('name', 'string', ['null' => false])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',
@@ -39,10 +38,11 @@ final class BillingInvoicesTable extends AbstractMigration
                 'default' => 'CURRENT_TIMESTAMP',
             ]);
 
-
         $table
             ->addIndex(['owner_id'])
-            ->addIndex(['owner']);
+            ->addIndex(['owner'])
+            ->addIndex(['owner_id', 'owner', 'identification'], ['unique' => true]);
+
 
         $table->save();
     }

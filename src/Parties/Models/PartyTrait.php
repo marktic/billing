@@ -1,21 +1,26 @@
 <?php
 
-namespace Marktic\Billing\InvoiceParties\Models;
+namespace Marktic\Billing\Parties\Models;
 
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
+use Marktic\Billing\Base\Models\Behaviours\HasIdentifier\RecordHasIdentifier;
+use Marktic\Billing\Base\Models\Behaviours\HasName\RecordHasName;
 use Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRecordTrait;
+use Marktic\Billing\LegalEntities\ModelsRelated\HasLegalEntity\HasLegalEntityRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 
 /**
  * Trait NewsletterConsentTrait
  */
-trait InvoicePartyTrait
+trait PartyTrait
 {
     use RecordHasId;
+    use RecordHasIdentifier;
+    use RecordHasName;
     use HasOwnerRecordTrait;
+    use HasLegalEntityRecordTrait;
     use TimestampableTrait;
 
-    protected ?string $name = null;
 
     protected ?string $type = null;
 

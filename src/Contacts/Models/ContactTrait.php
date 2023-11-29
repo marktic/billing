@@ -1,35 +1,43 @@
 <?php
 
-namespace Marktic\Billing\Parties\Models;
+namespace Marktic\Billing\Contacts\Models;
 
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\HasIdentifier\RecordHasIdentifier;
 use Marktic\Billing\Base\Models\Behaviours\HasName\RecordHasName;
 use Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRecordTrait;
-use Marktic\Billing\Contacts\ModelsRelated\HasContact\HasContactRecordTrait;
-use Marktic\Billing\LegalEntities\ModelsRelated\HasLegalEntity\HasLegalEntityRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 
 /**
  * Trait NewsletterConsentTrait
  */
-trait PartyTrait
+trait ContactTrait
 {
     use RecordHasId;
+    use HasOwnerRecordTrait;
     use RecordHasIdentifier;
     use RecordHasName;
-    use HasOwnerRecordTrait;
-    use HasLegalEntityRecordTrait;
-    use HasContactRecordTrait;
     use TimestampableTrait;
+    protected $telephone = null;
+    protected $email = null;
 
-    public function isCompany(): bool
+    public function getTelephone(): ?string
     {
-        return $this->hasLegalEntity();
+        return $this->telephone;
     }
 
-    public function isPerson(): bool
+    public function setTelephone(?string $telephone): void
     {
-        return $this->hasLegalEntity() === false;
+        $this->telephone = $telephone;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): void
+    {
+        $this->email = $email;
     }
 }

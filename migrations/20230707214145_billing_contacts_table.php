@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class BillingInvoicesTable extends AbstractMigration
+final class BillingContactsTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -19,15 +19,17 @@ final class BillingInvoicesTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = 'mkt_billing_invoice_lines';
+        $table_name = 'mkt_billing_invoice_parties';
         $exists = $this->hasTable($table_name);
         if ($exists) {
             return;
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('invoice_id', 'integer', ['null' => false])
-            ->addColumn('name', 'string', ['null' => true])
+            ->addColumn('owner_id', 'integer', ['null' => true])
+            ->addColumn('owner', 'string', ['null' => true])
+            ->addColumn('identification', 'string', ['null' => false])
+            ->addColumn('name', 'string', ['null' => false])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',
@@ -36,10 +38,11 @@ final class BillingInvoicesTable extends AbstractMigration
                 'default' => 'CURRENT_TIMESTAMP',
             ]);
 
-
         $table
             ->addIndex(['owner_id'])
-            ->addIndex(['owner']);
+            ->addIndex(['owner'])
+            ->addIndex(['owner_id', 'owner', 'identification'], ['unique' => true]);
+
 
         $table->save();
     }

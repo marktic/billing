@@ -1,20 +1,20 @@
 <?php
 
-namespace Marktic\Billing\InvoiceLines\Models;
+namespace Marktic\Billing\Contacts\Models;
 
+use Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRepositoryTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
-use Marktic\Billing\Invoices\ModelsRelated\HasInvoice\HasInvoiceRepositoryTrait;
 use Marktic\Billing\Utility\BillingModels;
 use Marktic\Billing\Utility\PackageConfig;
 
-trait InvoiceLinesTrait
+trait ContactsTrait
 {
-    use HasInvoiceRepositoryTrait;
+    use HasOwnerRepositoryTrait;
     use TimestampableManagerTrait;
     use HasDatabaseConnectionTrait;
 
-    protected function bootInvoiceLinesTrait()
+    protected function bootContactsTrait()
     {
 //        static::updating(function ($event) {
 //            /** @var Event $event */
@@ -29,11 +29,11 @@ trait InvoiceLinesTrait
 
     public function generatePrimaryFK()
     {
-        return 'invoice_line_id';
+        return 'contact_id';
     }
 
     protected function generateTable(): string
     {
-        return PackageConfig::tableName(BillingModels::INVOICE_LINES, InvoiceLines::TABLE);
+        return PackageConfig::tableName(BillingModels::LEGAL_ENTITIES, Contacts::TABLE);
     }
 }

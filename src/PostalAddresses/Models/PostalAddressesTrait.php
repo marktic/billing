@@ -1,26 +1,20 @@
 <?php
 
-namespace Marktic\Billing\Parties\Models;
+namespace Marktic\Billing\PostalAddresses\Models;
 
 use Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRepositoryTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
-use Marktic\Billing\Contacts\ModelsRelated\HasContact\HasContactRepositoryTrait;
-use Marktic\Billing\LegalEntities\ModelsRelated\HasLegalEntity\HasLegalEntityRepositoryTrait;
-use Marktic\Billing\PostalAddresses\ModelsRelated\HasPostalAddress\HasPostalAddressRepositoryTrait;
 use Marktic\Billing\Utility\BillingModels;
 use Marktic\Billing\Utility\PackageConfig;
 
-trait PartiesTrait
+trait PostalAddressesTrait
 {
     use HasOwnerRepositoryTrait;
-    use HasLegalEntityRepositoryTrait;
-    use HasContactRepositoryTrait;
-    use HasPostalAddressRepositoryTrait;
     use TimestampableManagerTrait;
     use HasDatabaseConnectionTrait;
 
-    protected function bootPartiesTrait()
+    protected function bootPostalAddressesTrait()
     {
 //        static::updating(function ($event) {
 //            /** @var Event $event */
@@ -35,11 +29,11 @@ trait PartiesTrait
 
     public function generatePrimaryFK()
     {
-        return 'invoice_party_id';
+        return 'postal_address_id';
     }
 
     protected function generateTable(): string
     {
-        return PackageConfig::tableName(BillingModels::PARTIES, Parties::TABLE);
+        return PackageConfig::tableName(BillingModels::LEGAL_ENTITIES, PostalAddresses::TABLE);
     }
 }

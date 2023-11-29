@@ -19,7 +19,7 @@ final class BillingContactsTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = 'mkt_billing_contacts';
+        $table_name = 'mkt_billing_postal_addresses';
         $exists = $this->hasTable($table_name);
         if ($exists) {
             return;
@@ -28,9 +28,13 @@ final class BillingContactsTable extends AbstractMigration
         $table
             ->addColumn('owner_id', 'integer', ['null' => true])
             ->addColumn('owner', 'string', ['null' => true])
-            ->addColumn('name', 'string', ['null' => false])
-            ->addColumn('telephone', 'string', ['null' => true])
-            ->addColumn('email', 'string', ['null' => true])
+            ->addColumn('street_name', 'string', ['null' => false])
+            ->addColumn('additional_street_name', 'string', ['null' => false])
+            ->addColumn('building_number', 'string', ['null' => false])
+            ->addColumn('city_name', 'string', ['null' => false])
+            ->addColumn('postal_zone', 'string', ['null' => false])
+            ->addColumn('country_subentity', 'string', ['null' => false])
+            ->addColumn('country', 'string', ['null' => false, 'length' => 2])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',

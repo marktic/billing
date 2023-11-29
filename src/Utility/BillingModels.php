@@ -11,6 +11,7 @@ use Marktic\Billing\InvoiceLines\Models\InvoiceLines;
 use Marktic\Billing\Invoices\Models\Invoices;
 use Marktic\Billing\LegalEntities\Models\LegalEntities;
 use Marktic\Billing\Parties\Models\Parties;
+use Marktic\Billing\PostalAddresses\Models\PostalAddresses;
 use Nip\Records\RecordManager;
 
 /**
@@ -24,6 +25,8 @@ class BillingModels extends ModelFinder
     public const LEGAL_ENTITIES = 'legal_entities';
 
     public const CONTACTS = 'contacts';
+
+    public const POSTAL_ADDRESSES = 'postal_addresses';
 
     public static function invoices(): Invoices|RecordManager
     {
@@ -58,7 +61,7 @@ class BillingModels extends ModelFinder
         return static::getConfigVar('models.' . self::LEGAL_ENTITIES, LegalEntities::class);
     }
 
-    public static function contacts(): Parties|RecordManager
+    public static function contacts(): Contacts|RecordManager
     {
         return static::getModels(self::CONTACTS, Contacts::class);
     }
@@ -66,6 +69,16 @@ class BillingModels extends ModelFinder
     public static function contactsClass(): string
     {
         return static::getConfigVar('models.' . self::CONTACTS, Contacts::class);
+    }
+
+    public static function postalAddresses(): PostalAddresses|RecordManager
+    {
+        return static::getModels(self::POSTAL_ADDRESSES, PostalAddresses::class);
+    }
+
+    public static function postalAddressesClass(): string
+    {
+        return static::getConfigVar('models.' . self::POSTAL_ADDRESSES, PostalAddresses::class);
     }
 
     protected static function packageName(): string

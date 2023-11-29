@@ -9,6 +9,7 @@ use Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRecordTrait;
 use Marktic\Billing\Contacts\ModelsRelated\HasContact\HasContactRecordTrait;
 use Marktic\Billing\LegalEntities\ModelsRelated\HasLegalEntity\HasLegalEntityRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
+use Marktic\Billing\PostalAddresses\ModelsRelated\HasPostalAddress\HasPostalAddressRecordTrait;
 
 /**
  * Trait NewsletterConsentTrait
@@ -20,6 +21,7 @@ trait PartyTrait
     use RecordHasName;
     use HasOwnerRecordTrait;
     use HasLegalEntityRecordTrait;
+    use HasPostalAddressRecordTrait;
     use HasContactRecordTrait;
     use TimestampableTrait;
 

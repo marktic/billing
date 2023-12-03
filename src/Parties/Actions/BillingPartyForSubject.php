@@ -48,7 +48,8 @@ class BillingPartyForSubject extends Action
     {
         $result = $this->doSearch();
         if ($this->returnSingle) {
-            return $result->current();
+            $return = $result->current();
+            return $return instanceof Record ? $return : null;
         }
         return $result;
     }
@@ -58,10 +59,10 @@ class BillingPartyForSubject extends Action
         if ($this->result !== null) {
             return $this->result;
         }
-        $this->result = $this->getRepository()->findyParams(
+        $this->result = $this->getRepository()->findByParams(
             [
                 'where' => [
-                    ['subject_type = ?', $this->subject->getManager()->getController()],
+                    ['subject = ?', $this->subject->getManager()->getController()],
                     ['subject_id = ?', $this->subject->id],
                 ],
             ]

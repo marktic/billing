@@ -19,7 +19,7 @@ final class BillingLegalEntitiesTable extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = 'mkt_billing_invoice_parties';
+        $table_name = 'mkt_billing_legal_entities';
         $exists = $this->hasTable($table_name);
         if ($exists) {
             return;

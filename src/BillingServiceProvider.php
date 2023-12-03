@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Billing;
 
 use ByTIC\PackageBase\BaseBootableServiceProvider;
-use Marktic\Basket\Utility\PackageConfig;
+use Marktic\Billing\Utility\PackageConfig;
 
 /**
  * Class BasketServiceProvider.
@@ -17,6 +17,7 @@ class BillingServiceProvider extends BaseBootableServiceProvider
     public function register()
     {
         parent::register();
+        $this->registerResources();
     }
 
     public function migrations(): ?string

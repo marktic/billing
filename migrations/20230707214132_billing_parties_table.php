@@ -28,9 +28,13 @@ final class BillingInvoicesTable extends AbstractMigration
         $table
             ->addColumn('owner_id', 'integer', ['null' => true])
             ->addColumn('owner', 'string', ['null' => true])
+            ->addColumn('subject_id', 'integer', ['null' => true])
+            ->addColumn('subject', 'string', ['null' => true])
             ->addColumn('identification', 'string', ['null' => false])
             ->addColumn('name', 'string', ['null' => false])
             ->addColumn('legal_entity_id', 'integer', ['null' => true])
+            ->addColumn('contact_id', 'string', ['null' => true])
+            ->addColumn('postal_address_id', 'string', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',
@@ -43,7 +47,9 @@ final class BillingInvoicesTable extends AbstractMigration
         $table
             ->addIndex(['owner_id'])
             ->addIndex(['owner'])
-            ->addIndex(['owner_id','owner','identification'],['unique' => true]);
+            ->addIndex(['subject_id', 'subject'])
+            ->addIndex(['identification'])
+            ->addIndex(['owner_id', 'owner', 'identification'], ['unique' => true]);
 
         $table->save();
     }

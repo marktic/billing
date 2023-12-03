@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class BillingInvoicesTable extends AbstractMigration
+final class BillingInvoiceLinesTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -38,8 +38,7 @@ final class BillingInvoicesTable extends AbstractMigration
 
 
         $table
-            ->addIndex(['owner_id'])
-            ->addIndex(['owner']);
+            ->addIndex(['invoice_id']);
 
         $table->save();
     }

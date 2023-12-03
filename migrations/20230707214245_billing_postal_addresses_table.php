@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class BillingContactsTable extends AbstractMigration
+final class BillingPostalAddressesTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -28,6 +28,7 @@ final class BillingContactsTable extends AbstractMigration
         $table
             ->addColumn('owner_id', 'integer', ['null' => true])
             ->addColumn('owner', 'string', ['null' => true])
+            ->addColumn('identification', 'string', ['null' => false])
             ->addColumn('street_name', 'string', ['null' => false])
             ->addColumn('additional_street_name', 'string', ['null' => false])
             ->addColumn('building_number', 'string', ['null' => false])

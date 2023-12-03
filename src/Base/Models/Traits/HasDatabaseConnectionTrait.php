@@ -2,7 +2,7 @@
 
 namespace Marktic\Billing\Base\Models\Traits;
 
-use Marktic\Newsletter\Utility\PackageConfig;
+use Marktic\Billing\Utility\PackageConfig;
 use Nip\Database\Connections\Connection;
 
 use function app;

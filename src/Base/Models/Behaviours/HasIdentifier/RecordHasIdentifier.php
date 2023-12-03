@@ -4,15 +4,15 @@ namespace Marktic\Billing\Base\Models\Behaviours\HasIdentifier;
 
 trait RecordHasIdentifier
 {
-    protected ?string $identifier = null;
+    protected ?string $identification = null;
 
-    public function getIdentifier(): ?string
+    public function getIdentification(): ?string
     {
-        return $this->identifier;
+        return $this->identification;
     }
 
-    public function setIdentifier(?string $identifier): void
+    public function setIdentification(?string $identification): void
     {
-        $this->identifier = $identifier;
+        $this->identification = $identification;
     }
 }

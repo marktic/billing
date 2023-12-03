@@ -16,7 +16,9 @@ trait PostalAddressTrait
 {
     use RecordHasId;
     use HasOwnerRecordTrait;
+    use RecordHasIdentifier;
     use TimestampableTrait;
+
     protected $streetName;
     protected $additionalStreetName;
     protected $buildingNumber;

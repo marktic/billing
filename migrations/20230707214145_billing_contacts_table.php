@@ -28,6 +28,7 @@ final class BillingContactsTable extends AbstractMigration
         $table
             ->addColumn('owner_id', 'integer', ['null' => true])
             ->addColumn('owner', 'string', ['null' => true])
+            ->addColumn('identification', 'string', ['null' => false])
             ->addColumn('name', 'string', ['null' => false])
             ->addColumn('telephone', 'string', ['null' => true])
             ->addColumn('email', 'string', ['null' => true])

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class BillingInvoicesTable extends AbstractMigration
+final class BillingPartiesTable extends AbstractMigration
 {
     /**
      * Change Method.

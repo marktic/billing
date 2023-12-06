@@ -13,39 +13,13 @@ use Marktic\Billing\Bundle\Library\Form\FormModel;
 abstract class AbstractForm extends FormModel
 {
 
-    public function initialize()
+    public function initialize(): void
     {
         parent::initialize();
 
-        $this->setAttrib('id', 'mkt-promotion-form');
+        $this->setAttrib('id', 'mkt-billing-form');
 
         $this->addButton('save', translator()->trans('submit'));
     }
 
-    /**
-     * @return void
-     */
-    public function getDataFromModel()
-    {
-        parent::getDataFromModel();
-        $this->getDataFromModelForAmounts();
-    }
-
-    /**
-     * @return void
-     */
-    public function saveToModel()
-    {
-        parent::saveToModel();
-        $this->saveToModelAmounts();
-    }
-
-    /**
-     * @return void
-     */
-    public function processValidation()
-    {
-        parent::processValidation();
-        $this->validateAmounts();
-    }
 }

@@ -15,5 +15,5 @@ class LegalEntities extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_billing_legal_entities';
-    public const CONTROLLER = 'mkt_billing_legal_entities';
+    public const CONTROLLER = 'mkt_billing-legal_entities';
 }

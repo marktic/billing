@@ -3,7 +3,7 @@
 namespace Marktic\Billing\Tests;
 
 use Bytic\Phpqa\PHPUnit\TestCase;
-use Marktic\Newsletter\NewsletterServiceProvider;
+use Marktic\Billing\BillingServiceProvider;
 use Mockery;
 use Nip\Config\Config;
 use Nip\Container\Utility\Container;
@@ -27,10 +27,10 @@ abstract class AbstractTest extends TestCase
         $this->loadConfig($config);
     }
 
-    protected function loadServiceProvider(): NewsletterServiceProvider
+    protected function loadServiceProvider(): BillingServiceProvider
     {
         $container = Container::container();
-        $provider = new NewsletterServiceProvider();
+        $provider = new BillingServiceProvider();
         $provider->setContainer($container);
         $provider->register();
         return $provider;

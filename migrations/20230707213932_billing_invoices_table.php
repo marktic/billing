@@ -26,7 +26,7 @@ final class BillingInvoicesTable extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('owner_id', 'integer', ['null' => true])
+            ->addColumn('owner_id', 'integer')
             ->addColumn('owner', 'string', ['null' => true])
             ->addColumn('number', 'string', ['null' => true, 'limit' => 50])
             ->addColumn('series', 'string', ['null' => true, 'limit' => 50])

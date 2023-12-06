@@ -15,5 +15,5 @@ class PostalAddresses extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_billing_postal_addresses';
-    public const CONTROLLER = 'mkt_billing_postal_addresses';
+    public const CONTROLLER = 'mkt_billing-postal_addresses';
 }

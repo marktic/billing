@@ -21,17 +21,46 @@ trait HasRepository
     {
         $this->repository = $repository ?? $this->generateRepository();
     }
+    public function fetch(): Record|null
+    {
+        $found = $this->findOne();
+        return $found ?: $this->getDefault();
+    }
 
+    public function fetchAndUpdate($data = [])
+    {
+        $found = $this->findOne();
+        if ($found)  {
+            $found->fill($this->orCreateData($data));
+            return $found;
+        }
+        return $this->getDefault();
+    }
+
+    protected function findOne(): Record|false|null
+    {
+        $params = $this->findParams();
+        return $this->getRepository()->findOneByParams($params);
+    }
+
+    /**
+     * @return array
+     */
+    protected function findParams(): array
+    {
+        return [
+        ];
+    }
     protected function createRecord($data): Record
     {
         $contact = $this->generateNewRecord($data);
-        $contact->save();
+        $contact->saveRecord();
         return $contact;
     }
 
     protected function generateNewRecord($data): Record
     {
-        return $this->repository->getNewRecord($data);
+        return $this->getRepository()->getNewRecord($data);
     }
 
     abstract protected function generateRepository(): RecordManager;

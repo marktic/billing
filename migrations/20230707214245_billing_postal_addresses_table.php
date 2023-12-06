@@ -31,7 +31,6 @@ final class BillingPostalAddressesTable extends AbstractMigration
             ->addColumn('identification', 'string', ['null' => false])
             ->addColumn('street_name', 'string', ['null' => false])
             ->addColumn('additional_street_name', 'string', ['null' => false])
-            ->addColumn('building_number', 'string', ['null' => false])
             ->addColumn('city_name', 'string', ['null' => false])
             ->addColumn('postal_zone', 'string', ['null' => false])
             ->addColumn('country_subentity', 'string', ['null' => false])

@@ -26,7 +26,7 @@ final class BillingPartiesTable extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('owner_id', 'integer', ['null' => true])
+            ->addColumn('owner_id', 'integer')
             ->addColumn('owner', 'string', ['null' => true])
             ->addColumn('subject_id', 'integer', ['null' => true])
             ->addColumn('subject', 'string', ['null' => true])

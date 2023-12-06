@@ -15,5 +15,5 @@ class Parties extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_billing_parties';
-    public const CONTROLLER = 'mkt_billing_parties';
+    public const CONTROLLER = 'mkt_billing-parties';
 }

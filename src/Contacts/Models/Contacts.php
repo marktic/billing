@@ -15,5 +15,5 @@ class Contacts extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_billing_contacts';
-    public const CONTROLLER = 'mkt_billing_contacts';
+    public const CONTROLLER = 'mkt_billing-contacts';
 }

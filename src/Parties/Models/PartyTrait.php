@@ -12,7 +12,7 @@ use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Billing\PostalAddresses\ModelsRelated\HasPostalAddress\HasPostalAddressRecordTrait;
 
 /**
- * Trait NewsletterConsentTrait
+ * Trait PartyTrait
  */
 trait PartyTrait
 {

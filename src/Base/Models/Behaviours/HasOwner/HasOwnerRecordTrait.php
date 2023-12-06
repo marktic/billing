@@ -14,6 +14,12 @@ trait HasOwnerRecordTrait
 
     protected ?int $owner_id = null;
 
+    public function populateFromOwnerRecord(Record $owner)
+    {
+        $this->owner_id = $owner->id;
+
+    }
+
     /**
      * @return string|null
      */

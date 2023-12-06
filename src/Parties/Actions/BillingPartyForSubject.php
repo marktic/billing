@@ -5,6 +5,7 @@ namespace Marktic\Billing\Parties\Actions;
 use Bytic\Actions\Action;
 use Marktic\Billing\Parties\Actions\Behaviours\HasRepository;
 use Marktic\Billing\Parties\Models\Party;
+use Marktic\Billing\Utility\BillingUtility;
 use Nip\Collections\Collection;
 use Nip\Records\AbstractModels\Record;
 
@@ -44,6 +45,17 @@ class BillingPartyForSubject extends Action
         return $this->returnSingle(!$returnCollection);
     }
 
+    public function getCreateUrl(): string
+    {
+        return $this->getRepository()->compileURL(
+            'createForSubject',
+            [
+                'subject' => BillingUtility::morphLabelFor($this->subject),
+                'subject_id' => $this->subject->id,
+            ]
+        );
+    }
+
     protected function generateResult(): Record|Party|null
     {
         $result = $this->doSearch();
@@ -62,11 +74,12 @@ class BillingPartyForSubject extends Action
         $this->result = $this->getRepository()->findByParams(
             [
                 'where' => [
-                    ['subject = ?', $this->subject->getManager()->getController()],
+                    ['subject = ?', BillingUtility::morphLabelFor($this->subject)],
                     ['subject_id = ?', $this->subject->id],
                 ],
             ]
         );
         return $this->result;
     }
+
 }

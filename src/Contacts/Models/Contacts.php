@@ -8,6 +8,7 @@ use Nip\Records\RecordManager;
 /**
  * Class Contacts
  * @package Marktic\Billing\Contacts\Models
+ * @method Contact getNew($data = [])
  */
 class Contacts extends RecordManager
 {

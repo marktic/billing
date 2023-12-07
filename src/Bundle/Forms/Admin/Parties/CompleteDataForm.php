@@ -6,10 +6,18 @@ declare(strict_types=1);
 namespace Marktic\Billing\Bundle\Forms\Admin\Parties;
 
 use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\Contacts\Actions\ContactsGenerate;
+use Marktic\Billing\Contacts\Models\Contact;
 use Marktic\Billing\LegalEntities\Actions\LegalEntitiesGenerate;
+use Marktic\Billing\LegalEntities\Models\LegalEntity;
+use Marktic\Billing\Parties\Actions\Populate\PartyPopulateFrom;
+use Marktic\Billing\Parties\Models\Party;
 use Marktic\Billing\Utility\BillingModels;
 use Nip\Records\Record;
 
+/**
+ * @method Party getModel
+ */
 class CompleteDataForm extends AbstractForm
 {
     protected $partyRepository;
@@ -69,30 +77,41 @@ class CompleteDataForm extends AbstractForm
         $this->addInput('postal_address[country]', $this->postalAddressesRepository->getLabel('form.country'), true);
     }
 
-    public function saveToModel()
-    {
-        parent::saveToModel();
-        $type = $this->getElement('party[type]')->getValue();
-        if ($type == 'person') {
-            $this->getModel()->name = $this->getElement('legal_entity[name]')->getValue();
-            $this->getModel()->identification = $this->getElement('legal_entity[identification]')->getValue();
-        } else {
-            $this->getModel()->name = $this->getElement('contact[name]')->getValue();
-            $this->getModel()->identification = '0';
-        }
-    }
-
-
     public function saveModel()
     {
+        $party = $this->getModel();
         $data = $this->getData();
 
-        $this->saveLegalEntity($data['legal_entity']);
+        $contact = $this->saveContact($data['contact']);
+        $type = $this->getElement('party[type]')->getValue();
+        if ($type == 'person') {
+            PartyPopulateFrom::contact($party, $contact);
+        } else {
+            $legalEntity = $this->saveLegalEntity($data['legal_entity']);
+            PartyPopulateFrom::legalEntity($party, $legalEntity);
+        }
 
         parent::saveModel();
     }
 
-    protected function saveLegalEntity($data)
+    /**
+     * @param $data
+     * @return Contact
+     */
+    protected function saveContact($data): Contact
+    {
+        $action = ContactsGenerate::for($data);
+        $action->withOwner($this->owner);
+        $action->orCreate();
+
+        return $action->fetch();
+    }
+
+    /**
+     * @param $data
+     * @return LegalEntity
+     */
+    protected function saveLegalEntity($data): LegalEntity
     {
         $action = LegalEntitiesGenerate::for($data);
         $action->withOwner($this->owner);

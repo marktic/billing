@@ -36,10 +36,17 @@ final class BillingInvoiceLinesTable extends AbstractMigration
                 'default' => 'CURRENT_TIMESTAMP',
             ]);
 
+        $table
+            ->addIndex(['invoice_id'])
+            ->save();
 
         $table
-            ->addIndex(['invoice_id']);
-
-        $table->save();
+            ->addForeignKey(
+                'invoice_id',
+                'mkt_billing_invoices',
+                'id',
+                ['constraint' => 'mkt_billing_invoices_invoice_id', 'delete' => 'NO_ACTION', 'update' => 'NO_ACTION']
+            )
+            ->save();
     }
 }

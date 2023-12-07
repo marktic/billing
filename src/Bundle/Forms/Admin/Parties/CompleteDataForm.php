@@ -12,6 +12,8 @@ use Marktic\Billing\LegalEntities\Actions\LegalEntitiesGenerate;
 use Marktic\Billing\LegalEntities\Models\LegalEntity;
 use Marktic\Billing\Parties\Actions\Populate\PartyPopulateFrom;
 use Marktic\Billing\Parties\Models\Party;
+use Marktic\Billing\PostalAddresses\Actions\PostalAddressesGenerate;
+use Marktic\Billing\PostalAddresses\Models\PostalAddress;
 use Marktic\Billing\Utility\BillingModels;
 use Nip\Records\Record;
 
@@ -84,12 +86,14 @@ class CompleteDataForm extends AbstractForm
 
         $contact = $this->saveContact($data['contact']);
         $type = $this->getElement('party[type]')->getValue();
-        if ($type == 'person') {
-            PartyPopulateFrom::contact($party, $contact);
-        } else {
+        PartyPopulateFrom::contact($party, $contact);
+
+        if ($type == 'legal_entity') {
             $legalEntity = $this->saveLegalEntity($data['legal_entity']);
             PartyPopulateFrom::legalEntity($party, $legalEntity);
         }
+        $postalAddress = $this->savePostalAddress($data['postal_address']);
+        PartyPopulateFrom::postalAddress($party, $postalAddress);
 
         parent::saveModel();
     }
@@ -114,6 +118,19 @@ class CompleteDataForm extends AbstractForm
     protected function saveLegalEntity($data): LegalEntity
     {
         $action = LegalEntitiesGenerate::for($data);
+        $action->withOwner($this->owner);
+        $action->orCreate();
+
+        return $action->fetch();
+    }
+
+    /**
+     * @param $data
+     * @return PostalAddress
+     */
+    protected function savePostalAddress($data): PostalAddress
+    {
+        $action = PostalAddressesGenerate::for($data);
         $action->withOwner($this->owner);
         $action->orCreate();
 

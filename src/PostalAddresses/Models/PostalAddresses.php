@@ -8,6 +8,7 @@ use Nip\Records\RecordManager;
 /**
  * Class PostalAddresses
  * @package Marktic\Billing\PostalAddresses\Models
+ * @method PostalAddress getNew
  */
 class PostalAddresses extends RecordManager
 {

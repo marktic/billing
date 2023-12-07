@@ -1,5 +1,6 @@
 <?php
 
+use Marktic\Billing\Contacts\Models\Contacts;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLines;
 use Marktic\Billing\LegalEntities\Models\LegalEntities;
 use Marktic\Billing\Parties\Models\Parties;
@@ -12,12 +13,14 @@ return [
         BillingModels::INVOICE_LINES => InvoiceLines::class,
         BillingModels::PARTIES => Parties::class,
         BillingModels::LEGAL_ENTITIES => LegalEntities::class,
+        BillingModels::CONTACTS => Contacts::class,
     ),
     'tables' => [
         BillingModels::INVOICES => Invoices::TABLE,
         BillingModels::INVOICE_LINES => InvoiceLines::TABLE,
         BillingModels::PARTIES => Parties::TABLE,
         BillingModels::LEGAL_ENTITIES => LegalEntities::TABLE,
+        BillingModels::CONTACTS => Contacts::TABLE,
     ],
     'database' => [
         'connection' => 'main',

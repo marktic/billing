@@ -34,6 +34,6 @@ trait ContactsTrait
 
     protected function generateTable(): string
     {
-        return PackageConfig::tableName(BillingModels::LEGAL_ENTITIES, Contacts::TABLE);
+        return PackageConfig::tableName(BillingModels::CONTACTS, Contacts::TABLE);
     }
 }

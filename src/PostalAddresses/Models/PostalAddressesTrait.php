@@ -34,6 +34,6 @@ trait PostalAddressesTrait
 
     protected function generateTable(): string
     {
-        return PackageConfig::tableName(BillingModels::LEGAL_ENTITIES, PostalAddresses::TABLE);
+        return PackageConfig::tableName(BillingModels::POSTAL_ADDRESSES, PostalAddresses::TABLE);
     }
 }

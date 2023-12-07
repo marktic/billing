@@ -42,7 +42,7 @@ class GenerateIdentification extends Action
     protected function generateIdentification(): string
     {
         $unique = $this->record->getStreetName()
-            . $this->record->getAdditionalStreetName()
+            . $this->record->getAdditionalStreetname()
             . $this->record->getCityName()
             . $this->record->getPostalZone()
             . $this->record->getCountrySubentity()

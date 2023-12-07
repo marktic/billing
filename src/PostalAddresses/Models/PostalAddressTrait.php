@@ -4,7 +4,6 @@ namespace Marktic\Billing\PostalAddresses\Models;
 
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\HasIdentifier\RecordHasIdentifier;
-use Marktic\Billing\Base\Models\Behaviours\HasName\RecordHasName;
 use Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Nip\Utility\Country;
@@ -19,28 +18,27 @@ trait PostalAddressTrait
     use RecordHasIdentifier;
     use TimestampableTrait;
 
-    protected $streetName;
-    protected $additionalStreetName;
-    protected $buildingNumber;
-    protected $cityName;
-    protected $postalZone;
+    protected ?string $street_name = null;
+    protected ?string $additional_street_name = null;
+    protected ?string $city_name = null;
+    protected ?string $cityName = null;
+    protected ?string $postal_zone = null;
 
-    protected $countrySubentity;
+    protected ?string $country_subentity = null;
 
     protected Country|string $country;
 
-
-    public function getBuildingNumber(): ?string
+    public function getCityName(): ?string
     {
-        return $this->buildingNumber;
+        return $this->city_name;
     }
 
     /**
      * Set Building Name
      */
-    public function setBuildingNumber(?string $buildingNumber): PostalAddress
+    public function setCityName(?string $city_name): PostalAddress
     {
-        $this->buildingNumber = $buildingNumber;
+        $this->city_name = $city_name;
         return $this;
     }
 
@@ -49,15 +47,15 @@ trait PostalAddressTrait
      */
     public function getStreetName(): ?string
     {
-        return $this->streetName;
+        return $this->street_name;
     }
 
     /**
      * Set street Name
      */
-    public function setStreetName(?string $streetName): PostalAddress
+    public function setStreetName(?string $street_name): PostalAddress
     {
-        $this->streetName = $streetName;
+        $this->street_name = $street_name;
         return $this;
     }
 
@@ -66,32 +64,15 @@ trait PostalAddressTrait
      */
     public function getAdditionalStreetName(): ?string
     {
-        return $this->additionalStreetName;
+        return $this->additional_street_name;
     }
 
     /**
      * Set addional street name
      */
-    public function setAdditionalStreetName(?string $additionalStreetName): PostalAddress
+    public function setAdditionalStreetName(?string $name): PostalAddress
     {
-        $this->additionalStreetName = $additionalStreetName;
-        return $this;
-    }
-
-    /**
-     * get city name
-     */
-    public function getCityName(): ?string
-    {
-        return $this->cityName;
-    }
-
-    /**
-     * Set City Name
-     */
-    public function setCityName(?string $cityName): PostalAddress
-    {
-        $this->cityName = $cityName;
+        $this->additional_street_name = $name;
         return $this;
     }
 
@@ -100,15 +81,15 @@ trait PostalAddressTrait
      */
     public function getPostalZone(): ?string
     {
-        return $this->postalZone;
+        return $this->postal_zone;
     }
 
     /**
      * Set postal zone
      */
-    public function setPostalZone(?string $postalZone): PostalAddress
+    public function setPostalZone(?string $postal_zone): PostalAddress
     {
-        $this->postalZone = $postalZone;
+        $this->postal_zone = $postal_zone;
         return $this;
     }
 
@@ -117,16 +98,16 @@ trait PostalAddressTrait
      */
     public function getCountrySubentity(): ?string
     {
-        return $this->countrySubentity;
+        return $this->country_subentity;
     }
 
     /**
      * @param string $subentity
      * @return self
      */
-    public function setCountrySubentity(string $countrySubentity): self
+    public function setCountrySubentity(string $country_subentity): self
     {
-        $this->countrySubentity = $countrySubentity;
+        $this->country_subentity = $country_subentity;
         return $this;
     }
 
@@ -144,6 +125,7 @@ trait PostalAddressTrait
     public function setCountry(Country|string $country): self
     {
         $country = is_string($country) ? Country::fromName($country) : $country;
+        $country->stringableAlpha2();
         $this->country = $country;
         return $this;
     }

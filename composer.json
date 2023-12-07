@@ -33,7 +33,8 @@
     "bytic/orm-filters": "^0.9|^1.0",
     "bytic/orm-behaviors": "^0.9|^1.0",
     "bytic/translation": "^1.0|^2.0",
-    "bytic/actions": "dev-main"
+    "bytic/actions": "dev-main",
+    "bytic/utility": "^1.0.73"
   },
   "require-dev": {
     "bytic/view": "^1.0|^2.0",

@@ -8,6 +8,7 @@ trait HasFormsTrait
 {
     public function getModelForm($model, $action = null)
     {
+        $action = $action ?? $this->getAction();
         $class = $this->getModelFormClass($model, $action);
         $form = new $class();
         $form->setModel($model);

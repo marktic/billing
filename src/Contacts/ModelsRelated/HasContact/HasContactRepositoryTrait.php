@@ -6,7 +6,7 @@ use Marktic\Billing\Utility\BillingModels;
 
 trait HasContactRepositoryTrait
 {
-    protected function initRelationsContact(): void
+    protected function initRelationsBillingContact(): void
     {
         $this->belongsTo(
             'BillingContact',

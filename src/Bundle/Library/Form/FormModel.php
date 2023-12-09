@@ -15,8 +15,6 @@ abstract class FormModel extends \Nip\Form\FormModel
         $this->getElement('_trigger')->setValue('edit');
 
         $this->setRendererType('bootstrap5');
-        $this->addClass('form-horizontal');
-        $this->addClass('row-mb-3');
     }
 
     /**

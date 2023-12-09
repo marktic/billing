@@ -55,7 +55,7 @@ trait PartiesControllerTrait
     protected function getModelFormClass($model, $action = null): ?string
     {
         return match ($action) {
-            'completeData' => \Marktic\Billing\Bundle\Forms\Admin\Parties\CompleteDataForm::class,
+            'completeData', 'edit' => CompleteDataForm::class,
             default => null,
         };
     }

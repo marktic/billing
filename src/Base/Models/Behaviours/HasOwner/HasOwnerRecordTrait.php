@@ -2,10 +2,11 @@
 
 namespace Marktic\Billing\Base\Models\Behaviours\HasOwner;
 
+use Marktic\Billing\Base\Dto\AdminOwner;
+use Nip\Records\Collections\Collection;
 use Nip\Records\Record;
 
 /**
- * @method Record getBillingOwner()
  */
 trait HasOwnerRecordTrait
 {
@@ -18,6 +19,14 @@ trait HasOwnerRecordTrait
     {
         $this->owner_id = $owner->id;
 
+    }
+
+    public function getBillingOwner(): \Nip\Records\AbstractModels\Record|Collection|AdminOwner
+    {
+        if ($this->owner_id == 0 && $this->owner == 'admin') {
+            return new AdminOwner();
+        }
+        return $this->getRelation('BillingOwner')->getResults();
     }
 
     /**

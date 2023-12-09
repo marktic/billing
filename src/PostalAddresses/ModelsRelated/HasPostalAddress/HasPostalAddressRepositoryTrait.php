@@ -6,11 +6,11 @@ use Marktic\Billing\Utility\BillingModels;
 
 trait HasPostalAddressRepositoryTrait
 {
-    protected function initRelationsPostalAddress(): void
+    protected function initRelationsBillingPostalAddress(): void
     {
         $this->belongsTo(
             'BillingPostalAddress',
-            ['class' => BillingModels::PostalAddressesClass(), 'fk' => 'PostalAddress_id']
+            ['class' => BillingModels::PostalAddressesClass(), 'fk' => 'postal_address_id']
         );
     }
 }

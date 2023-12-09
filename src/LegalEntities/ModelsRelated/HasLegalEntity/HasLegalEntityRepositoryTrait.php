@@ -6,10 +6,10 @@ use Marktic\Billing\Utility\BillingModels;
 
 trait HasLegalEntityRepositoryTrait
 {
-    protected function initRelationsLegalEntity(): void
+    protected function initRelationsBillingLegalEntity(): void
     {
         $this->belongsTo(
-            'LegalEntity',
+            'BillingLegalEntity',
             ['class' => BillingModels::legalEntitiesClass(), 'fk' => 'legal_entity_id']
         );
     }

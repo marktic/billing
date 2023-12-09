@@ -31,6 +31,9 @@ trait PartiesTrait
     protected function initRelationsBilling(): void
     {
         $this->initRelationsBillingOwner();
+        $this->initRelationsBillingLegalEntity();
+        $this->initRelationsBillingContact();
+        $this->initRelationsBillingPostalAddress();
     }
 
     public function generatePrimaryFK()

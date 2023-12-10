@@ -35,7 +35,8 @@
     "bytic/models-smart-properties": "^0.9|^1.0",
     "bytic/translation": "^1.0|^2.0",
     "bytic/actions": "dev-main",
-    "bytic/utility": "^1.0.73"
+    "bytic/utility": "^1.0.73",
+    "bytic/money": "^1.0"
   },
   "require-dev": {
     "bytic/view": "^1.0|^2.0",

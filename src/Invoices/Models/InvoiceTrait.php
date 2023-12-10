@@ -18,8 +18,18 @@ trait InvoiceTrait
     use HasOwnerRecordTrait;
     use HasSubjectRecordTrait;
     use Behaviours\SerialNumberFormatter;
-    use RecordHasCurrency;
     use Behaviours\HasAmounts\HasAmountsRecordTrait;
+    use RecordHasCurrency;
     use TimestampableTrait;
     use HasStatusRecordTrait;
+
+    /** @noinspection PhpMissingParentCallCommonInspection
+     * @inheritDoc
+     */
+    public function getName()
+    {
+        return $this->getManager()->getLabel('title.singular')
+            . ' #' . $this->series
+            . ' - ' . $this->number;
+    }
 }

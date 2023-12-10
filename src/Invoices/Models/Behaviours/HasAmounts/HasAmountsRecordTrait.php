@@ -2,7 +2,7 @@
 
 namespace Marktic\Billing\Invoices\Models\Behaviours\HasAmounts;
 
-use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
+use ByTIC\Money\Utility\Money;
 
 trait HasAmountsRecordTrait
 {
@@ -19,6 +19,11 @@ trait HasAmountsRecordTrait
     public function setAmount(?float $amount): void
     {
         $this->amount = $amount;
+    }
+
+    public function getAmountMoney(): ?\ByTIC\Money\Money
+    {
+        return Money::fromCents($this->getAmount(), $this->getCurrency());
     }
 
     public function getAmountPaid(): ?int

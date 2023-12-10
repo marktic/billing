@@ -2,6 +2,7 @@
 
 namespace Marktic\Billing\InvoiceLines\Models;
 
+use Marktic\Billing\Base\Models\Behaviours\HasSubject\HasSubjectRepositoryTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
 use Marktic\Billing\Invoices\ModelsRelated\HasInvoice\HasInvoiceRepositoryTrait;
@@ -11,6 +12,7 @@ use Marktic\Billing\Utility\PackageConfig;
 trait InvoiceLinesTrait
 {
     use HasInvoiceRepositoryTrait;
+    use HasSubjectRepositoryTrait;
     use TimestampableManagerTrait;
     use HasDatabaseConnectionTrait;
 

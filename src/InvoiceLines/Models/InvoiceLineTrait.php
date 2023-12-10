@@ -2,8 +2,10 @@
 
 namespace Marktic\Billing\InvoiceLines\Models;
 
+use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
-use Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRecordTrait;
+use Marktic\Billing\Base\Models\Behaviours\HasName\RecordHasName;
+use Marktic\Billing\Base\Models\Behaviours\HasSubject\HasSubjectRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Billing\Invoices\ModelsRelated\HasInvoice\HasInvoiceRecordTrait;
 
@@ -13,22 +15,22 @@ use Marktic\Billing\Invoices\ModelsRelated\HasInvoice\HasInvoiceRecordTrait;
 trait InvoiceLineTrait
 {
     use RecordHasId;
-    use HasOwnerRecordTrait;
     use HasInvoiceRecordTrait;
+    use HasSubjectRecordTrait;
+    use RecordHasName;
+    use RecordHasCurrency;
     use TimestampableTrait;
 
-    protected ?string $name = null;
+    protected ?int $quantity = null;
 
-    /**
-     * @return string
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
+    protected ?string $unit_name = null;
+    protected ?int $unit_price = null;
 
-    public function setName(?string $name): void
-    {
-        $this->name = $name;
-    }
+    protected ?int $subtotal = null;
+
+    protected ?int $tax_rate = null;
+    protected ?int $tax_total = null;
+
+    protected ?int $total = null;
+
 }

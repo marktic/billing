@@ -2,23 +2,14 @@
 
 namespace Marktic\Billing\Invoices\Models\Behaviours\HasAmounts;
 
+use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
+
 trait HasAmountsRecordTrait
 {
-    protected ?string $currency = null;
 
     protected ?int $amount = null;
 
     protected ?int $amount_paid = null;
-
-    public function getCurrency(): ?string
-    {
-        return $this->currency;
-    }
-
-    public function setCurrency(?string $currency): void
-    {
-        $this->currency = $currency;
-    }
 
     public function getAmount(): ?int
     {

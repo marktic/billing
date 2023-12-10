@@ -27,7 +27,18 @@ final class BillingInvoiceLinesTable extends AbstractMigration
         $table = $this->table($table_name);
         $table
             ->addColumn('invoice_id', 'integer', ['null' => false, 'signed' => FALSE])
+            ->addColumn('subject_id', 'integer', ['null' => true])
+            ->addColumn('subject', 'string', ['null' => true])
             ->addColumn('name', 'string', ['null' => true])
+            ->addColumn('description', 'text', ['null' => true])
+            ->addColumn('quantity', 'integer', ['null' => true])
+            ->addColumn('unit_name', 'string', ['null' => true])
+            ->addColumn('unit_price', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('subtotal', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('currency', 'string', ['null' => true, 'limit' => 3])
+            ->addColumn('tax_rate', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('tax_total', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('total', 'integer', ['null' => true, 'signed' => false])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',

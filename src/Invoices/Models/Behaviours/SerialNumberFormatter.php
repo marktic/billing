@@ -1,6 +1,6 @@
 <?php
 
-namespace Marktic\Billing\Invoices\Models\Traits;
+namespace Marktic\Billing\Invoices\Models\Behaviours;
 
 trait SerialNumberFormatter
 {

@@ -28,8 +28,14 @@ final class BillingInvoicesTable extends AbstractMigration
         $table
             ->addColumn('owner_id', 'integer', ['null' => false])
             ->addColumn('owner', 'string', ['null' => true])
+            ->addColumn('subject_id', 'integer', ['null' => true])
+            ->addColumn('subject', 'string', ['null' => true])
             ->addColumn('number', 'string', ['null' => true, 'limit' => 50])
             ->addColumn('series', 'string', ['null' => true, 'limit' => 50])
+            ->addColumn('currency', 'string', ['null' => true, 'limit' => 3])
+            ->addColumn('amount', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('amount_paid', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('status', 'enum', ['null' => true, 'values' => ['draft', 'issued', 'paid', 'partially_paid', 'overdue', 'voided']])
             ->addColumn('issued_at', 'date', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',

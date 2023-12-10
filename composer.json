@@ -32,6 +32,7 @@
     "bytic/orm": "^0.9|^1.0",
     "bytic/orm-filters": "^0.9|^1.0",
     "bytic/orm-behaviors": "^0.9|^1.0",
+    "bytic/models-smart-properties": "^0.9|^1.0",
     "bytic/translation": "^1.0|^2.0",
     "bytic/actions": "dev-main",
     "bytic/utility": "^1.0.73"

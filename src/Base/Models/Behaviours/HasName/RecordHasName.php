@@ -18,4 +18,9 @@ trait RecordHasName
         }
         $this->name = $name;
     }
+
+    public function printNameHTML(): string
+    {
+        return nl2br($this->getName());
+    }
 }

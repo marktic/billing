@@ -20,28 +20,26 @@ $items = $items ?? $this->items;
     </thead>
     <tbody>
     <?php foreach ($items as $item) { ?>
-        <?php $event = $item->getEvent(); ?>
+        <?php $subject = $item->getBillingSubject(); ?>
         <tr>
             <td>
-                <?php if ($event) { ?>
-                    <a href="<?php echo $event->getURL(); ?>" class="btn btn-xs btn-info btn-outline float-end">
+                <?php if ($subject) { ?>
+                    <a href="<?= $subject->getURL(); ?>" class="btn btn-xs btn-info btn-outline float-end">
                         ?
                     </a>
                 <?php } ?>
                 <?= $item->printNameHTML(); ?>
             </td>
             <td>
-                <?= $item->quantity; ?>
-                <?= $item->unit_name; ?>
+                <?= $item->getQuantity(); ?>
+                x
+                <?= $item->getUnitName(); ?>
             </td>
             <td>
-                <?= $item->cost; ?>
-                <?= $item->cost_type == 'percentage' ? '<sup>%</sup>' : '<sup>RON</sup>'; ?>
-
+                <?= $item->getUnitPriceMoney()->formatBy('html'); ?>
             </td>
             <td>
-                <?= $item->getValue(); ?>
-                <sup>RON</sup>
+                <?= $item->getTotalMoney()->formatBy('html'); ?>
             </td>
             <td>
                 <a href="<?= $item->compileURL('edit'); ?>" class="btn btn-primary btn-xs">

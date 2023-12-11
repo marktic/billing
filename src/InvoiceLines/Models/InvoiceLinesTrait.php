@@ -26,7 +26,7 @@ trait InvoiceLinesTrait
 
     protected function initRelationsBilling(): void
     {
-        $this->initRelationsBillingOwner();
+        $this->initRelationsBillingSubject();
     }
 
     public function generatePrimaryFK()

@@ -1,0 +1,1 @@
+<?= $this->load('AdminBase::/abstract/add'); ?>

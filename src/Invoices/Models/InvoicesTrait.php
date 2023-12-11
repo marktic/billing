@@ -18,7 +18,7 @@ trait InvoicesTrait
     use HasDatabaseConnectionTrait;
     use HasStatusRecordsTrait;
 
-    protected function bootBillingConsentsTrait()
+    protected function bootInvoicesTrait()
     {
 //        static::updating(function ($event) {
 //            /** @var Event $event */
@@ -29,8 +29,19 @@ trait InvoicesTrait
     protected function initRelationsBilling(): void
     {
         $this->initRelationsBillingOwner();
+        $this->initRelationsBillingSubject();
+        $this->initRelationsBillingLines();
     }
-
+    protected function initRelationsBillingLines()
+    {
+        $this->hasMany(
+            'BillingLines',
+            [
+                'class' => BillingModels::invoiceLinesClass(),
+                'fk' => 'invoice_id'
+            ]
+        );
+    }
     public function generatePrimaryFK()
     {
         return 'consent_id';

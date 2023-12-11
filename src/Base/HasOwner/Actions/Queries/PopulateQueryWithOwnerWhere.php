@@ -27,8 +27,8 @@ class PopulateQueryWithOwnerWhere
 
     public function handle()
     {
-        $this->query->where('owner', BillingUtility::morphLabelFor($this->owner));
-        $this->query->where('owner_id', $this->owner->id);
+        $this->query->where('owner = ?', BillingUtility::morphLabelFor($this->owner));
+        $this->query->where('owner_id = ?', $this->owner->id);
         return $this->query;
     }
 }

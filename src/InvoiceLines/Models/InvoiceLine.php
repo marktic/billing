@@ -2,7 +2,7 @@
 
 namespace Marktic\Billing\InvoiceLines\Models;
 
-use Marktic\Newsletter\Base\Models\Traits\CommonRecordTrait;
+use Marktic\Billing\Base\Models\Traits\CommonRecordTrait;
 use Nip\Records\Record;
 
 /**

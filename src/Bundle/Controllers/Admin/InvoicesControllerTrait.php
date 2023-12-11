@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Marktic\Billing\Bundle\Controllers\Admin;
 
-use Marktic\Billing\Base\Dto\AdminOwner;
 use Marktic\Billing\Base\HasOwner\Actions\Queries\PopulateQueryWithOwnerWhere;
-use Marktic\Billing\Bundle\Forms\Admin\Parties\CompleteDataForm;
+use Marktic\Billing\Base\HasOwner\Controllers\Admin\Behaviours\HasBillingOwnerTrait;
+use Marktic\Billing\Bundle\Forms\Admin\Invoices\DetailsForm;
 use Marktic\Billing\Invoices\Models\Invoice;
-use Marktic\Billing\Parties\Actions\BillingPartyCreateForSubject;
 
 /**
  *
@@ -16,11 +15,21 @@ use Marktic\Billing\Parties\Actions\BillingPartyCreateForSubject;
 trait InvoicesControllerTrait
 {
     use AbstractControllerTrait;
+    use Behaviours\HasFormsTrait;
+    use HasBillingOwnerTrait;
+
+    public function postView()
+    {
+        parent::postView();
+        $item = $this->getModelFromRequest();
+        $this->payload()->set('items', $item->getBillingLines());
+        $this->initViewStatuses();
+    }
 
     protected function newIndexQuery()
     {
         $query = parent::newIndexQuery();
-        return PopulateQueryWithOwnerWhere::for($query, $this->getOwner())->handle();
+        return PopulateQueryWithOwnerWhere::for($query, $this->getBillingOwner())->handle();
     }
 
     /**
@@ -32,11 +41,17 @@ trait InvoicesControllerTrait
         if (parent::checkItemAccess($item) === false) {
             return false;
         }
-        if ($item->getBillingOwner() == $this->getOwner()) {
+        if ($item->getBillingOwner() == $this->getBillingOwner()) {
             return true;
         }
         return false;
     }
 
+    protected function getModelFormClass($model, $action = null): ?string
+    {
+        return match ($action) {
+            default => DetailsForm::class,
+        };
+    }
 
 }

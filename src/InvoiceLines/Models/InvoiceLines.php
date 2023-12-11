@@ -15,5 +15,5 @@ class InvoiceLines extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_billing_invoice_lines';
-    public const CONTROLLER = 'mkt_billing_invoice_lines';
+    public const CONTROLLER = 'mkt_billing-invoice_lines';
 }

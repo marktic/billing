@@ -1,6 +1,6 @@
 <?php
 
-namespace Marktic\Billing\Base\Actions\Behaviours;
+namespace Marktic\Billing\Base\HasOwner\Actions\Behaviours;
 
 use Marktic\Billing\Base\Dto\AdminOwner;
 use Marktic\Billing\Parties\Actions\BillingPartyCreateForSubject;
@@ -15,7 +15,7 @@ trait HasOwnerRecordTrait
     protected Record|AdminOwner|null $owner = null;
 
     /**
-     * @return Record|\Marktic\Billing\Base\Models\Behaviours\HasOwner\HasOwnerRecordTrait
+     * @return Record|\Marktic\Billing\Base\HasOwner\Models\Behaviours\HasOwner\HasOwnerRecordTrait
      */
     public function getOwner(): Record|AdminOwner
     {

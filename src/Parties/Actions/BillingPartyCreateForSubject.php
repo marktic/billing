@@ -3,12 +3,11 @@
 namespace Marktic\Billing\Parties\Actions;
 
 use Bytic\Actions\Action;
-use Marktic\Billing\Base\Actions\Behaviours\HasOwnerRecordTrait;
 use Marktic\Billing\Base\Actions\Behaviours\HasResultRecordTrait;
+use Marktic\Billing\Base\HasOwner\Actions\Behaviours\HasOwnerRecordTrait;
 use Marktic\Billing\Parties\Actions\Behaviours\HasRepository;
 use Marktic\Billing\Parties\Models\Party;
 use Marktic\Billing\Utility\BillingUtility;
-use Nip\Collections\Collection;
 use Nip\Records\AbstractModels\Record;
 
 class BillingPartyCreateForSubject extends Action

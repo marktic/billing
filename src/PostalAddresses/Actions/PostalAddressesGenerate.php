@@ -4,7 +4,7 @@ namespace Marktic\Billing\PostalAddresses\Actions;
 
 use Bytic\Actions\Action;
 use Marktic\Billing\Base\Actions\Behaviours\GenerateFromDataTrait;
-use Marktic\Billing\Base\Actions\Behaviours\HasOwnerRecordTrait;
+use Marktic\Billing\Base\HasOwner\Actions\Behaviours\HasOwnerRecordTrait;
 use Marktic\Billing\PostalAddresses\Actions\Identification\GenerateIdentification;
 use Marktic\Billing\PostalAddresses\Models\PostalAddress;
 

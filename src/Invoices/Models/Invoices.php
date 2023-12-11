@@ -15,5 +15,5 @@ class Invoices extends RecordManager
     use CommonRecordsTrait;
 
     public const TABLE = 'mkt_billing_invoices';
-    public const CONTROLLER = 'mkt_billing_invoices';
+    public const CONTROLLER = 'mkt_billing-invoices';
 }

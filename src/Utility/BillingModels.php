@@ -7,6 +7,7 @@ namespace Marktic\Billing\Utility;
 use ByTIC\PackageBase\Utility\ModelFinder;
 use Marktic\Billing\BillingServiceProvider;
 use Marktic\Billing\Contacts\Models\Contacts;
+use Marktic\Billing\ExternalSystems\Communications\Models\Communications;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLines;
 use Marktic\Billing\Invoices\Models\Invoices;
 use Marktic\Billing\LegalEntities\Models\LegalEntities;
@@ -27,6 +28,8 @@ class BillingModels extends ModelFinder
     public const CONTACTS = 'contacts';
 
     public const POSTAL_ADDRESSES = 'postal_addresses';
+
+    public const EXTERNAL_COMMUNICATIONS = 'external_communications';
 
     public static function invoices(): Invoices|RecordManager
     {
@@ -84,6 +87,16 @@ class BillingModels extends ModelFinder
     public static function postalAddressesClass(): string
     {
         return static::getConfigVar('models.' . self::POSTAL_ADDRESSES, PostalAddresses::class);
+    }
+
+    public static function externalCommunications(): Communications|RecordManager
+    {
+        return static::getModels(self::EXTERNAL_COMMUNICATIONS, Communications::class);
+    }
+
+    public static function externalCommunicationsClass(): string
+    {
+        return static::getConfigVar('models.' . self::EXTERNAL_COMMUNICATIONS, Communications::class);
     }
 
     protected static function packageName(): string

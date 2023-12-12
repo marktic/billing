@@ -112,9 +112,9 @@ trait PostalAddressTrait
     }
 
     /**
-     * @return string|Country|null
+     * @return Country|null
      */
-    public function getCountry(): string|Country|null
+    public function getCountry(): Country|null
     {
         return $this->country;
     }

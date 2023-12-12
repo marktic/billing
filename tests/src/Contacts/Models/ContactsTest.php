@@ -4,7 +4,6 @@ namespace Marktic\Billing\Tests\Contacts\Models;
 
 use Marktic\Billing\Contacts\Models\Contacts;
 use Marktic\Billing\Tests\AbstractTest;
-use function PHPUnit\Framework\assertSame;
 
 class ContactsTest extends AbstractTest
 {

@@ -2,9 +2,7 @@
 
 namespace Marktic\Billing\Tests\Invoices\Actions\Invoicetic;
 
-use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
 use Marktic\Billing\Invoices\Actions\Invoicetic\InvoiceGenerate;
-use Marktic\Billing\Invoices\Models\Invoice;
 use Marktic\Billing\Tests\AbstractTest;
 
 class InvoiceGenerateTest extends AbstractTest

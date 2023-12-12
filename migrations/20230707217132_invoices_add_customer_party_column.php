@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class InvoiceAddCustomerPartyColumn extends AbstractMigration
+final class InvoicesAddCustomerPartyColumn extends AbstractMigration
 {
     /**
      * Change Method.
@@ -25,7 +25,7 @@ final class InvoiceAddCustomerPartyColumn extends AbstractMigration
             ->addColumn(
                 'customer_party_id',
                 'integer',
-                ['null' => true, 'after' => 'subject']
+                ['null' => true, 'signed' => FALSE, 'after' => 'subject']
             )
             ->addIndex(['customer_party_id'])
             ->save();

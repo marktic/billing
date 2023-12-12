@@ -1,0 +1,11 @@
+{
+  "streetName": "Test Address",
+  "additionalStreetName": "Test Address 2",
+  "buildingNumber": null,
+  "cityName": "Test City",
+  "countrySubentity": "County",
+  "postalZone": "1",
+  "country": {
+    "identificationCode": "RO"
+  }
+}

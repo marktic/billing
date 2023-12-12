@@ -1,5 +1,7 @@
 <?php
 
+require dirname(__DIR__) . '/vendor/autoload.php';
+
 use Nip\Config\Config;
 use Nip\Container\Container;
 use Nip\I18n\Translator;
@@ -25,5 +27,3 @@ $adapter = new ArrayAdapter( 600);
 $store = new Repository($adapter);
 $store->clear();
 $container->set('cache.store', $store);
-
-require dirname(__DIR__) . '/vendor/autoload.php';

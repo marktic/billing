@@ -53,7 +53,7 @@ trait HasContactFieldsTrait
     {
         $action = ContactsGenerate::for($data);
         $action->withOwner($this->owner);
-        $action->create();
+        $action->orCreate();
 
         return $action->fetch();
     }

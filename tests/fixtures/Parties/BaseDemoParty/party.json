@@ -1,0 +1,29 @@
+{
+  "identifiers": {
+    "PartyIdentification": {
+      "scheme": "PartyIdentification",
+      "value": "123456789"
+    }
+  },
+  "legalEntity": {
+    "companyId": null,
+    "companyLegalForm": null,
+    "registrationName": null
+  },
+  "name": "Test",
+  "partyIdentification": {
+    "scheme": "PartyIdentification",
+    "value": "123456789"
+  },
+  "postalAddress": {
+    "streetName": "Test Address",
+    "additionalStreetName": "Test Address 2",
+    "buildingNumber": null,
+    "cityName": "Test City",
+    "country": {
+      "identificationCode": "RO"
+    },
+    "countrySubentity": "County",
+    "postalZone": "1"
+  }
+}

@@ -36,11 +36,14 @@
     "bytic/translation": "^1.0|^2.0",
     "bytic/actions": "dev-main",
     "bytic/utility": "^1.0.73",
-    "bytic/money": "^1.0"
+    "bytic/money": "^1.0",
+    "invoicetic/common": "dev-main",
+    "symfony/http-client": "^6.2"
   },
   "require-dev": {
     "bytic/view": "^1.0|^2.0",
     "bytic/form": "^1.0|^2.0",
+    "bytic/event-dispatcher": "^1.0|^2.0",
     "bytic/admin-base": "^1.0|^2.0",
     "bytic/phpqatools": "^1.0"
   },
@@ -51,7 +54,8 @@
       "phpstan/extension-installer": true,
       "ergebnis/composer-normalize": true,
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "bytic/phpqatools": true
+      "bytic/phpqatools": true,
+      "php-http/discovery": true
     }
   }
 }

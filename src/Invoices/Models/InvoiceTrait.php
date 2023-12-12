@@ -8,9 +8,12 @@ use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\HasSubject\HasSubjectRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
+use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
+use Nip\Records\Collections\Collection;
 
 /**
  * Trait NewsletterConsentTrait
+ * @method Collection|InvoiceLine[] getBillingLines()
  */
 trait InvoiceTrait
 {
@@ -32,4 +35,10 @@ trait InvoiceTrait
             . ' #' . $this->series
             . ' - ' . $this->number;
     }
+
+    protected function getInvoiceId(): string
+    {
+        return $this->series . '-' . $this->number;
+    }
+
 }

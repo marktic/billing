@@ -19,4 +19,5 @@ class Invoice extends Record
         // TODO: Implement getRegistry() method.
     }
 
+
 }

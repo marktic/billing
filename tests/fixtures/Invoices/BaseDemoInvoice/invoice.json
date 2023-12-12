@@ -1,0 +1,59 @@
+{
+  "invoiceTypeCode": "380",
+  "issueDate": null,
+  "dueDate": null,
+  "invoiceLines": [
+    {
+      "lineExtensionAmount": null,
+      "id": null,
+      "item": {
+        "description": null,
+        "name": "Test",
+        "sellersItemIdentification": null,
+        "buyersItemIdentification": null,
+        "classifiedTaxCategory": null
+      },
+      "price": {
+        "priceAmount": 1.0,
+        "baseQuantity": 1.0,
+        "unitCode": "C62"
+      },
+      "invoicedQuantity": {
+        "unitCode": "C62",
+        "quantity": "1"
+      },
+      "unitCode": "C62"
+    },
+    {
+      "lineExtensionAmount": null,
+      "id": null,
+      "item": {
+        "description": null,
+        "name": "Test",
+        "sellersItemIdentification": null,
+        "buyersItemIdentification": null,
+        "classifiedTaxCategory": null
+      },
+      "price": {
+        "priceAmount": 1.0,
+        "baseQuantity": 1.0,
+        "unitCode": "C62"
+      },
+      "invoicedQuantity": {
+        "unitCode": "C62",
+        "quantity": "1"
+      },
+      "unitCode": "C62"
+    }
+  ],
+  "id": "INV-00001",
+  "idSequence": {
+    "pattern": "{SEQUENCE}{SEPARATOR}{NUMBER}",
+    "sequence": "INV",
+    "number": 1,
+    "numberLength": 5,
+    "id": "INV-00001",
+    "attributes": []
+  },
+  "documentCurrencyCode": "EUR"
+}

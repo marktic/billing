@@ -4,6 +4,7 @@ namespace Marktic\Billing\InvoiceLines\Models;
 
 use ByTIC\Money\Utility\Money;
 use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
+use Marktic\Billing\Base\Models\Behaviours\HasDescription\RecordHasDescription;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\HasName\RecordHasName;
 use Marktic\Billing\Base\Models\Behaviours\HasSubject\HasSubjectRecordTrait;
@@ -20,6 +21,7 @@ trait InvoiceLineTrait
     use HasInvoiceRecordTrait;
     use HasSubjectRecordTrait;
     use RecordHasName;
+    use RecordHasDescription;
     use RecordHasCurrency;
     use TimestampableTrait;
 

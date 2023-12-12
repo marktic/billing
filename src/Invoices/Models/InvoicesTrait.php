@@ -30,8 +30,10 @@ trait InvoicesTrait
     {
         $this->initRelationsBillingOwner();
         $this->initRelationsBillingSubject();
+        $this->initRelationsCustomerParty();
         $this->initRelationsBillingLines();
     }
+
     protected function initRelationsBillingLines()
     {
         $this->hasMany(
@@ -42,6 +44,18 @@ trait InvoicesTrait
             ]
         );
     }
+
+    protected function initRelationsCustomerParty(): void
+    {
+        $this->belongsTo(
+            InvoicesRepository::RELATION_CUSTOMER_PARTY,
+            [
+                'class' => BillingModels::parties(),
+                'fk' => 'customer_party_id'
+            ]
+        );
+    }
+
     public function generatePrimaryFK()
     {
         return 'consent_id';
@@ -51,6 +65,7 @@ trait InvoicesTrait
     {
         return PackageConfig::tableName(BillingModels::INVOICES, Invoices::TABLE);
     }
+
     /**
      * @return string
      */

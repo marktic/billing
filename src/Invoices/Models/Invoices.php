@@ -9,11 +9,10 @@ use Nip\Records\RecordManager;
  * Class Invoices
  * @package Marktic\Billing\Invoices\Models
  */
-class Invoices extends RecordManager
+class Invoices extends RecordManager implements InvoicesRepository
 {
     use InvoicesTrait;
     use CommonRecordsTrait;
 
-    public const TABLE = 'mkt_billing_invoices';
-    public const CONTROLLER = 'mkt_billing-invoices';
+
 }

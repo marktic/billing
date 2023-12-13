@@ -5,16 +5,16 @@ namespace Marktic\Billing\Invoices\Models\Behaviours;
 trait SerialNumberFormatter
 {
     /**
-     * @var string
+     * @var string|null
      */
-    protected string $series;
+    protected ?string $series = null;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected ?string $number = null;
 
-    public function getSeries(): string
+    public function getSeries(): ?string
     {
         return $this->series;
     }

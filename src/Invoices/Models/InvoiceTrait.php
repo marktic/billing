@@ -32,8 +32,8 @@ trait InvoiceTrait
     public function getName()
     {
         return $this->getManager()->getLabel('title.singular')
-            . ' #' . $this->series
-            . ' - ' . $this->number;
+            . ' #' . $this->getSeries()
+            . ' - ' . $this->getNumber();
     }
 
     protected function getInvoiceId(): string

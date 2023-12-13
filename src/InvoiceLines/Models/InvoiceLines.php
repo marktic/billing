@@ -8,6 +8,7 @@ use Nip\Records\RecordManager;
 /**
  * Class InvoiceLines
  * @package Marktic\Billing\InvoiceLines\Models
+ * @method InvoiceLine getNew()
  */
 class InvoiceLines extends RecordManager
 {

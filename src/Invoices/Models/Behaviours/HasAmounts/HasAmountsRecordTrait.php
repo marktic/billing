@@ -16,6 +16,11 @@ trait HasAmountsRecordTrait
         return $this->amount;
     }
 
+    public function addAmount(int $amount): void
+    {
+        $this->amount += $amount;
+    }
+
     public function setAmount(?float $amount): void
     {
         $this->amount = $amount;

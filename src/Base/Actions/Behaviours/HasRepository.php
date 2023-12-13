@@ -43,6 +43,18 @@ trait HasRepository
         return $this->getRepository()->findOneByParams($params);
     }
 
+    protected function findAll(): \Nip\Records\Collections\Collection
+    {
+        $query = $this->findQuery();
+        return $this->getRepository()->findByQuery($query);
+    }
+
+    protected function findQuery(): \Nip\Database\Query\Select
+    {
+        $params = $this->findParams();
+        return $this->getRepository()->paramsToQuery($params);
+    }
+
     /**
      * @return array
      */

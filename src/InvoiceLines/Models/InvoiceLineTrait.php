@@ -3,11 +3,11 @@
 namespace Marktic\Billing\InvoiceLines\Models;
 
 use ByTIC\Money\Utility\Money;
+use Marktic\Billing\Base\HasSubject\Models\Behaviours\HasSubject\HasSubjectRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
 use Marktic\Billing\Base\Models\Behaviours\HasDescription\RecordHasDescription;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\HasName\RecordHasName;
-use Marktic\Billing\Base\Models\Behaviours\HasSubject\HasSubjectRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Billing\Invoices\ModelsRelated\HasInvoice\HasInvoiceRecordTrait;
 use Nip\Utility\Number;

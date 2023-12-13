@@ -4,7 +4,7 @@ namespace Marktic\Billing\Invoices\Models;
 
 use ByTIC\Models\SmartProperties\RecordsTraits\HasStatus\RecordsTrait as HasStatusRecordsTrait;
 use Marktic\Billing\Base\HasOwner\Models\Behaviours\HasOwner\HasOwnerRepositoryTrait;
-use Marktic\Billing\Base\Models\Behaviours\HasSubject\HasSubjectRepositoryTrait;
+use Marktic\Billing\Base\HasSubject\Models\Behaviours\HasSubject\HasSubjectRepositoryTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
 use Marktic\Billing\Utility\BillingModels;

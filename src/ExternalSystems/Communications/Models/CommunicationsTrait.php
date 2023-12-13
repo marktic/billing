@@ -2,7 +2,7 @@
 
 namespace Marktic\Billing\ExternalSystems\Communications\Models;
 
-use Marktic\Billing\Base\Models\Behaviours\HasSubject\HasSubjectRepositoryTrait;
+use Marktic\Billing\Base\HasSubject\Models\Behaviours\HasSubject\HasSubjectRepositoryTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
 use Marktic\Billing\Utility\BillingModels;

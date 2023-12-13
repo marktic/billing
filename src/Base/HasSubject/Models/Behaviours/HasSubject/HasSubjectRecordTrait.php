@@ -1,6 +1,6 @@
 <?php
 
-namespace Marktic\Billing\Base\Models\Behaviours\HasSubject;
+namespace Marktic\Billing\Base\HasSubject\Models\Behaviours\HasSubject;
 
 use Marktic\Billing\Base\Dto\AdminOwner;
 use Nip\Records\Collections\Collection;

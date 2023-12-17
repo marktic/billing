@@ -18,9 +18,9 @@ class DetailsForm extends FormModel
         $this->invoicesRepository = BillingModels::invoices();
         $this->addInput('series', $this->invoicesRepository->getLabel('series'), true);
         $this->addInput('number', $this->invoicesRepository->getLabel('number'), true);
-        $this->addInput('amount', translator()->trans('amount'), false);
+        $this->addMoney('amount_money', translator()->trans('amount'), false);
 
-        $this->addDateinput('issued', $this->invoicesRepository->getLabel('issued'), true);
+        $this->addDateinput('issued_at', $this->invoicesRepository->getLabel('issued'), true);
 
         $this->addButton('save', translator()->trans('submit'));
     }

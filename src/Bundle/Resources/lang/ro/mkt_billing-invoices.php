@@ -2,6 +2,7 @@
 
 return [
     'mkt_billing-invoices.labels.title' => 'Facturi',
+    'mkt_billing-invoices.labels.title.singular' => 'Factura',
 
     'mkt_billing-invoices.labels.series' => 'Serie',
     'mkt_billing-invoices.labels.number' => 'Numar',

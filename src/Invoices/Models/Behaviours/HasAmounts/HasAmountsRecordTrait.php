@@ -21,7 +21,7 @@ trait HasAmountsRecordTrait
         $this->amount += $amount;
     }
 
-    public function setAmount(?float $amount): void
+    public function setAmount(?int $amount): void
     {
         $this->amount = $amount;
     }
@@ -29,6 +29,11 @@ trait HasAmountsRecordTrait
     public function getAmountMoney(): ?\ByTIC\Money\Money
     {
         return Money::fromCents($this->getAmount(), $this->getCurrency());
+    }
+
+    public function setAmountMoney(?\ByTIC\Money\Money $amount): void
+    {
+        $this->setAmount($amount->getAmount());
     }
 
     public function getAmountPaid(): ?int

@@ -44,27 +44,35 @@ $statuses = $this->statuses;
     </tr>
     <tr>
         <td class="name">
-            <?= $invoiceRepository->getLabel('number'); ?>:</td>
+            <?= $invoiceRepository->getLabel('number'); ?>:
+        </td>
         <td class="value">
-            <?= $item->getNumber(); ?></td>
+            <?= $item->getNumber(); ?>
+        </td>
     </tr>
     <tr>
         <td class="name">
-            <?= translator()->trans('amount'); ?>:</td>
+            <?= translator()->trans('amount'); ?>:
+        </td>
         <td class="value">
-            <?= $item->getAmountMoney()->formatBy('html'); ?></td>
+            <?= $item->getAmountMoney()->formatBy('html'); ?>
+        </td>
     </tr>
     <tr>
         <td class="name">
-            <?= $invoiceRepository->getLabel('issued'); ?>:</td>
+            <?= $invoiceRepository->getLabel('issued'); ?>:
+        </td>
         <td class="value">
-            <?php echo _strftime($item->issued_at); ?></td>
+            <?= _strftime($item->issued_at); ?>
+        </td>
     </tr>
     <tr>
         <td class="name">
-            <?= translator()->trans('created'); ?>:</td>
+            <?= translator()->trans('created'); ?>:
+        </td>
         <td class="value">
-            <?php echo _strftime($item->created_at); ?></td>
+            <?= _strftime($item->created_at); ?>
+        </td>
     </tr>
     <tr>
         <td class="name">

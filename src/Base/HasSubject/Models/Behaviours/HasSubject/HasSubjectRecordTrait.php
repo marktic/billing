@@ -3,6 +3,7 @@
 namespace Marktic\Billing\Base\HasSubject\Models\Behaviours\HasSubject;
 
 use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\Utility\BillingUtility;
 use Nip\Records\Collections\Collection;
 use Nip\Records\Record;
 
@@ -18,7 +19,8 @@ trait HasSubjectRecordTrait
     public function populateFromSubjectRecord(Record $record): void
     {
         $this->subject_id = $record->id;
-
+        $this->subject = BillingUtility::morphLabelFor($record);
+        $this->getRelation('BillingSubject')->setResults($record);
     }
 
     public function getBillingSubject(): \Nip\Records\AbstractModels\Record|Collection|AdminOwner

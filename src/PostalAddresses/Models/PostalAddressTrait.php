@@ -138,7 +138,7 @@ trait PostalAddressTrait
         $parts[] = $this->getPostalZone();
         $parts[] = $this->getCityName();
         $parts[] = $this->getCountrySubentity();
-        $parts[] = $this->getCountry()->getName();
+        $parts[] = $this->getCountry()->name;
         return implode(', ', array_filter($parts));
     }
 }

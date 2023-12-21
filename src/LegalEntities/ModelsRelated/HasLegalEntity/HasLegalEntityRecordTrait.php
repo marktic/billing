@@ -2,10 +2,11 @@
 
 namespace Marktic\Billing\LegalEntities\ModelsRelated\HasLegalEntity;
 
+use Marktic\Billing\LegalEntities\Models\LegalEntity;
 use Nip\Records\Record;
 
 /**
- * @method Record getBillingOwner()
+ * @method Record|LegalEntity getBillingLegalEntity()
  */
 trait HasLegalEntityRecordTrait
 {

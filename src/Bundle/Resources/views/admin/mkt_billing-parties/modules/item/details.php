@@ -15,7 +15,7 @@ $partiesRepository = BillingModels::parties();
     <?php return; ?>
 <?php } ?>
 
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
         <td>Name</td>

@@ -7,6 +7,7 @@ use Invoicetic\Common\Dto\Invoice\Invoice as EInvoice;
 use Marktic\Billing\Contacts\Models\Contact;
 use Marktic\Billing\InvoiceLines\Actions\Invoicetic\InvoiceLineGenerate;
 use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Parties\Actions\Invoicetic\PartyGenerate;
 
 /**
  * @method Contact fetch
@@ -28,6 +29,7 @@ class InvoiceGenerate extends Action
     {
         $this->eInvoice = $this->newEInvoice();
         $this->populateInvoiceAttributes();
+        $this->populateCustomerParty();
         $this->populateInvoiceLines();
         return $this->eInvoice;
     }
@@ -43,6 +45,16 @@ class InvoiceGenerate extends Action
         $currency = $this->invoice->getCurrency();
         if ($currency !== null) {
             $this->eInvoice->setDocumentCurrencyCode($currency);
+        }
+    }
+
+    protected function populateCustomerParty(): void
+    {
+        $contact = $this->invoice->getCustomerParty();
+        if ($contact !== null) {
+            $this->eInvoice->setAccountingCustomerParty(
+                PartyGenerate::for($contact)->handle()
+            );
         }
     }
 

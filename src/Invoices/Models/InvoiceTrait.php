@@ -9,11 +9,13 @@ use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
+use Marktic\Billing\Parties\Models\Party;
 use Nip\Records\Collections\Collection;
 
 /**
  * Trait NewsletterConsentTrait
  * @method Collection|InvoiceLine[] getBillingLines()
+ * @method Party getCustomerParty()
  */
 trait InvoiceTrait
 {

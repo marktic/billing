@@ -21,8 +21,13 @@ trait InvoicesControllerTrait
     public function postView()
     {
         parent::postView();
+
+        /** @var Invoice $item */
         $item = $this->getModelFromRequest();
-        $this->payload()->set('items', $item->getBillingLines());
+        $this->payload()->with([
+            'items' => $item->getBillingLines(),
+            'customerParty' => $item->getCustomerParty(),
+        ]);
         $this->initViewStatuses();
     }
 

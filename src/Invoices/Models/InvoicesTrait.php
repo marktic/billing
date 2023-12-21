@@ -50,7 +50,7 @@ trait InvoicesTrait
         $this->belongsTo(
             InvoicesRepository::RELATION_CUSTOMER_PARTY,
             [
-                'class' => BillingModels::parties(),
+                'class' => BillingModels::partiesClass(),
                 'fk' => 'customer_party_id'
             ]
         );

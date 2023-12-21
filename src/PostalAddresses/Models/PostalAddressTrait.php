@@ -105,9 +105,9 @@ trait PostalAddressTrait
      * @param string $subentity
      * @return self
      */
-    public function setCountrySubentity(string $country_subentity): self
+    public function setCountrySubentity(string $subentity): self
     {
-        $this->country_subentity = $country_subentity;
+        $this->country_subentity = $subentity;
         return $this;
     }
 
@@ -128,5 +128,17 @@ trait PostalAddressTrait
         $country->stringableAlpha2();
         $this->country = $country;
         return $this;
+    }
+
+    public function toString(): string
+    {
+        $parts = [];
+        $parts[] = $this->getStreetName();
+        $parts[] = $this->getAdditionalStreetName();
+        $parts[] = $this->getPostalZone();
+        $parts[] = $this->getCityName();
+        $parts[] = $this->getCountrySubentity();
+        $parts[] = $this->getCountry()->getName();
+        return implode(', ', array_filter($parts));
     }
 }

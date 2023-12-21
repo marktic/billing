@@ -1,13 +1,22 @@
-<div class="card card-inverse">
-    <div class="card-header">
-        <h4 class="card-title">
-            <span class="glyphicon glyphicon-list"></span>
+<?php
+declare(strict_types=1);
 
-            <?php echo translator()->trans('details'); ?>
-        </h4>
-        <a href="<?php echo $this->item->compileURL('edit'); ?>" class="pull-right btn btn-primary btn-xs">
-            Edit
-        </a>
-    </div>
-    <?php echo $this->load("../item/details"); ?>
-</div>
+use ByTIC\AdminBase\Screen\Actions\Dto\ButtonAction;
+use ByTIC\AdminBase\Widgets\Cards\Card;
+use ByTIC\Icons\Icons;
+
+$card = Card::make()
+    ->withTitle(translator()->trans('details'))
+    ->withIcon(Icons::list_ul())
+    ->addHeaderTool(
+        ButtonAction::make()
+            ->setUrl($this->item->compileURL('edit'))
+            ->addHtmlClass('btn-xs')
+            ->setLabel(translator()->trans('edit'))
+    )
+    ->withTheme('inverse')
+    ->wrapBody(false)
+    ->withView($this)
+    ->withViewContent('/mkt_billing-invoices/modules/item/details');
+?>
+<?= $card; ?>

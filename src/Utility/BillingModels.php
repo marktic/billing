@@ -59,6 +59,11 @@ class BillingModels extends ModelFinder
         return static::getModels(self::PARTIES, Parties::class);
     }
 
+    public static function partiesClass(): string
+    {
+        return static::getConfigVar('models.' . self::PARTIES, Parties::class);
+    }
+
     public static function legalEntities(): Parties|RecordManager
     {
         return static::getModels(self::LEGAL_ENTITIES, LegalEntities::class);

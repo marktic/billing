@@ -1,23 +1,32 @@
 <?php
 
+use ByTIC\Icons\Icons;
 use Marktic\Billing\Parties\Models\Party;
 use Marktic\Billing\Utility\BillingModels;
 
 /** @var Party $item */
-$item = $this->billingParty ?? null;
+$item = $item ?: ($this->billingParty ?? null);
 $partiesRepository = BillingModels::parties();
 ?>
-<?php if ($item) { ?>
-    <table>
-        <thead>
-        <tr>
-            <td>Name</td>
-            <td><?= $item->getName() ?></td>
-        </tr>
-        </thead>
-    </table>
-<?php } else { ?>
+<?php if ($item == null) { ?>
     <div class="alert alert-danger">
         <?= $partiesRepository->getMessage('dnx') ?>
     </div>
+    <?php return; ?>
 <?php } ?>
+
+<table>
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>
+            <?= $item->isCompany() ? Icons::building() : Icons::user(); ?>
+            <?= $item->getName() ?>
+        </td>
+    </tr>
+    <tr>
+        <td>Address</td>
+        <td><?= $item->getBillingPostalAddress()->toString() ?></td>
+    </tr>
+    </thead>
+</table>

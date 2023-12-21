@@ -7,7 +7,10 @@
             <?= $this->load("/mkt_billing-invoices/modules/panels/item-communications"); ?>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
+        <?= $this->load("/mkt_billing-invoices/modules/panels/item-customer"); ?>
+    </div>
+    <div class="col-md-4">
         <?= $this->load("/mkt_billing-invoices/modules/panels/item-items"); ?>
     </div>
 </div>

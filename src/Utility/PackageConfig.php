@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Billing\Utility;
 
 use Marktic\Billing\BillingServiceProvider;
+use Marktic\Billing\BillingStatuses\Statuses\AbstractStatus;
 use Nip\Utility\Traits\SingletonTrait;
 
 /**
@@ -37,5 +38,10 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
     public static function shouldRunMigrations(): bool
     {
         return false !== static::instance()->get('database.migrations', false);
+    }
+
+    public static function billingStatusesDirectories(): array
+    {
+        return static::instance()->get('billingStatuses.statuses.directories', [AbstractStatus::DIRECTORY]);
     }
 }

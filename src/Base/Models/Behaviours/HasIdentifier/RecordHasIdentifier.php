@@ -3,6 +3,7 @@
 namespace Marktic\Billing\Base\Models\Behaviours\HasIdentifier;
 
 trait RecordHasIdentifier
+
 {
     protected ?string $identification = null;
 

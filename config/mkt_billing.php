@@ -1,5 +1,6 @@
 <?php
 
+use Marktic\Billing\BillingStatuses\Statuses\AbstractStatus;
 use Marktic\Billing\Contacts\Models\Contacts;
 use Marktic\Billing\ExternalSystems\Communications\Models\Communications;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLines;
@@ -24,6 +25,11 @@ return [
         BillingModels::LEGAL_ENTITIES => LegalEntities::TABLE,
         BillingModels::CONTACTS => Contacts::TABLE,
         BillingModels::EXTERNAL_COMMUNICATIONS => Communications::TABLE,
+    ],
+    'billingStatuses' => [
+        'statuses' => [
+            'directories' => [AbstractStatus::DIRECTORY],
+        ],
     ],
     'database' => [
         'connection' => 'main',

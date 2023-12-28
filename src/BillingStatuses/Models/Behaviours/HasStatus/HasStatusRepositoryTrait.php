@@ -23,7 +23,11 @@ trait HasStatusRepositoryTrait
      */
     public function getStatusItemsDirectory(): array
     {
-        return PackageConfig::billingStatusesDirectories();
+        $config = PackageConfig::billingStatusesDirectories();
+        if ($config instanceof \Nip\Config\Config) {
+            $config = $config->toArray();
+        }
+        return (array) $config;
     }
 
     public function getDefaultStatus(): string

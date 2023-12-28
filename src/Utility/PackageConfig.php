@@ -40,7 +40,7 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
         return false !== static::instance()->get('database.migrations', false);
     }
 
-    public static function billingStatusesDirectories(): array
+    public static function billingStatusesDirectories()
     {
         return static::instance()->get('billingStatuses.statuses.directories', [AbstractStatus::DIRECTORY]);
     }

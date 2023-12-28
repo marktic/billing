@@ -18,6 +18,10 @@ abstract class AbstractStatus extends GenericStatus
     public const PENDING = 'pending';
 
     public const NONBILLABLE = 'nonbillable';
+
+    public const TRIAL = 'trial';
+
+    public const DISCOUNT = 'discount';
     public const BILLABLE = 'billable';
 
     public const BILLED = 'billed';

@@ -33,8 +33,10 @@ final class BillingStatusesTable extends AbstractMigration
                 'enum',
                 [
                     'null' => false,
-                    'values' => ['pending', 'billable', 'billed', 'failed', 'completed','nonbillable'],
+                    'values' => ['pending', 'billable', 'billed', 'failed', 'completed', 'nonbillable', 'discount', 'trial', 'ignored'],
                 ])
+            ->addColumn('amount', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('amount_billed', 'integer', ['null' => true, 'signed' => false])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',

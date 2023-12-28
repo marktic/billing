@@ -3,6 +3,7 @@
 namespace Marktic\Billing\BillingStatuses\Models;
 
 use Marktic\Billing\Base\HasSubject\Models\Behaviours\HasSubject\HasSubjectRecordTrait;
+use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 
@@ -14,5 +15,6 @@ trait BillingStatusTrait
     use RecordHasId;
     use HasSubjectRecordTrait;
     use Behaviours\HasStatus\HasStatusRecordTrait;
+    use RecordHasCurrency;
     use TimestampableTrait;
 }

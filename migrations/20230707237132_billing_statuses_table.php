@@ -37,6 +37,7 @@ final class BillingStatusesTable extends AbstractMigration
                 ])
             ->addColumn('amount', 'integer', ['null' => true, 'signed' => false])
             ->addColumn('amount_billed', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('currency', 'string', ['null' => true, 'limit' => 3])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',

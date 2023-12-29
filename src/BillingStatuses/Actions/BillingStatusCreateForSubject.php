@@ -10,7 +10,7 @@ use Marktic\Billing\BillingStatuses\Models\BillingStatus;
 use Marktic\Billing\Utility\BillingUtility;
 use Nip\Records\AbstractModels\Record;
 
-class BillingPartyCreateForSubject extends Action
+class BillingStatusCreateForSubject extends Action
 {
     use HasRepository;
     use HasResultRecordTrait;

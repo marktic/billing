@@ -1,8 +1,8 @@
 <?php
 
-namespace Marktic\Billing\Base\HasSubject\Actions\Behaviours;
+namespace Marktic\Billing\BillingSubject\Actions\Behaviours;
 
-use Marktic\Billing\Base\HasSubject\Actions\Queries\PopulateQueryWithSubjectWhere;
+use Marktic\Billing\BillingSubject\Actions\Queries\PopulateQueryWithSubjectWhere;
 use Nip\Records\AbstractModels\Record;
 
 trait HasSubjectRecordTrait

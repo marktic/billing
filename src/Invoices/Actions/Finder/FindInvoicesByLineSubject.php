@@ -3,7 +3,7 @@
 namespace Marktic\Billing\Invoices\Actions\Finder;
 
 use Marktic\Billing\Base\Actions\RecordsFinderAction;
-use Marktic\Billing\Base\HasSubject\Actions\Behaviours\HasSubjectRecordTrait;
+use Marktic\Billing\BillingSubject\Actions\Behaviours\HasSubjectRecordTrait;
 use Marktic\Billing\Invoices\Actions\Behaviours\HasRepository;
 use Marktic\Billing\Utility\BillingModels;
 

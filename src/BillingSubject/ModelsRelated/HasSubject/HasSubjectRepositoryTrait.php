@@ -1,8 +1,6 @@
 <?php
 
-namespace Marktic\Billing\Base\HasSubject\Models\Behaviours\HasSubject;
-
-use Marktic\Billing\Utility\BillingModels;
+namespace Marktic\Billing\BillingSubject\ModelsRelated\HasSubject;
 
 trait HasSubjectRepositoryTrait
 {

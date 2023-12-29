@@ -1,6 +1,6 @@
 <?php
 
-namespace Marktic\Billing\Base\HasSubject\Actions\Queries;
+namespace Marktic\Billing\BillingSubject\Actions\Queries;
 
 use Marktic\Billing\Utility\BillingUtility;
 

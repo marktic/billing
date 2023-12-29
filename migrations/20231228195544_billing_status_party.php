@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class BillingStatusMigrate extends AbstractMigration
+final class BillingStatusParty extends AbstractMigration
 {
     /**
      * Change Method.
@@ -18,7 +18,7 @@ final class BillingStatusMigrate extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = 'events_billing_statuses';
+        $table_name = 'mkt_billing_billing_statuses';
         $table = $this->table($table_name);
         $table
             ->addColumn(

@@ -3,7 +3,7 @@
 namespace Marktic\Billing\BillingStatuses\Actions;
 
 use Bytic\Actions\Action;
-use Marktic\Billing\Base\Actions\Behaviours\HasResultRecordTrait;
+use Marktic\Billing\Base\Actions\Behaviours\GenerateFromDataTrait;
 use Marktic\Billing\Base\HasOwner\Actions\Behaviours\HasOwnerRecordTrait;
 use Marktic\Billing\BillingStatuses\Actions\Behaviours\HasRepository;
 use Marktic\Billing\BillingStatuses\Models\BillingStatus;
@@ -13,7 +13,7 @@ use Nip\Records\AbstractModels\Record;
 class BillingStatusCreateForSubject extends Action
 {
     use HasRepository;
-    use HasResultRecordTrait;
+    use GenerateFromDataTrait;
     use HasOwnerRecordTrait;
 
     protected Record $subject;
@@ -23,7 +23,7 @@ class BillingStatusCreateForSubject extends Action
         $this->subject = $subject;
     }
 
-    public static function for($subject): static
+    public static function forSubject($subject): static
     {
         return new static($subject);
     }
@@ -51,5 +51,14 @@ class BillingStatusCreateForSubject extends Action
     {
         $record->subject = BillingUtility::morphLabelFor($this->subject);
         $record->subject_id = $this->subject->id;
+    }
+    protected function findParams(): array
+    {
+        return [
+            'where' => [
+                ['subject = ?', BillingUtility::morphLabelFor($this->subject)],
+                ['subject_id = ?', $this->subject->id],
+            ],
+        ];
     }
 }

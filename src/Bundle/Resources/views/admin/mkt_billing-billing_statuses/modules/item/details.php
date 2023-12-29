@@ -22,7 +22,7 @@ $customerParty = $billingStatus->getCustomerParty();
         <td class="value">
             <?php if ($customerParty) { ?>
                 <a href="<?= $customerParty->compileURL('edit'); ?>">
-                    <?= $customerParty->getLabel(); ?>
+                    <?= $customerParty->getName(); ?>
                 </a>
             <?php } else { ?>
              ---

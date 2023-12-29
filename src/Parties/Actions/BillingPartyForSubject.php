@@ -45,6 +45,12 @@ class BillingPartyForSubject extends Action
         return $this->returnSingle(!$returnCollection);
     }
 
+    public function findOneOrNull(): Party|Record|null
+    {
+        $this->returnSingle(true);
+        return $this->handle();
+    }
+
     public function getCreateUrl(): string
     {
         return $this->getRepository()->compileURL(

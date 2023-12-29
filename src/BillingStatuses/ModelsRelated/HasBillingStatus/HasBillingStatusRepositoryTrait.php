@@ -9,10 +9,12 @@ trait HasBillingStatusRepositoryTrait
 
     protected function initRelationBillingStatus(): void
     {
-        $this->morphTo(
+        $this->morphOne(
             self::RELATION_BILLING_STATUS,
             [
-                'class' => BillingModels::billingStatuses(),
+                'class' => BillingModels::billingStatusesClass(),
+                'morphPrefix' => 'subject',
+                'morphTypeField' => 'subject',
             ]
         );
     }

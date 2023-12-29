@@ -10,6 +10,6 @@ trait BillingSubjectRepositoryTrait
 
     protected function initRelationsBilling(): void
     {
-
+        $this->initRelationBillingStatus();
     }
 }

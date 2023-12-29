@@ -17,6 +17,7 @@ trait BillingStatusTrait
     use HasSubjectRecordTrait;
     use HasCustomerPartyRecordTrait;
     use Behaviours\HasStatus\HasStatusRecordTrait;
+    use Behaviours\HasAmounts\HasAmountsRecordTrait;
     use RecordHasCurrency;
     use TimestampableTrait;
 }

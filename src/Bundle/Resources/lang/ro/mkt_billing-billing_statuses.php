@@ -4,7 +4,7 @@ return [
     'mkt_billing-billing_statuses.labels.title' => 'Statusuri facturare',
     'mkt_billing-billing_statuses.labels.title.singular' => 'Status facturare',
 
-    'mkt_billing-billing_statuses.labels.total' => 'Total',
+    'mkt_billing-billing_statuses.labels.amount' => 'Total',
     'mkt_billing-billing_statuses.labels.reports' => 'Rapoarte facturare',
     'mkt_billing-billing_statuses.labels.billed' => 'Facturat',
 

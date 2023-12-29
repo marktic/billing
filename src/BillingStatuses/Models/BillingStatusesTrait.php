@@ -8,6 +8,7 @@ use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTra
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
 use Marktic\Billing\Contacts\ModelsRelated\HasContact\HasContactRepositoryTrait;
 use Marktic\Billing\LegalEntities\ModelsRelated\HasLegalEntity\HasLegalEntityRepositoryTrait;
+use Marktic\Billing\Parties\ModelsRelated\HasCustomerParty\HasCustomerPartyRepositoryTrait;
 use Marktic\Billing\PostalAddresses\ModelsRelated\HasPostalAddress\HasPostalAddressRepositoryTrait;
 use Marktic\Billing\Utility\BillingModels;
 use Marktic\Billing\Utility\PackageConfig;
@@ -15,6 +16,7 @@ use Marktic\Billing\Utility\PackageConfig;
 trait BillingStatusesTrait
 {
     use HasSubjectRepositoryTrait;
+    use HasCustomerPartyRepositoryTrait;
     use Behaviours\HasStatus\HasStatusRepositoryTrait;
     use TimestampableManagerTrait;
     use HasDatabaseConnectionTrait;
@@ -30,6 +32,7 @@ trait BillingStatusesTrait
     protected function initRelationsBilling(): void
     {
         $this->initRelationsBillingSubject();
+        $this->initRelationsCustomerParty();
     }
 
     protected function generateTable(): string

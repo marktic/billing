@@ -3,13 +3,14 @@
 namespace Marktic\Billing\BillingStatuses\Models;
 
 use Marktic\Billing\Base\Models\Traits\CommonRecordsTrait;
+use Marktic\Billing\Parties\ModelsRelated\HasCustomerParty\HasCustomerPartyRepository;
 use Nip\Records\RecordManager;
 
 /**
  * Class BillingStatuses
  * @package Marktic\Billing\BillingStatuses\Models
  */
-class BillingStatuses extends RecordManager
+class BillingStatuses extends RecordManager implements HasCustomerPartyRepository
 {
     use BillingStatusesTrait;
     use CommonRecordsTrait;

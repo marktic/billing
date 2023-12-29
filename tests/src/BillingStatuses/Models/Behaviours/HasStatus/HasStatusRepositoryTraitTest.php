@@ -27,7 +27,7 @@ class HasStatusRepositoryTraitTest extends TestCase
     {
         $item = new BillingStatuses();
         $statuses = $item->getStatuses();
-        self::assertCount(6, $statuses);
+        self::assertCount(8, $statuses);
 
         $billed = $statuses['billed'];
         self::assertSame('billed', $billed::NAME);

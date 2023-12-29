@@ -7,6 +7,7 @@ use Marktic\Billing\Base\HasOwner\Models\Behaviours\HasOwner\HasOwnerRepositoryT
 use Marktic\Billing\Base\HasSubject\Models\Behaviours\HasSubject\HasSubjectRepositoryTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
+use Marktic\Billing\Parties\ModelsRelated\HasCustomerParty\HasCustomerPartyRepositoryTrait;
 use Marktic\Billing\Utility\BillingModels;
 use Marktic\Billing\Utility\PackageConfig;
 
@@ -14,6 +15,7 @@ trait InvoicesTrait
 {
     use HasOwnerRepositoryTrait;
     use HasSubjectRepositoryTrait;
+    use HasCustomerPartyRepositoryTrait;
     use TimestampableManagerTrait;
     use HasDatabaseConnectionTrait;
     use HasStatusRecordsTrait;
@@ -45,20 +47,10 @@ trait InvoicesTrait
         );
     }
 
-    protected function initRelationsCustomerParty(): void
-    {
-        $this->belongsTo(
-            InvoicesRepository::RELATION_CUSTOMER_PARTY,
-            [
-                'class' => BillingModels::partiesClass(),
-                'fk' => 'customer_party_id'
-            ]
-        );
-    }
 
     public function generatePrimaryFK()
     {
-        return 'consent_id';
+        return 'invoice_id';
     }
 
     protected function generateTable(): string

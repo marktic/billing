@@ -2,11 +2,11 @@
 
 namespace Marktic\Billing\LegalEntities\Models;
 
-use Marktic\Billing\Base\HasOwner\Models\Behaviours\HasOwner\HasOwnerRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\HasIdentifier\RecordHasIdentifier;
 use Marktic\Billing\Base\Models\Behaviours\HasName\RecordHasName;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
+use Marktic\Billing\BillingOwner\ModelsRelated\HasOwner\HasOwnerRecordTrait;
 
 /**
  * Trait NewsletterConsentTrait

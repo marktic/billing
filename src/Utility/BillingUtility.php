@@ -2,7 +2,7 @@
 
 namespace Marktic\Billing\Utility;
 
-use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\BillingOwner\Dto\AdminOwner;
 
 class BillingUtility
 {

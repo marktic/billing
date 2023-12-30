@@ -1,8 +1,8 @@
 <?php
 
-namespace Marktic\Billing\Base\HasOwner\Actions\Behaviours;
+namespace Marktic\Billing\BillingOwner\Actions\Behaviours;
 
-use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\BillingOwner\Dto\AdminOwner;
 use Marktic\Billing\Parties\Actions\BillingPartyCreateForSubject;
 use Marktic\Billing\Utility\BillingUtility;
 use Nip\Records\Record;
@@ -15,7 +15,7 @@ trait HasOwnerRecordTrait
     protected Record|AdminOwner|null $owner = null;
 
     /**
-     * @return Record|\Marktic\Billing\Base\HasOwner\Models\Behaviours\HasOwner\HasOwnerRecordTrait
+     * @return Record|\Marktic\Billing\BillingOwner\ModelsRelated\HasOwner\HasOwnerRecordTrait
      */
     public function getOwner(): Record|AdminOwner
     {

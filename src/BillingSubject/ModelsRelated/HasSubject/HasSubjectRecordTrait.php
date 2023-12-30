@@ -2,7 +2,7 @@
 
 namespace Marktic\Billing\BillingSubject\ModelsRelated\HasSubject;
 
-use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\BillingOwner\Dto\AdminOwner;
 use Marktic\Billing\Utility\BillingUtility;
 use Nip\Records\Collections\Collection;
 use Nip\Records\Record;

@@ -3,10 +3,10 @@
 namespace Marktic\Billing\Invoices\Models;
 
 use ByTIC\Models\SmartProperties\RecordsTraits\HasStatus\RecordTrait as HasStatusRecordTrait;
-use Marktic\Billing\Base\HasOwner\Models\Behaviours\HasOwner\HasOwnerRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
+use Marktic\Billing\BillingOwner\ModelsRelated\HasOwner\HasOwnerRecordTrait;
 use Marktic\Billing\BillingSubject\ModelsRelated\HasSubject\HasSubjectRecordTrait;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
 use Marktic\Billing\Invoices\InvoiceStatuses\AbstractStatus;

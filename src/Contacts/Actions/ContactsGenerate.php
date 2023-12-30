@@ -4,7 +4,7 @@ namespace Marktic\Billing\Contacts\Actions;
 
 use Bytic\Actions\Action;
 use Marktic\Billing\Base\Actions\Behaviours\GenerateFromDataTrait;
-use Marktic\Billing\Base\HasOwner\Actions\Behaviours\HasOwnerRecordTrait;
+use Marktic\Billing\BillingOwner\Actions\Behaviours\HasOwnerRecordTrait;
 use Marktic\Billing\Contacts\Actions\Identification\GenerateIdentification;
 use Marktic\Billing\Contacts\Models\Contact;
 

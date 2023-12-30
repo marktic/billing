@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Billing\Bundle\Controllers\Admin;
 
-use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\BillingOwner\Dto\AdminOwner;
 use Marktic\Billing\Bundle\Forms\Admin\Parties\CompleteDataForm;
 use Marktic\Billing\Parties\Actions\BillingPartyCreateForSubject;
 

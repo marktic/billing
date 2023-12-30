@@ -1,8 +1,8 @@
 <?php
 
-namespace Marktic\Billing\Base\Dto;
+namespace Marktic\Billing\BillingOwner\Dto;
 
-class AdminOwner
+class AdminOwner implements BillingOwner
 {
     public const TYPE = 'admin';
 

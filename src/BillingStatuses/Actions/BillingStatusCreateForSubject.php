@@ -4,7 +4,7 @@ namespace Marktic\Billing\BillingStatuses\Actions;
 
 use Bytic\Actions\Action;
 use Marktic\Billing\Base\Actions\Behaviours\GenerateFromDataTrait;
-use Marktic\Billing\Base\HasOwner\Actions\Behaviours\HasOwnerRecordTrait;
+use Marktic\Billing\BillingOwner\Actions\Behaviours\HasOwnerRecordTrait;
 use Marktic\Billing\BillingStatuses\Actions\Behaviours\HasRepository;
 use Marktic\Billing\BillingStatuses\Models\BillingStatus;
 use Marktic\Billing\Utility\BillingUtility;

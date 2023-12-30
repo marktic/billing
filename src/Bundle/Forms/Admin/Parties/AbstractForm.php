@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Marktic\Billing\Bundle\Forms\Admin\Parties;
 
-use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\BillingOwner\Dto\AdminOwner;
 use Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours\HasContactFieldsTrait;
 use Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours\HasLegalEntityFieldsTrait;
 use Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours\HasPartyFieldsTrait;
 use Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours\HasPostalAddressesFieldsTrait;
-use Marktic\Billing\Parties\Models\Party;
 use Marktic\Billing\Bundle\Library\Form\FormModel;
+use Marktic\Billing\Parties\Models\Party;
 use Nip\Records\Record;
 
 /**

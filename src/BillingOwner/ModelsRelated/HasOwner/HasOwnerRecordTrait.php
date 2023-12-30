@@ -1,8 +1,9 @@
 <?php
 
-namespace Marktic\Billing\Base\HasOwner\Models\Behaviours\HasOwner;
+namespace Marktic\Billing\BillingOwner\ModelsRelated\HasOwner;
 
-use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\BillingOwner\Dto\AdminOwner;
+use Marktic\Billing\BillingOwner\Dto\BillingOwner;
 use Marktic\Billing\Utility\BillingUtility;
 use Nip\Records\Collections\Collection;
 use Nip\Records\Record;
@@ -16,13 +17,12 @@ trait HasOwnerRecordTrait
 
     protected ?int $owner_id = null;
 
-    public function populateFromOwnerRecord(Record $owner)
+    public function populateFromOwnerRecord(Record|BillingOwner $owner)
     {
-        $this->owner_id = $owner->id;
-
+        $this->setBillingOwner($owner);
     }
 
-    public function setBillingOwner(Record $owner): void
+    public function setBillingOwner(Record|BillingOwner $owner): void
     {
         $this->owner_id = $owner->id;
         $this->owner = BillingUtility::morphLabelFor($owner);

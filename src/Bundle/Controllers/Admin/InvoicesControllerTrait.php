@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Marktic\Billing\Bundle\Controllers\Admin;
 
-use Marktic\Billing\Base\HasOwner\Actions\Queries\PopulateQueryWithOwnerWhere;
-use Marktic\Billing\Base\HasOwner\Controllers\Admin\Behaviours\HasBillingOwnerTrait;
+use Marktic\Billing\BillingOwner\Actions\Queries\PopulateQueryWithOwnerWhere;
+use Marktic\Billing\BillingOwner\Controllers\Admin\Behaviours\HasBillingOwnerTrait;
 use Marktic\Billing\Bundle\Forms\Admin\Invoices\DetailsForm;
 use Marktic\Billing\Invoices\Actions\Changes\DeleteInvoice;
-use Marktic\Billing\Invoices\InvoiceStatuses\Issued;
 use Marktic\Billing\Invoices\Models\Invoice;
 
 /**

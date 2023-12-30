@@ -2,9 +2,9 @@
 
 namespace Marktic\Billing\Parties\Models;
 
-use Marktic\Billing\Base\HasOwner\Models\Behaviours\HasOwner\HasOwnerRepositoryTrait;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTrait;
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
+use Marktic\Billing\BillingOwner\ModelsRelated\HasOwner\HasOwnerRepositoryTrait;
 use Marktic\Billing\BillingSubject\ModelsRelated\HasSubject\HasSubjectRepositoryTrait;
 use Marktic\Billing\Contacts\ModelsRelated\HasContact\HasContactRepositoryTrait;
 use Marktic\Billing\LegalEntities\ModelsRelated\HasLegalEntity\HasLegalEntityRepositoryTrait;

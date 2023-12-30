@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Billing\Base\HasOwner\Controllers\Admin\Behaviours;
+namespace Marktic\Billing\BillingOwner\Controllers\Admin\Behaviours;
 
-use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\BillingOwner\Dto\AdminOwner;
 
 trait HasBillingOwnerTrait
 {

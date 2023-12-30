@@ -12,4 +12,9 @@ abstract class AbstractStatus extends Generic
     {
         return static::NAME;
     }
+
+    public function canDelete(): bool
+    {
+        return true;
+    }
 }

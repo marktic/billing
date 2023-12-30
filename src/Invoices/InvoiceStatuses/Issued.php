@@ -16,4 +16,9 @@ class Issued extends AbstractStatus
     {
         return 'primary';
     }
+
+    public function canDelete(): bool
+    {
+        return false;
+    }
 }

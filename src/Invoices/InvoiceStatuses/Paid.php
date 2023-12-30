@@ -16,4 +16,9 @@ class Paid extends AbstractStatus
     {
         return 'success';
     }
+
+    public function canDelete(): bool
+    {
+        return false;
+    }
 }

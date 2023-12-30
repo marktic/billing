@@ -19,7 +19,7 @@ trait SerialNumberFormatter
         return $this->series;
     }
 
-    public function setSeries(string $series): void
+    public function setSeries(?string $series): void
     {
         $this->series = $series;
     }

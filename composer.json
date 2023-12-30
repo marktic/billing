@@ -32,6 +32,8 @@
     "bytic/orm": "^0.9|^1.0",
     "bytic/orm-filters": "^0.9|^1.0",
     "bytic/orm-behaviors": "^0.9|^1.0",
+    "bytic/event-discovery": "^0.9 || ^1.0",
+    "bytic/event-dispatcher": "^1.0|^2.0",
     "bytic/models-smart-properties": "^0.9|^1.0",
     "bytic/translation": "^1.0|^2.0",
     "bytic/actions": "dev-main",
@@ -43,7 +45,6 @@
   "require-dev": {
     "bytic/view": "^1.0|^2.0",
     "bytic/form": "^1.0|^2.0",
-    "bytic/event-dispatcher": "^1.0|^2.0",
     "bytic/admin-base": "^1.0|^2.0",
     "bytic/phpqatools": "^1.0"
   },

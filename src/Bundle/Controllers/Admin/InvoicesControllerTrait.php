@@ -7,6 +7,8 @@ namespace Marktic\Billing\Bundle\Controllers\Admin;
 use Marktic\Billing\Base\HasOwner\Actions\Queries\PopulateQueryWithOwnerWhere;
 use Marktic\Billing\Base\HasOwner\Controllers\Admin\Behaviours\HasBillingOwnerTrait;
 use Marktic\Billing\Bundle\Forms\Admin\Invoices\DetailsForm;
+use Marktic\Billing\Invoices\Actions\Changes\DeleteInvoice;
+use Marktic\Billing\Invoices\InvoiceStatuses\Issued;
 use Marktic\Billing\Invoices\Models\Invoice;
 
 /**
@@ -35,6 +37,18 @@ trait InvoicesControllerTrait
     {
         $query = parent::newIndexQuery();
         return PopulateQueryWithOwnerWhere::for($query, $this->getBillingOwner())->handle();
+    }
+
+    public function delete()
+    {
+        /** @var Invoice $item */
+        $item = $this->getModelFromRequest();
+        if ($item->getStatusObject()->canDelete() === false) {
+            $this->flashRedirect($this->getModelManager()->getMessage('delete.error'), $item->compileURL('view'), 'error');
+        }
+
+        DeleteInvoice::for($item)->handle();
+        return parent::delete();
     }
 
     /**

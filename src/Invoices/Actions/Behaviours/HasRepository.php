@@ -12,6 +12,6 @@ trait HasRepository
 
     protected function generateRepository(): Invoices|RecordManager
     {
-        return BillingModels::contacts();
+        return BillingModels::invoices();
     }
 }

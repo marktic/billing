@@ -9,12 +9,14 @@ use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Billing\BillingSubject\ModelsRelated\HasSubject\HasSubjectRecordTrait;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
+use Marktic\Billing\Invoices\InvoiceStatuses\AbstractStatus;
 use Marktic\Billing\Parties\ModelsRelated\HasCustomerParty\HasCustomerPartyRecordTrait;
 use Nip\Records\Collections\Collection;
 
 /**
- * Trait NewsletterConsentTrait
+ * Trait InvoiceTrait
  * @method Collection|InvoiceLine[] getBillingLines()
+ * @method AbstractStatus getStatusObject()
  */
 trait InvoiceTrait
 {

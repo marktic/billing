@@ -14,7 +14,11 @@ trait HasSubjectTrait
     public function setSubject($subject): void
     {
         $this->subject = $subject;
-        $this->billingStatus = $subject->getBillingStatus();
+
+        /** @var BillingStatus $billingStatus */
+        $billingStatus = $subject->getBillingStatus();
+        $this->billingStatus = $billingStatus;
+        $this->setCustomerPartyId($billingStatus->getCustomerPartyId());
     }
 
     public static function forSubject($subject): static

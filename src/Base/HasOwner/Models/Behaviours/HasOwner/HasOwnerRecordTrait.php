@@ -3,6 +3,7 @@
 namespace Marktic\Billing\Base\HasOwner\Models\Behaviours\HasOwner;
 
 use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\Utility\BillingUtility;
 use Nip\Records\Collections\Collection;
 use Nip\Records\Record;
 
@@ -19,6 +20,12 @@ trait HasOwnerRecordTrait
     {
         $this->owner_id = $owner->id;
 
+    }
+
+    public function setBillingOwner(Record $owner): void
+    {
+        $this->owner_id = $owner->id;
+        $this->owner = BillingUtility::morphLabelFor($owner);
     }
 
     public function getBillingOwner(): \Nip\Records\AbstractModels\Record|Collection|AdminOwner

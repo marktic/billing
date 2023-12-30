@@ -9,8 +9,12 @@ return [
     'mkt_billing-invoices.labels.issued' => 'Data emitere',
 
     'mkt_billing-invoices.statuses.draft' => 'Draft',
-    'mkt_billing-invoices.statuses.issued' => 'Issued',
-    'mkt_billing-invoices.statuses.paid' => 'Paid',
+    'mkt_billing-invoices.statuses.issued' => 'Emisă',
+    'mkt_billing-invoices.statuses.paid' => 'Plătită',
+    'mkt_billing-invoices.statuses.partially_paid' => 'Plătită parțial',
+    'mkt_billing-invoices.statuses.overdue' => 'Restantă',
+    'mkt_billing-invoices.statuses.voided' => 'Anulată',
+
 
     'mkt_billing-invoices.messages.statuses.success' => 'Status factura actualizat',
 

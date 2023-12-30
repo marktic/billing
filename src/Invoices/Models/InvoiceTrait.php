@@ -5,11 +5,11 @@ namespace Marktic\Billing\Invoices\Models;
 use ByTIC\Models\SmartProperties\RecordsTraits\HasStatus\RecordTrait as HasStatusRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
-use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Billing\BillingOwner\ModelsRelated\HasOwner\HasOwnerRecordTrait;
 use Marktic\Billing\BillingSubject\ModelsRelated\HasSubject\HasSubjectRecordTrait;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
 use Marktic\Billing\Invoices\InvoiceStatuses\AbstractStatus;
+use Marktic\Billing\Invoices\Models\Behaviours\HasTimestamps\HasTimestampsRecordTrait;
 use Marktic\Billing\Parties\ModelsRelated\HasCustomerParty\HasCustomerPartyRecordTrait;
 use Nip\Records\Collections\Collection;
 
@@ -27,7 +27,7 @@ trait InvoiceTrait
     use Behaviours\SerialNumberFormatter;
     use Behaviours\HasAmounts\HasAmountsRecordTrait;
     use RecordHasCurrency;
-    use TimestampableTrait;
+    use HasTimestampsRecordTrait;
     use HasStatusRecordTrait;
 
     /** @noinspection PhpMissingParentCallCommonInspection

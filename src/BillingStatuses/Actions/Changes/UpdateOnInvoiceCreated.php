@@ -1,6 +1,6 @@
 <?php
 
-namespace Marktic\Billing\BillingSubject\Actions\Changes;
+namespace Marktic\Billing\BillingStatuses\Actions\Changes;
 
 use Bytic\Actions\Action;
 use Bytic\Actions\Behaviours\HasSubject\HasSubject;

@@ -2,7 +2,7 @@
 
 namespace Marktic\Billing\Invoices\Actions\Generator\Behaviours;
 
-use Marktic\Billing\BillingSubject\Actions\Changes\UpdateOnInvoiceCreated;
+use Marktic\Billing\BillingStatuses\Actions\Changes\UpdateOnInvoiceCreated;
 use Marktic\Billing\Invoices\Events\InvoiceCreated;
 use Marktic\Billing\Invoices\Models\Invoice;
 use Marktic\Billing\Utility\BillingEvents;

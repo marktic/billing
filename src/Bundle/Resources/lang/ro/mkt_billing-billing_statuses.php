@@ -12,6 +12,7 @@ return [
     'mkt_billing-billing_statuses.statuses.billable' => 'To Bill',
     'mkt_billing-billing_statuses.statuses.billed' => 'Billed',
     'mkt_billing-billing_statuses.statuses.failed' => 'Eroare',
+    'mkt_billing-billing_statuses.statuses.trial' => 'Trial',
     'mkt_billing-billing_statuses.statuses.demo' => 'Demo',
     'mkt_billing-billing_statuses.statuses.discount' => 'Discount',
     'mkt_billing-billing_statuses.statuses.pending' => 'Pending',

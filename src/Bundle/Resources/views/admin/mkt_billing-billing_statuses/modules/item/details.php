@@ -62,7 +62,7 @@ $customerParty = $billingStatus->getCustomerParty();
                         <?php if (!$billingStatus || $status->getName() != $billingStatus->getStatus()->getName()) { ?>
                             <a class="dropdown-item" href="<?= $billingStatus->compileURL(
                                 'changeStatus',
-                                ['new_status' => $status->getName()]
+                                ['status' => $status->getName()]
                             ); ?>">
                                 <?= $status->getLabel(); ?>
                             </a>

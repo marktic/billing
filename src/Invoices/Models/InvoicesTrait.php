@@ -32,7 +32,7 @@ trait InvoicesTrait
     {
         $this->initRelationsBillingOwner();
         $this->initRelationsBillingSubject();
-        $this->initRelationsCustomerParty();
+        $this->initRelationsBillingCustomerParty();
         $this->initRelationsBillingLines();
     }
 

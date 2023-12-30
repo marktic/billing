@@ -7,7 +7,7 @@ use Marktic\Billing\Utility\BillingModels;
 trait HasCustomerPartyRepositoryTrait
 {
 
-    protected function initRelationsCustomerParty(): void
+    protected function initRelationsBillingCustomerParty(): void
     {
         $this->belongsTo(
             self::RELATION_CUSTOMER_PARTY,

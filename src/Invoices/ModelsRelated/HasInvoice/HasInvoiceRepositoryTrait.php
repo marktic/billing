@@ -6,10 +6,10 @@ use Marktic\Billing\Utility\BillingModels;
 
 trait HasInvoiceRepositoryTrait
 {
-    protected function initRelationsLegalEntity(): void
+    protected function initRelationBillingInvoice(): void
     {
         $this->belongsTo(
-            'Invoice',
+            HasInvoiceRepository::RELATION_BILLING_INVOICE,
             ['class' => BillingModels::invoicesClass(), 'fk' => 'invoice_id']
         );
     }

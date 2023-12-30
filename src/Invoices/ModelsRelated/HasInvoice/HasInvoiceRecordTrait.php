@@ -2,10 +2,10 @@
 
 namespace Marktic\Billing\Invoices\ModelsRelated\HasInvoice;
 
-use Nip\Records\Record;
+use Marktic\Billing\Invoices\Models\Invoice;
 
 /**
- * @method Record getBillingOwner()
+ * @method Invoice getBillingInvoice()
  */
 trait HasInvoiceRecordTrait
 {
@@ -19,5 +19,12 @@ trait HasInvoiceRecordTrait
     public function setInvoiceId(?int $invoice_id): void
     {
         $this->invoice_id = $invoice_id;
+    }
+
+
+    public function setBillingInvoice(?Invoice $invoice): void
+    {
+        $this->setInvoiceId($invoice->id);
+        $this->getRelation(HasInvoiceRepository::RELATION_BILLING_INVOICE)->setResults($invoice);
     }
 }

@@ -7,6 +7,7 @@ namespace Marktic\Billing\Invoices\InvoiceStatuses;
  */
 class Paid extends AbstractStatus
 {
+    use Behaviours\IsImmutableTrait;
     public const NAME = 'paid';
 
     /** @noinspection PhpMissingParentCallCommonInspection
@@ -15,10 +16,5 @@ class Paid extends AbstractStatus
     public function getColorClass()
     {
         return 'success';
-    }
-
-    public function canDelete(): bool
-    {
-        return false;
     }
 }

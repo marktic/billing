@@ -3,37 +3,22 @@
 namespace Marktic\Billing\InvoiceLines\Actions\Calculator;
 
 use Bytic\Actions\Action;
+use Bytic\Actions\Behaviours\HasSubject\HasSubject;
+use Marktic\Billing\Base\Actions\Behaviours\CanDoSave;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
 
+/**
+ * @method InvoiceLine getSubject()
+ */
 class CalculateLineTotals extends Action
 {
-    protected $subject;
-
-    public function __construct(InvoiceLine $line = null)
-    {
-        $this->subject = $line;
-    }
+    use HasSubject;
+    use CanDoSave;
 
     public function handle(): void
     {
         $this->calculateLineTotals();
-    }
-
-    public static function for($line): self
-    {
-        $action = new static();
-        $action->setLine($line);
-        return $action;
-    }
-
-    public function setLine($line): void
-    {
-        $this->subject = $line;
-    }
-
-    public function getLine(): ?InvoiceLine
-    {
-        return $this->subject;
+        $this->triggerSave();
     }
 
     protected function calculateLineTotals(): void
@@ -45,19 +30,19 @@ class CalculateLineTotals extends Action
 
     protected function calculateLineSubTotal(): void
     {
-        $line = $this->getLine();
+        $line = $this->getSubject();
         $line->setSubtotal($line->getUnitPrice() * $line->getQuantity());
     }
 
     protected function calculateLineTaxTotal(): void
     {
-        $line = $this->getLine();
+        $line = $this->getSubject();
         $line->setTaxTotal($line->getSubtotal() * $line->getTaxRate() / 100);
     }
 
     protected function calculateLineTotalWithTax(): void
     {
-        $line = $this->getLine();
+        $line = $this->getSubject();
         $line->setTotal($line->getSubtotal() + $line->getTaxTotal());
     }
 }

@@ -7,6 +7,8 @@ namespace Marktic\Billing\Invoices\InvoiceStatuses;
  */
 class Issued extends AbstractStatus
 {
+    use Behaviours\IsImmutableTrait;
+
     public const NAME = 'issued';
 
     /** @noinspection PhpMissingParentCallCommonInspection
@@ -17,8 +19,4 @@ class Issued extends AbstractStatus
         return 'primary';
     }
 
-    public function canDelete(): bool
-    {
-        return false;
-    }
 }

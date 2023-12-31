@@ -13,6 +13,11 @@ abstract class AbstractStatus extends Generic
         return static::NAME;
     }
 
+    public function canEdit(): bool
+    {
+        return true;
+    }
+
     public function canDelete(): bool
     {
         return true;

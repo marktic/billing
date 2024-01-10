@@ -25,7 +25,7 @@ final class InvoicesAddCustomerPartyColumn extends AbstractMigration
             ->addColumn(
                 'customer_party_id',
                 'integer',
-                ['null' => true, 'signed' => FALSE, 'after' => 'subject']
+                ['null' => true, 'after' => 'subject']
             )
             ->addIndex(['customer_party_id'])
             ->save();

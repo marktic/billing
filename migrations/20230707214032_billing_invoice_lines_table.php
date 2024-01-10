@@ -26,7 +26,7 @@ final class BillingInvoiceLinesTable extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('invoice_id', 'integer', ['null' => false, 'signed' => FALSE])
+            ->addColumn('invoice_id', 'integer', ['null' => false])
             ->addColumn('subject_id', 'integer', ['null' => true])
             ->addColumn('subject', 'string', ['null' => true])
             ->addColumn('name', 'string', ['null' => true])

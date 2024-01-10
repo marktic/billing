@@ -32,7 +32,7 @@ return [
         ],
     ],
     'database' => [
-        'connection' => 'main',
+        'connection' => 'default',
         'migrations' => true,
     ],
 ];

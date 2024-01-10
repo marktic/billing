@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Billing\Bundle\Controllers\Admin;
+namespace Marktic\Billing\Bundle\Controllers\Frontend;
 
 use Nip\Controllers\Response\ResponsePayload;
 use Marktic\Billing\Bundle\Library\View\ViewUtility;
@@ -17,6 +17,6 @@ trait AbstractControllerTrait
 
     protected function registerViewPathsBilling(View $view): void
     {
-        ViewUtility::registerViewPaths($view, 'admin');
+        ViewUtility::registerViewPaths($view, 'frontend');
     }
 }

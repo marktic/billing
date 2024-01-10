@@ -32,9 +32,9 @@ final class BillingPartiesTable extends AbstractMigration
             ->addColumn('subject', 'string', ['null' => true])
             ->addColumn('identification', 'string', ['null' => false])
             ->addColumn('name', 'string', ['null' => false])
-            ->addColumn('legal_entity_id', 'integer', ['null' => true, 'signed' => FALSE])
-            ->addColumn('contact_id', 'integer', ['null' => true, 'signed' => FALSE])
-            ->addColumn('postal_address_id', 'integer', ['null' => true, 'signed' => FALSE])
+            ->addColumn('legal_entity_id', 'integer', ['null' => true])
+            ->addColumn('contact_id', 'integer', ['null' => true])
+            ->addColumn('postal_address_id', 'integer', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',

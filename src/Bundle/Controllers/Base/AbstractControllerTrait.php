@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Marktic\Billing\Bundle\Controllers\Base;
 
 use Nip\Controllers\Response\ResponsePayload;
-use Marktic\Billing\Bundle\Library\View\ViewUtility;
 use Nip\View\View;
 
 /**
@@ -13,7 +12,7 @@ use Nip\View\View;
  */
 trait AbstractControllerTrait
 {
-    use \Marktic\Billing\Bundle\Controllers\Base\AbstractControllerTrait;
+    use \Nip\Controllers\Traits\AbstractControllerTrait;
 
     public function registerViewPaths(View $view): void
     {

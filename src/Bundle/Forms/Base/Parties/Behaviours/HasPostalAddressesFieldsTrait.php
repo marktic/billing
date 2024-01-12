@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours;
 
+use Marktic\Billing\Parties\Actions\Populate\PartyPopulateFrom;
 use Marktic\Billing\PostalAddresses\Actions\PostalAddressesGenerate;
 use Marktic\Billing\PostalAddresses\Models\PostalAddress;
 use Marktic\Billing\Utility\BillingModels;
@@ -38,6 +39,14 @@ trait HasPostalAddressesFieldsTrait
             $this->getElement('postal_address[country_subentity]')->getData($this->postalAddressRecord->getCountrySubentity(), 'model');
             $this->getElement('postal_address[country]')->getData($this->postalAddressRecord->getCountry(), 'model');
         }
+    }
+
+    protected function saveModelPostalAddress($party): PostalAddress
+    {
+        $data = $this->getData();
+        $postalAddress = $this->savePostalAddress($data['postal_address']);
+        PartyPopulateFrom::postalAddress($party, $postalAddress);
+        return $postalAddress;
     }
 
     /**

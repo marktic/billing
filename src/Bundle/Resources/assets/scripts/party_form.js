@@ -12,9 +12,11 @@ class BillingPartyForm {
     initPartyType() {
         this.typeElementTabs = this.form.find('#party-type-tabs');
         const tabEl = this.typeElementTabs.find('a[data-bs-toggle="tab"]')
-        tabEl.on('shown.bs.tab', event => {
-            $(event.target).find('input').prop('checked', true);
-        })
+        tabEl.each(function () {
+            $(this)[ 0 ].addEventListener('shown.bs.tab', event => {
+                $(event.target).find('input').prop('checked', true);
+            });
+        });
     }
 }
 
@@ -23,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     $(document).ready(function () {
         try {
-            let form = $('#mkt-billing-party-form');
+            let form = $('form[class="mkt_billing_party_form"]');
             if (form.length) {
                 new BillingPartyForm(form);
             }

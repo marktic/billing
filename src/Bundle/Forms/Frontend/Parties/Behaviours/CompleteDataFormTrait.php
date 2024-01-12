@@ -13,36 +13,6 @@ use Nip\Records\Record;
 
 trait CompleteDataFormTrait
 {
-    protected AdminOwner|Record $billingOwner;
-
-    use HasPartyFieldsTrait;
-    use HasLegalEntityFieldsTrait;
-    use HasContactFieldsTrait;
-    use HasPostalAddressesFieldsTrait;
-
-    protected function initializeBillingFields(): void
-    {
-        $this->initializePartyFields();
-        $this->initializeLegalEntityFields();
-        $this->initializeContactFields();
-        $this->initializePostalAddressesFields();
-    }
-    public function getDataFromModelBillingFields(): void
-    {
-        $this->getDataFromModelPartyFields();
-        $this->getDataFromModelLegalEntity();
-        $this->getDataFromModelContact();
-        $this->getDataFromModelPostalAddresses();
-    }
-
-    public function setBillingOwner(AdminOwner|Record $billingOwner)
-    {
-        $this->billingOwner = $billingOwner;
-    }
-
-    public function getDataFromModelOwner(): void
-    {
-        $this->billingOwner = $this->getModel()->getBillingOwner();
-    }
+     use \Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours\CompleteDataFormTrait;
 }
 

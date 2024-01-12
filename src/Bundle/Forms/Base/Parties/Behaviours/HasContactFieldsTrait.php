@@ -6,6 +6,7 @@ namespace Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours;
 
 use Marktic\Billing\Contacts\Actions\ContactsGenerate;
 use Marktic\Billing\Contacts\Models\Contact;
+use Marktic\Billing\Parties\Actions\Populate\PartyPopulateFrom;
 use Marktic\Billing\Utility\BillingModels;
 
 trait HasContactFieldsTrait
@@ -31,6 +32,15 @@ trait HasContactFieldsTrait
             $this->getElement('contact[telephone]')->getData($this->contactRecord->getTelephone(), 'model');
             $this->getElement('contact[email]')->getData($this->contactRecord->getEmail(), 'model');
         }
+    }
+
+    protected function saveModelContact($party)
+    {
+        $data = $this->getData();
+
+        $contact = $this->saveContact($data['contact']);
+        PartyPopulateFrom::contact($party, $contact);
+        return $contact;
     }
 
     /**

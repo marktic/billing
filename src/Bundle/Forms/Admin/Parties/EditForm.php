@@ -19,21 +19,9 @@ class EditForm extends AbstractForm
         $this->getDataFromModelOwner();
     }
 
-    public function saveModel()
+    public function saveModel(): void
     {
-        $party = $this->getModel();
-        $data = $this->getData();
-
-        $contact = $this->saveContact($data['contact']);
-        $type = $this->getElement('party[type]')->getValue();
-        PartyPopulateFrom::contact($party, $contact);
-
-        if ($type == 'legal_entity') {
-            $legalEntity = $this->saveLegalEntity($data['legal_entity']);
-            PartyPopulateFrom::legalEntity($party, $legalEntity);
-        }
-        $postalAddress = $this->savePostalAddress($data['postal_address']);
-        PartyPopulateFrom::postalAddress($party, $postalAddress);
+        $this->saveModelBillingFields();
 
         parent::saveModel();
     }

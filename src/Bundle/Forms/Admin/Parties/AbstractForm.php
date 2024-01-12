@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Billing\Bundle\Forms\Admin\Parties;
 
 use Marktic\Billing\BillingOwner\Dto\AdminOwner;
+use Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours\CompleteDataFormTrait;
 use Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours\HasContactFieldsTrait;
 use Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours\HasLegalEntityFieldsTrait;
 use Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours\HasPartyFieldsTrait;
@@ -18,42 +19,20 @@ use Nip\Records\Record;
  */
 abstract class AbstractForm extends FormModel
 {
-    protected AdminOwner|Record $owner;
-
-    use HasPartyFieldsTrait;
-    use HasLegalEntityFieldsTrait;
-    use HasContactFieldsTrait;
-    use HasPostalAddressesFieldsTrait;
+    use CompleteDataFormTrait;
 
     public function initialize(): void
     {
         parent::initialize();
 
-        $this->setAttrib('id', 'mkt-billing-party-form');
+        $this->addClass('mkt_billing_party_form');
         $this->addButton('save', translator()->trans('submit'));
 
-        $this->initializePartyFields();
-        $this->initializeLegalEntityFields();
-        $this->initializeContactFields();
-        $this->initializePostalAddressesFields();
+        $this->initializeBillingFields();
     }
 
-    public function getDataFromModel(): void
+    protected function getBillingParty()
     {
-        parent::getDataFromModel();
-        $this->getDataFromModelPartyFields();
-        $this->getDataFromModelLegalEntity();
-        $this->getDataFromModelContact();
-        $this->getDataFromModelPostalAddresses();
-    }
-
-    public function setOwner(AdminOwner|Record $owner)
-    {
-        $this->owner = $owner;
-    }
-
-    public function getDataFromModelOwner()
-    {
-        $this->owner = $this->getModel()->getBillingOwner();
+        return $this->getModel();
     }
 }

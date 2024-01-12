@@ -6,6 +6,7 @@ namespace Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours;
 
 use Marktic\Billing\LegalEntities\Actions\LegalEntitiesGenerate;
 use Marktic\Billing\LegalEntities\Models\LegalEntity;
+use Marktic\Billing\Parties\Actions\Populate\PartyPopulateFrom;
 use Marktic\Billing\Utility\BillingModels;
 
 trait HasLegalEntityFieldsTrait
@@ -32,6 +33,19 @@ trait HasLegalEntityFieldsTrait
             $this->getElement('legal_entity[identification]')->getData($this->legalEntityRecord->getIdentification(), 'model');
             $this->getElement('legal_entity[registration_number]')->getData($this->legalEntityRecord->registration_number, 'model');
         }
+    }
+
+    protected function saveModelLegalEntity($party)
+    {
+        $type = $this->getElement('party[type]')->getValue();
+        if ($type != 'legal_entity') {
+            return null;
+        }
+
+        $data = $this->getData();
+        $legalEntity = $this->saveLegalEntity($data['legal_entity']);
+        PartyPopulateFrom::legalEntity($party, $legalEntity);
+        return $legalEntity;
     }
 
     /**

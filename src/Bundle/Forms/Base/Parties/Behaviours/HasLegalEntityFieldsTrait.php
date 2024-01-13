@@ -27,7 +27,7 @@ trait HasLegalEntityFieldsTrait
 
     protected function getDataFromModelLegalEntity()
     {
-        $this->legalEntityRecord = $this->getModel()->getBillingLegalEntity();
+        $this->legalEntityRecord = $this->getBillingParty()->getBillingLegalEntity();
         if ($this->legalEntityRecord instanceof LegalEntity) {
             $this->getElement('legal_entity[name]')->getData($this->legalEntityRecord->getName(), 'model');
             $this->getElement('legal_entity[identification]')->getData($this->legalEntityRecord->getIdentification(), 'model');
@@ -67,7 +67,7 @@ trait HasLegalEntityFieldsTrait
     protected function createLegalEntity($data): LegalEntity
     {
         $action = LegalEntitiesGenerate::for($data);
-        $action->withOwner($this->owner);
+        $action->withOwner($this->billingOwner);
         $action->orCreate();
 
         return $action->fetch();

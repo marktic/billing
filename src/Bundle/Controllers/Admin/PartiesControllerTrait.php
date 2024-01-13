@@ -42,7 +42,7 @@ trait PartiesControllerTrait
             'subject_id'
         );
 
-        $action = BillingPartyCreateForSubject::for($subject);
+        $action = BillingPartyCreateForSubject::forSubject($subject);
         $action->withOwner($this->createForSubjectOwner($action));
         return $action;
     }

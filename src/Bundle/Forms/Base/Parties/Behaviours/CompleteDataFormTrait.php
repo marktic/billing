@@ -53,7 +53,8 @@ trait CompleteDataFormTrait
 
         $this->saveModelContact($party);
         $this->saveModelLegalEntity($party);
-        $this->saveModelLegalEntity($party);
+        $this->saveModelPostalAddress($party);
+        $party->save();
     }
 
     public function setBillingOwner(AdminOwner|Record $billingOwner)

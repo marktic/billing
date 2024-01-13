@@ -30,11 +30,8 @@ class PostalAddressesGenerate extends Action
 
     protected function orCreateData($data = []): array
     {
-        $default = [
-            'owner' => $this->getOwnerType(),
-            'owner_id' => $this->getOwnerId(),
-            'identification' => $this->getDataIdentification(),
-        ];
+        $default = $this->orCreateDataBillingOwner($data);
+        $default['identification'] = $this->getDataIdentification();
 
         $fields = ['street_name', 'additional_street_name', 'city_name', 'postal_zone', 'country_subentity', 'country'];
         foreach ($fields as $field) {

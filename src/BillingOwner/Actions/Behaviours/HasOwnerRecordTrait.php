@@ -3,7 +3,6 @@
 namespace Marktic\Billing\BillingOwner\Actions\Behaviours;
 
 use Marktic\Billing\BillingOwner\Dto\AdminOwner;
-use Marktic\Billing\Parties\Actions\BillingPartyCreateForSubject;
 use Marktic\Billing\Utility\BillingUtility;
 use Nip\Records\Record;
 
@@ -24,7 +23,7 @@ trait HasOwnerRecordTrait
 
     /**
      * @param Record|AdminOwner|null $owner
-     * @return BillingPartyCreateForSubject|HasOwnerRecordTrait
+     * @return HasOwnerRecordTrait
      */
     public function withOwner(Record|AdminOwner|null $owner): self
     {
@@ -46,5 +45,12 @@ trait HasOwnerRecordTrait
     {
         $record->owner = BillingUtility::morphLabelFor($this->owner);
         $record->owner_id = $this->owner?->id;
+    }
+
+    protected function orCreateDataBillingOwner($data = [])
+    {
+        $data['owner'] = BillingUtility::morphLabelFor($this->owner);
+        $data['owner_id'] = $this->owner?->id;
+        return $data;
     }
 }

@@ -40,6 +40,7 @@ trait HasRepository
     protected function findOne(): Record|false|null
     {
         $params = $this->findParams();
+        var_dump($params);
         return $this->getRepository()->findOneByParams($params);
     }
 

@@ -26,7 +26,7 @@ trait HasContactFieldsTrait
 
     protected function getDataFromModelContact()
     {
-        $this->contactRecord = $this->getModel()->getBillingContact();
+        $this->contactRecord = $this->getBillingParty()->getBillingContact();
         if ($this->contactRecord instanceof Contact) {
             $this->getElement('contact[name]')->getData($this->contactRecord->getName(), 'model');
             $this->getElement('contact[telephone]')->getData($this->contactRecord->getTelephone(), 'model');
@@ -62,7 +62,7 @@ trait HasContactFieldsTrait
     protected function createContact($data): Contact
     {
         $action = ContactsGenerate::for($data);
-        $action->withOwner($this->owner);
+        $action->withOwner($this->billingOwner);
         $action->orCreate();
 
         return $action->fetch();

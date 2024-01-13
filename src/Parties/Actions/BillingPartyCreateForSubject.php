@@ -3,17 +3,17 @@
 namespace Marktic\Billing\Parties\Actions;
 
 use Bytic\Actions\Action;
-use Marktic\Billing\Base\Actions\Behaviours\HasResultRecordTrait;
+use Marktic\Billing\Base\Actions\Behaviours\GenerateFromDataTrait;
 use Marktic\Billing\BillingOwner\Actions\Behaviours\HasOwnerRecordTrait;
 use Marktic\Billing\Parties\Actions\Behaviours\HasRepository;
-use Marktic\Billing\Parties\Models\Party;
+use Marktic\Billing\Parties\Actions\Identification\GenerateIdentification;
 use Marktic\Billing\Utility\BillingUtility;
 use Nip\Records\AbstractModels\Record;
 
 class BillingPartyCreateForSubject extends Action
 {
     use HasRepository;
-    use HasResultRecordTrait;
+    use GenerateFromDataTrait;
     use HasOwnerRecordTrait;
 
     protected Record $subject;
@@ -23,32 +23,45 @@ class BillingPartyCreateForSubject extends Action
         $this->subject = $subject;
     }
 
-    public static function for($subject): static
+    public static function forSubject($subject): static
     {
         return new static($subject);
     }
 
-    public function handle(array $data): Party|Record|\Nip\Records\Collections\Collection|null
+    protected function findParams(): array
     {
-        $party = $this->getResultRecord();
-        $this->fillResultRecordWithData($data);
-        return $party;
+        return [
+            'where' => [
+                ['owner = ?', $this->getOwnerType()],
+                ['owner_id = ?', $this->getOwnerId()],
+                ['subject = ?', BillingUtility::morphLabelFor($this->subject)],
+                ['subject_id = ?', $this->subject->id],
+            ]
+        ];
     }
 
-    protected function fillResultRecordWithData($data)
+    protected function getDataIdentification()
     {
-        
+        $identification = $this->getDataValue('identification');
+        if ($identification == null) {
+            $identification = GenerateIdentification::fromData($this->allAttributes())->handle();
+        }
+        return $identification;
     }
 
-    protected function populateResultRecord(): void
+    protected function orCreateData($data)
     {
-        $this->populateRecordWithOwner($this->resultRecord);
-        $this->populateRecordWithSubject($this->resultRecord);
+        $data = $this->orCreateDataBillingOwner($data);
+        $data = $this->orCreateDataBillingSubject($data);
+        $this->setAttributes($data);
+        $data['identification'] = $this->getDataIdentification();
+        return $data;
     }
 
-    protected function populateRecordWithSubject($record): void
+    protected function orCreateDataBillingSubject($data)
     {
-        $record->subject = BillingUtility::morphLabelFor($this->subject);
-        $record->subject_id = $this->subject->id;
+        $data['subject'] = BillingUtility::morphLabelFor($this->subject);
+        $data['subject_id'] = $this->subject->id;
+        return $data;
     }
 }

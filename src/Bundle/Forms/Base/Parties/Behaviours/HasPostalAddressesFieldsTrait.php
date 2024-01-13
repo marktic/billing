@@ -30,7 +30,7 @@ trait HasPostalAddressesFieldsTrait
 
     protected function getDataFromModelPostalAddresses()
     {
-        $this->postalAddressRecord = $this->getModel()->getBillingPostalAddress();
+        $this->postalAddressRecord = $this->getBillingParty()->getBillingPostalAddress();
         if ($this->postalAddressRecord instanceof PostalAddress) {
             $this->getElement('postal_address[street_name]')->getData($this->postalAddressRecord->getStreetName(), 'model');
             $this->getElement('postal_address[additional_street_name]')->getData($this->postalAddressRecord->getAdditionalStreetName(), 'model');
@@ -68,7 +68,7 @@ trait HasPostalAddressesFieldsTrait
     protected function createPostalAddresses($data): PostalAddress
     {
         $action = PostalAddressesGenerate::for($data);
-        $action->withOwner($this->owner);
+        $action->withOwner($this->billingOwner);
         $action->orCreate();
 
         return $action->fetch();

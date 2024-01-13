@@ -20,9 +20,9 @@ trait HasLegalEntityFieldsTrait
     {
         $this->legalEntityRepository = BillingModels::legalEntities();
 
-        $this->addInput('legal_entity[name]', $this->legalEntityRepository->getLabel('form.name'), true);
-        $this->addInput('legal_entity[identification]', $this->legalEntityRepository->getLabel('form.identification'), true);
-        $this->addInput('legal_entity[registration_number]', $this->legalEntityRepository->getLabel('form.registration_number'), true);
+        $this->addInput('legal_entity[name]', $this->legalEntityRepository->getLabel('form.name'), false);
+        $this->addInput('legal_entity[identification]', $this->legalEntityRepository->getLabel('form.identification'), false);
+        $this->addInput('legal_entity[registration_number]', $this->legalEntityRepository->getLabel('form.registration_number'), false);
     }
 
     protected function getDataFromModelLegalEntity()
@@ -35,10 +35,22 @@ trait HasLegalEntityFieldsTrait
         }
     }
 
+    protected function processValidationLegalEntity()
+    {
+        if (false == $this->hasPartyLegalEntity()) {
+            return null;
+        }
+
+        foreach (['name','identification','registration_number'] as $field) {
+            $element = $this->getElement('legal_entity[' . $field . ']');
+            $element->setRequired(true);
+            $element->validate();
+        }
+    }
+
     protected function saveModelLegalEntity($party)
     {
-        $type = $this->getElement('party[type]')->getValue();
-        if ($type != 'legal_entity') {
+        if (false == $this->hasPartyLegalEntity()) {
             return null;
         }
 
@@ -73,4 +85,8 @@ trait HasLegalEntityFieldsTrait
         return $action->fetch();
     }
 
+    protected function hasPartyLegalEntity()
+    {
+        return $this->getElement('party[type]')->getValue() == 'legal_entity';
+    }
 }

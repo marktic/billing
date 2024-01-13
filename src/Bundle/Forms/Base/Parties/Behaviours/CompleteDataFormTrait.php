@@ -31,18 +31,27 @@ trait CompleteDataFormTrait
     public function getDataFromModel(): void
     {
         parent::getDataFromModel();
-        $this->getDataFromModelPartyFields();
-        $this->getDataFromModelLegalEntity();
-        $this->getDataFromModelContact();
-        $this->getDataFromModelPostalAddresses();
+        $this->getDataFromModelBillingFields();
     }
 
     public function getDataFromModelBillingFields(): void
     {
         $this->getDataFromModelPartyFields();
         $this->getDataFromModelLegalEntity();
-        $this->getDataFromModelContact();
+        $this->getDataFromModelBillingContact();
         $this->getDataFromModelPostalAddresses();
+    }
+    public function processValidation()
+    {
+        parent::processValidation();
+        $this->processValidationBillingFields();
+    }
+    public function processValidationBillingFields(): void
+    {
+        $this->processValidationPartyFields();
+        $this->processValidationLegalEntity();
+        $this->processValidationBillingContact();
+        $this->processValidationPostalAddresses();
     }
 
     abstract protected function getBillingParty();

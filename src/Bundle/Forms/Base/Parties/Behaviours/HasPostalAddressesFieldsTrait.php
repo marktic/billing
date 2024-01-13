@@ -41,6 +41,11 @@ trait HasPostalAddressesFieldsTrait
         }
     }
 
+    protected function processValidationPostalAddresses()
+    {
+
+    }
+
     protected function saveModelPostalAddress($party): PostalAddress
     {
         $data = $this->getData();

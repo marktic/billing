@@ -28,4 +28,8 @@ trait HasPartyFieldsTrait
         $this->getElement('party[type]')->getData($value, 'model');
     }
 
+    protected function processValidationPartyFields()
+    {
+    }
+
 }

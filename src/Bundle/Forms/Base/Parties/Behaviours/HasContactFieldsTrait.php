@@ -24,7 +24,7 @@ trait HasContactFieldsTrait
         $this->addInput('contact[email]', $this->contactsRepository->getLabel('form.email'), true);
     }
 
-    protected function getDataFromModelContact()
+    protected function getDataFromModelBillingContact()
     {
         $this->contactRecord = $this->getBillingParty()->getBillingContact();
         if ($this->contactRecord instanceof Contact) {
@@ -32,6 +32,10 @@ trait HasContactFieldsTrait
             $this->getElement('contact[telephone]')->getData($this->contactRecord->getTelephone(), 'model');
             $this->getElement('contact[email]')->getData($this->contactRecord->getEmail(), 'model');
         }
+    }
+
+    protected function processValidationBillingContact()
+    {
     }
 
     protected function saveModelContact($party)

@@ -14,7 +14,11 @@ $partiesRepository = BillingModels::parties();
     </div>
     <?php return; ?>
 <?php } ?>
-
+<?php
+$address = $item->getBillingPostalAddress();
+$legalEntity = $item->getBillingLegalEntity();
+$contact = $item->getBillingContact();
+?>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -24,9 +28,15 @@ $partiesRepository = BillingModels::parties();
             <?= $item->getName() ?>
         </td>
     </tr>
+
+    <?= $this->load('MarkticBilling::/mkt_billing-legal_entities/modules/item/details-row', ['item' => $legalEntity]); ?>
+
     <tr>
         <td>Address</td>
         <td><?= $item->getBillingPostalAddress()->toString() ?></td>
     </tr>
+
+    <?= $this->load('MarkticBilling::/mkt_billing-contacts/modules/item/details-row', ['item' => $contact]); ?>
+
     </thead>
 </table>

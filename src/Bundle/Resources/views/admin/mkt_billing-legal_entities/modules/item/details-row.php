@@ -20,7 +20,7 @@ if (!$item) {
 
 <tr>
     <td>
-        <?= translator()->trans('form.identification'); ?>
+        <?= BillingModels::legalEntities()->getLabel('form.identification'); ?>
     </td>
     <td>
         <?= $item->getIdentification() ?>

@@ -7,7 +7,7 @@ use ByTIC\Icons\Icons;
 use Marktic\Billing\Utility\BillingModels;
 
 $item = $item ?? $this->item;
-$billingStatus = $billingStatus ?? $item->getBillingStatus();
+$billingStatus = $billingStatus ?? ($this->billingStatus ?? $item->getBillingStatus());
 
 $billingStatusesRepository = $billingStatusesRepository ?? BillingModels::billingStatuses();
 

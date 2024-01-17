@@ -44,7 +44,7 @@ class BillingStatusCreateForSubject extends Action
 
     protected function populateResultRecord(): void
     {
-        $this->populateRecordWithSubject($this->resultRecord);
+        $this->populateRecordWithSubject($this->subject);
     }
 
     protected function populateRecordWithSubject($record): void

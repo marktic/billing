@@ -11,25 +11,19 @@ if (!$item) {
 ?>
 <tr>
     <td>
-        <?= BillingModels::contacts()->getLabel('title.singular'); ?>
+        <?= BillingModels::legalEntities()->getLabel('title.singular'); ?>
     </td>
     <td>
         <?= $item->getName() ?>
     </td>
 </tr>
+
 <tr>
     <td>
-        <?= translator()->trans('email'); ?>
+        <?= translator()->trans('form.identification'); ?>
     </td>
     <td>
-        <?= $item->getEmail() ?>
+        <?= $item->getIdentification() ?>
     </td>
 </tr>
-<tr>
-    <td>
-        <?= translator()->trans('telephone'); ?>
-    </td>
-    <td>
-        <?= $item->getTelephone() ?>
-    </td>
-</tr>
+

@@ -22,3 +22,20 @@ $item = $item ?: ($this->billingContact ?? null);
         <?= $item->getIdentification() ?>
     </td>
 </tr>
+
+<tr>
+    <td>
+        <?= translator()->trans('email'); ?>
+    </td>
+    <td>
+        <?= $item->getEmail() ?>
+    </td>
+</tr>
+<tr>
+    <td>
+        <?= translator()->trans('telephone'); ?>
+    </td>
+    <td>
+        <?= $item->getTelephone() ?>
+    </td>
+</tr>

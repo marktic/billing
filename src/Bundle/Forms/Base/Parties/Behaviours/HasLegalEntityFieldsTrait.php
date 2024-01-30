@@ -16,7 +16,7 @@ trait HasLegalEntityFieldsTrait
 
     protected $legalEntityRecord = null;
 
-    protected function initializeLegalEntityFields(): void
+    protected function initializeLegalEntityFields($mandatory = true): void
     {
         $this->legalEntityRepository = BillingModels::legalEntities();
 

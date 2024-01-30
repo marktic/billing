@@ -10,10 +10,10 @@ trait HasPartyFieldsTrait
 {
     protected $partyRepository;
 
-    protected function initializePartyFields()
+    protected function initializePartyFields($mandatory = true)
     {
         $this->partyRepository = BillingModels::parties();
-        $this->addRadioGroup('party[type]', $this->partyRepository->getLabel('form.type'), true);
+        $this->addRadioGroup('party[type]', $this->partyRepository->getLabel('form.type'), $mandatory);
         $typeSelect = $this->getElement('party[type]');
         $typeSelect->addOption('person', $this->partyRepository->getLabel('form.type.person'));
         $typeSelect->addOption('legal_entity', $this->partyRepository->getLabel('form.type.legal_entity'));

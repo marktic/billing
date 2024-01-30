@@ -20,12 +20,12 @@ trait CompleteDataFormTrait
     use HasContactFieldsTrait;
     use HasPostalAddressesFieldsTrait;
 
-    protected function initializeBillingFields(): void
+    protected function initializeBillingFields($mandatory = true): void
     {
-        $this->initializePartyFields();
-        $this->initializeLegalEntityFields();
-        $this->initializeContactFields();
-        $this->initializePostalAddressesFields();
+        $this->initializePartyFields($mandatory);
+        $this->initializeLegalEntityFields($mandatory);
+        $this->initializeContactFields($mandatory);
+        $this->initializePostalAddressesFields($mandatory);
     }
 
     public function getDataFromModel(): void

@@ -15,13 +15,13 @@ trait HasContactFieldsTrait
 
     protected $contactRecord = null;
 
-    protected function initializeContactFields(): void
+    protected function initializeContactFields($mandatory = true): void
     {
         $this->contactsRepository = BillingModels::contacts();
 
-        $this->addInput('contact[name]', $this->contactsRepository->getLabel('form.name'), true);
-        $this->addInput('contact[telephone]', $this->contactsRepository->getLabel('form.telephone'), true);
-        $this->addInput('contact[email]', $this->contactsRepository->getLabel('form.email'), true);
+        $this->addInput('contact[name]', $this->contactsRepository->getLabel('form.name'), $mandatory);
+        $this->addInput('contact[telephone]', $this->contactsRepository->getLabel('form.telephone'), $mandatory);
+        $this->addInput('contact[email]', $this->contactsRepository->getLabel('form.email'), $mandatory);
     }
 
     protected function getDataFromModelBillingContact()

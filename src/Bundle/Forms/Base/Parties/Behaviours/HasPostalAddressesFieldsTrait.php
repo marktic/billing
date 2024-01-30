@@ -16,16 +16,45 @@ trait HasPostalAddressesFieldsTrait
 
     protected $postalAddressRecord = null;
 
-    protected function initializePostalAddressesFields(): void
+    protected function initializePostalAddressesFields($mandatory = true): void
     {
         $this->postalAddressesRepository = BillingModels::postalAddresses();
 
-        $this->addInput('postal_address[street_name]', $this->postalAddressesRepository->getLabel('form.street_name'), true);
-        $this->addInput('postal_address[additional_street_name]', $this->postalAddressesRepository->getLabel('form.additional_street_name'), true);
-        $this->addInput('postal_address[city_name]', $this->postalAddressesRepository->getLabel('form.city_name'), true);
-        $this->addInput('postal_address[postal_zone]', $this->postalAddressesRepository->getLabel('form.postal_zone'), true);
-        $this->addInput('postal_address[country_subentity]', $this->postalAddressesRepository->getLabel('form.country_subentity'), true);
-        $this->addInput('postal_address[country]', $this->postalAddressesRepository->getLabel('form.country'), true);
+        $this->addInput(
+            'postal_address[street_name]',
+            $this->postalAddressesRepository->getLabel('form.street_name'),
+            $mandatory
+        );
+
+        $this->addInput(
+            'postal_address[additional_street_name]',
+            $this->postalAddressesRepository->getLabel('form.additional_street_name'),
+            $mandatory
+        );
+
+        $this->addInput(
+            'postal_address[city_name]',
+            $this->postalAddressesRepository->getLabel('form.city_name'),
+            $mandatory
+        );
+
+        $this->addInput(
+            'postal_address[postal_zone]',
+            $this->postalAddressesRepository->getLabel('form.postal_zone'),
+            $mandatory
+        );
+
+        $this->addInput(
+            'postal_address[country_subentity]',
+            $this->postalAddressesRepository->getLabel('form.country_subentity'),
+            $mandatory
+        );
+
+        $this->addInput(
+            'postal_address[country]',
+            $this->postalAddressesRepository->getLabel('form.country'),
+            $mandatory
+        );
     }
 
     protected function getDataFromModelPostalAddresses()

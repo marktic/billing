@@ -27,4 +27,9 @@ trait HasSubjectTrait
         $generator->setSubject($subject);
         return $generator;
     }
+
+    public function populateBillingSubject(): void
+    {
+        $this->getInvoice()->populateFromSubjectRecord($this->subject);
+    }
 }

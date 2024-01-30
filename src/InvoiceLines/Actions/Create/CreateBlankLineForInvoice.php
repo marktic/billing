@@ -23,6 +23,7 @@ class CreateBlankLineForInvoice extends Action
     {
         $line = BillingModels::invoiceLines()->getNew();
         $line->invoice_id = $this->invoice->id;
+        $line->setCurrency($this->invoice->getCurrency());
         return $line;
     }
 }

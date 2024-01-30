@@ -21,6 +21,7 @@ abstract class AbstractGenerator extends Action
     {
         $this->initInvoice();
         $this->populateBillingOwner();
+        $this->populateBillingSubject();
         $this->populateCustomerParty();
         $this->generateInvoiceItems();
         return $this->getInvoice();

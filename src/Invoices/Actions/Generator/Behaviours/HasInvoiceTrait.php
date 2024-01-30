@@ -37,8 +37,12 @@ trait HasInvoiceTrait
 
     protected function generateBlankInvoice()
     {
+        /** @var Invoice $invoice */
         $invoice = BillingModels::invoices()->getNew();
         $invoice->setPropertyValue('status', Draft::NAME);
+        if ($this->billingStatus) {
+            $invoice->setCurrency($this->billingStatus->getCurrency());
+        }
         return $invoice;
     }
 }

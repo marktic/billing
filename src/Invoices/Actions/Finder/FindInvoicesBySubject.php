@@ -17,8 +17,8 @@ class FindInvoicesBySubject extends RecordsFinderAction
     {
         return [
             'where' => [
-                ['subject IN ?',  BillingUtility::morphLabelFor($this->subject)],
-                ['subject_id IN ?',  $this->subject->id],
+                ['subject = ?',  BillingUtility::morphLabelFor($this->subject)],
+                ['subject_id = ?',  $this->subject->id],
             ],
         ];
     }

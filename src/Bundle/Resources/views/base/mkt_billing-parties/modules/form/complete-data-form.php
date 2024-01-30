@@ -46,7 +46,7 @@ $elementPartyType->setRendered(true);
                     <?= $renderer->renderRow($form->getElement('legal_entity[identification]')); ?>
                 </div>
                 <div class="col-md-6">
-                    <?= $renderer->renderRow($form->getElement('legal_entity[registration_number]')); ?>
+                    <?= $renderer->renderRow($form->getElement('legal_entity[trading_id]')); ?>
                 </div>
             </div>
         </div>

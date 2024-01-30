@@ -26,4 +26,11 @@ if (!$item) {
         <?= $item->getIdentification() ?>
     </td>
 </tr>
-
+<tr>
+    <td>
+        <?= BillingModels::legalEntities()->getLabel('form.trading_id'); ?>
+    </td>
+    <td>
+        <?= $item->getTradingId() ?>
+    </td>
+</tr>

@@ -35,6 +35,13 @@ class UpdateOnInvoiceCreated extends Action
     public function handle(): void
     {
         $this->subject->setBillingInvoice($this->invoice);
+        $this->subject->setCurrency($this->invoice->getCurrency());
+        
+        if ($this->subject->getAmount() < 1) {
+            $this->subject->setAmount($this->invoice->getAmount());
+        }
+
+        $this->subject->setAmountBilled($this->invoice->getAmount());
 
         if ($this->subject->isInStatus([Billable::NAME, Pending::NAME])) {
             $this->subject->setStatus(Billed::NAME);

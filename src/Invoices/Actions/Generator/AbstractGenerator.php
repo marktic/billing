@@ -19,7 +19,7 @@ abstract class AbstractGenerator extends Action
      */
     public function generate(): Invoice
     {
-        $this->generateBlankInvoice();
+        $this->initInvoice();
         $this->populateBillingOwner();
         $this->populateCustomerParty();
         $this->generateInvoiceItems();

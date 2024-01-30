@@ -7,4 +7,12 @@ use Marktic\Billing\BillingStatuses\ModelsRelated\HasBillingStatus\HasBillingSta
 trait BillingSubjectRecordTrait
 {
     use HasBillingStatusRecordTrait;
+
+    public function getBillingCurrency()
+    {
+        if (method_exists($this, 'getCurrency')) {
+            return $this->getCurrency();
+        }
+        return null;
+    }
 }

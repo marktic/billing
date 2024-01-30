@@ -1,10 +1,15 @@
 <?php
 
 use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Utility\BillingModels;
 
 /** @var Invoice[] $items */
 $items = $items ?? $this->invoices;
 ?>
+<?php if (count($items) < 1) { ?>
+    <?= $this->Messages()->info(BillingModels::invoices()->getMessage('dnx')); ?>
+    <?php return; ?>
+<?php } ?>
 <table class="details table table-striped">
     <thead>
     <tr>

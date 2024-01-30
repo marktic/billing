@@ -7,6 +7,7 @@ use Marktic\Billing\Base\Actions\Behaviours\GenerateFromDataTrait;
 use Marktic\Billing\BillingOwner\Actions\Behaviours\HasOwnerRecordTrait;
 use Marktic\Billing\BillingStatuses\Actions\Behaviours\HasRepository;
 use Marktic\Billing\BillingStatuses\Models\BillingStatus;
+use Marktic\Billing\BillingSubject\Models\BillingSubjectRecordTrait;
 use Marktic\Billing\Utility\BillingUtility;
 use Nip\Records\AbstractModels\Record;
 
@@ -16,6 +17,9 @@ class BillingStatusCreateForSubject extends Action
     use GenerateFromDataTrait;
     use HasOwnerRecordTrait;
 
+    /**
+     * @var Record|BillingSubjectRecordTrait
+     */
     protected Record $subject;
 
     public function __construct($subject)
@@ -60,5 +64,11 @@ class BillingStatusCreateForSubject extends Action
                 ['subject_id = ?', $this->subject->id],
             ],
         ];
+    }
+    protected function orCreateData($data) {
+        $data['subject'] = $data['subject'] ?? BillingUtility::morphLabelFor($this->subject);
+        $data['subject_id'] = $data['subject_id'] ?? $this->subject->id;
+        $data['currency'] = $data['currency'] ?? $this->subject->getBillingCurrency();
+        return $data;
     }
 }

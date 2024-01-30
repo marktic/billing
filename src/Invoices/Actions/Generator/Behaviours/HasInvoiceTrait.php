@@ -29,10 +29,16 @@ trait HasInvoiceTrait
         $this->invoice = $invoice;
     }
 
+    protected function initInvoice()
+    {
+        $this->invoice = $this->generateBlankInvoice();
+        $this->invoiceItems = $this->invoice->getBillingLines();
+    }
+
     protected function generateBlankInvoice()
     {
-        $this->invoice = BillingModels::invoices()->getNew();
-        $this->invoice->setPropertyValue('status', Draft::NAME);
-        $this->invoiceItems = $this->invoice->getBillingLines();
+        $invoice = BillingModels::invoices()->getNew();
+        $invoice->setPropertyValue('status', Draft::NAME);
+        return $invoice;
     }
 }

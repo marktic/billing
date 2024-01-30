@@ -2,6 +2,8 @@
 
 namespace Marktic\Billing\LegalEntities\Models;
 
+use ByTIC\DataObjects\Casts\Metadata\AsMetadataObject;
+use ByTIC\DataObjects\Casts\Metadata\Metadata;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\HasIdentifier\RecordHasIdentifier;
 use Marktic\Billing\Base\Models\Behaviours\HasName\RecordHasName;
@@ -10,6 +12,8 @@ use Marktic\Billing\BillingOwner\ModelsRelated\HasOwner\HasOwnerRecordTrait;
 
 /**
  * Trait NewsletterConsentTrait
+ *
+ * @property string|Metadata $metadata
  */
 trait LegalEntityTrait
 {
@@ -19,5 +23,21 @@ trait LegalEntityTrait
     use RecordHasName;
     use TimestampableTrait;
 
-    protected $trading_id = null;
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->addCast('metadata', AsMetadataObject::class . ':json');
+    }
+
+    public function getTradingId()
+    {
+        return $this->metadata->get('trading_id');
+    }
+
+    public function setTradingId($trading_id): self
+    {
+        $this->metadata->set('trading_id', $trading_id);
+        return $this;
+    }
 }

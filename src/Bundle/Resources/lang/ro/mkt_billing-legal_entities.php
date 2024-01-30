@@ -6,7 +6,7 @@ return [
     
     'mkt_billing-legal_entities.labels.form.name' => 'Denumire companie',
     'mkt_billing-legal_entities.labels.form.identification' => 'CUI',
-    'mkt_billing-legal_entities.labels.form.registration_number' => 'Nr. Reg. Com',
+    'mkt_billing-legal_entities.labels.form.trading_id' => 'Nr. Reg. Com',
 
     'mkt_billing-legal_entities.messages.dnx' => 'Nu exista companii de facturare',
 ];

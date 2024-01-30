@@ -22,7 +22,7 @@ trait HasLegalEntityFieldsTrait
 
         $this->addInput('legal_entity[name]', $this->legalEntityRepository->getLabel('form.name'), false);
         $this->addInput('legal_entity[identification]', $this->legalEntityRepository->getLabel('form.identification'), false);
-        $this->addInput('legal_entity[registration_number]', $this->legalEntityRepository->getLabel('form.registration_number'), false);
+        $this->addInput('legal_entity[trading_id]', $this->legalEntityRepository->getLabel('form.trading_id'), false);
     }
 
     protected function getDataFromModelLegalEntity()
@@ -31,7 +31,7 @@ trait HasLegalEntityFieldsTrait
         if ($this->legalEntityRecord instanceof LegalEntity) {
             $this->getElement('legal_entity[name]')->getData($this->legalEntityRecord->getName(), 'model');
             $this->getElement('legal_entity[identification]')->getData($this->legalEntityRecord->getIdentification(), 'model');
-            $this->getElement('legal_entity[registration_number]')->getData($this->legalEntityRecord->registration_number, 'model');
+            $this->getElement('legal_entity[trading_id]')->getData($this->legalEntityRecord->trading_id, 'model');
         }
     }
 
@@ -41,7 +41,7 @@ trait HasLegalEntityFieldsTrait
             return null;
         }
 
-        foreach (['name','identification','registration_number'] as $field) {
+        foreach (['name','identification','trading_id'] as $field) {
             $element = $this->getElement('legal_entity[' . $field . ']');
             $element->setRequired(true);
             $element->validate();

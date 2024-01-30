@@ -2,6 +2,7 @@
 
 use Marktic\Billing\Bundle\Forms\Admin\Parties\AbstractForm;
 use Marktic\Billing\Utility\BillingAssets;
+use Marktic\Billing\Utility\BillingModels;
 
 /** @var AbstractForm $form */
 $form = $this->form;
@@ -72,33 +73,7 @@ $elementPartyType->setRendered(true);
             </div>
         </div>
     </fieldset>
-    <fieldset class="mt-4">
-        <legend class="fs-6 fw-bold text-primary w-auto">
-            Address
-        </legend>
 
-        <div class="row">
-            <div class="col-md-6">
-                <?= $renderer->renderRow($form->getElement('postal_address[street_name]')); ?>
-            </div>
-            <div class="col-md-6">
-                <?= $renderer->renderRow($form->getElement('postal_address[additional_street_name]')); ?>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <?= $renderer->renderRow($form->getElement('postal_address[city_name]')); ?>
-            </div>
-            <div class="col-md-6">
-                <?= $renderer->renderRow($form->getElement('postal_address[postal_zone]')); ?>
-            </div>
-            <div class="col-md-6">
-                <?= $renderer->renderRow($form->getElement('postal_address[country_subentity]')); ?>
-            </div>
-            <div class="col-md-6">
-                <?= $renderer->renderRow($form->getElement('postal_address[country]')); ?>
-            </div>
-        </div>
-    </fieldset>
+<?= $this->load('MarkticBilling::/mkt_billing-postal_addresses/modules/form/fieldset', ['form' => $form, 'renderer' => $renderer]); ?>
 
 <?= BillingAssets::scriptInline('/party_form.js'); ?>

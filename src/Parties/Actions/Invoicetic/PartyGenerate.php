@@ -38,8 +38,12 @@ class PartyGenerate extends Action
 
     protected function populateLegalEntity(): void
     {
+        $legalEntity = $this->party->getBillingLegalEntity();
+        if (!$legalEntity) {
+            return;
+        }
         $this->eParty->setLegalEntity(
-            LegalEntityGenerate::for($this->party->getBillingLegalEntity())->handle()
+            LegalEntityGenerate::for($legalEntity)->handle()
         );
     }
 

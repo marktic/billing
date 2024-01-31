@@ -45,8 +45,9 @@ class GenerateIdentification extends Action
             . $this->record->getAdditionalStreetname()
             . $this->record->getCityName()
             . $this->record->getPostalZone()
-            . $this->record->getCountrySubentity()
-            . $this->record->getCountry();
+            . $this->record->getCountrySubentity();
+        $country = $this->record->getCountry();
+        $unique .= $country ? $country->name : '';
         return sha1($unique);
     }
 }

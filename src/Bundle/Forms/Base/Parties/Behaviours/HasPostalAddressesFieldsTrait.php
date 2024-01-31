@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Marktic\Billing\Bundle\Forms\Base\Parties\Behaviours;
 
+use League\ISO3166\ISO3166;
 use Marktic\Billing\Parties\Actions\Populate\PartyPopulateFrom;
 use Marktic\Billing\PostalAddresses\Actions\PostalAddressesGenerate;
 use Marktic\Billing\PostalAddresses\Models\PostalAddress;
@@ -36,11 +37,7 @@ trait HasPostalAddressesFieldsTrait
             $mandatory
         );
 
-        $this->addInput(
-            'postal_address[country]',
-            $this->postalAddressesRepository->getLabel('form.country'),
-            $mandatory
-        );
+        $this->initializePostalAddressesCountry($mandatory);
     }
 
     protected function getDataFromModelPostalAddresses()
@@ -134,4 +131,28 @@ trait HasPostalAddressesFieldsTrait
         );
     }
 
+    /**
+     * @param mixed $mandatory
+     * @return void
+     */
+    protected function initializePostalAddressesCountry(mixed $mandatory): void
+    {
+        $this->addSelect(
+            'postal_address[country]',
+            $this->postalAddressesRepository->getLabel('form.country'),
+            $mandatory
+        );
+
+        $selectElement = $this->getElement('postal_address[country]');
+        $countries = (new ISO3166())->all();
+        foreach ($countries as $country) {
+            $selectElement->addOption($country['name'], $country['name']);
+        }
+        $selectElement->setValue($this->getPostalAddressesCountryDefault());
+    }
+
+    protected function getPostalAddressesCountryDefault()
+    {
+        return null;
+    }
 }

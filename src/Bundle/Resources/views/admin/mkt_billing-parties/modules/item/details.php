@@ -33,7 +33,13 @@ $contact = $item->getBillingContact();
 
     <tr>
         <td>Address</td>
-        <td><?= $item->getBillingPostalAddress()->toString() ?></td>
+        <td>
+            <?php if ($address) { ?>
+                <?= $address->toString() ?>
+            <?php } else { ?>
+                ---
+            <?php } ?>
+        </td>
     </tr>
 
     <?= $this->load('MarkticBilling::/mkt_billing-contacts/modules/item/details-row', ['item' => $contact]); ?>

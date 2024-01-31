@@ -18,7 +18,7 @@ class PartyPopulateFrom
 
     public static function legalEntity(Party &$party, LegalEntity $entity): void
     {
-//        $party->setIdentification($entity->getIdentification());
+        $party->setIdentification($entity->getIdentification());
         $party->name = $entity->getName();
         $party->legal_entity_id = $entity->getId();
     }

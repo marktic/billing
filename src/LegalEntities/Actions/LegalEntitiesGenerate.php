@@ -33,7 +33,7 @@ class LegalEntitiesGenerate extends Action
             'owner' => $this->getOwnerType(),
             'owner_id' => $this->getOwnerId(),
         ];
-        foreach (['identification', 'name'] as $field) {
+        foreach (['identification', 'name', 'trading_id'] as $field) {
             $default[$field] = $this->getDataValue($field);
         }
         return array_merge($default, $data);

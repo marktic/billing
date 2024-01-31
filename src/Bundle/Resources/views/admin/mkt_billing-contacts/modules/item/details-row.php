@@ -11,7 +11,7 @@ $item = $item ?: ($this->billingContact ?? null);
         <?= BillingModels::contacts()->getLabel('title.singular'); ?>
     </td>
     <td>
-        <?= $item->getName() ?>
+        <?= $item ? $item->getName() : '--'; ?>
     </td>
 </tr>
 <tr>
@@ -19,7 +19,7 @@ $item = $item ?: ($this->billingContact ?? null);
         <?= translator()->trans('identification'); ?>
     </td>
     <td>
-        <?= $item->getIdentification() ?>
+        <?= $item ? $item->getIdentification() : '--'; ?>
     </td>
 </tr>
 
@@ -28,7 +28,7 @@ $item = $item ?: ($this->billingContact ?? null);
         <?= translator()->trans('email'); ?>
     </td>
     <td>
-        <?= $item->getEmail() ?>
+        <?= $item ? $item->getEmail() : '--' ?>
     </td>
 </tr>
 <tr>
@@ -36,6 +36,6 @@ $item = $item ?: ($this->billingContact ?? null);
         <?= translator()->trans('telephone'); ?>
     </td>
     <td>
-        <?= $item->getTelephone() ?>
+        <?= $item ? $item->getTelephone() : '--' ?>
     </td>
 </tr>

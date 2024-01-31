@@ -18,7 +18,7 @@ final class BillingPartiesUniqueIndex extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = 'mkt_billing_legal_entities';
+        $table_name = 'mkt_billing_parties';
         $table = $this->table($table_name);
         $table
             ->removeIndex(['owner_id', 'owner', 'identification'])

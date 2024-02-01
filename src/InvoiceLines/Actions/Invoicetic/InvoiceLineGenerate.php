@@ -4,6 +4,7 @@ namespace Marktic\Billing\InvoiceLines\Actions\Invoicetic;
 
 use Bytic\Actions\Action;
 use Invoicetic\Common\Dto\InvoiceLine\InvoiceLine as EInvoiceLine;
+use Invoicetic\Common\Dto\Tax\ClassifiedTaxCategory;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
 
 class InvoiceLineGenerate extends Action
@@ -35,6 +36,7 @@ class InvoiceLineGenerate extends Action
         $this->populateItem();
         $this->populatePrice();
         $this->populateInvoicedQuantity();
+        $this->populateTax();
     }
 
     protected function populateItem(): void
@@ -64,5 +66,13 @@ class InvoiceLineGenerate extends Action
     {
         $invoicedQuantity = $this->eInvoiceLine->getInvoicedQuantity();
         $invoicedQuantity->setQuantity($this->invoiceLine->getQuantity());
+    }
+
+    protected function populateTax()
+    {
+        $taxCategory = new ClassifiedTaxCategory();
+        $taxCategory->setPercent($this->invoiceLine->getTaxRate());
+        $item = $this->eInvoiceLine->getItem();
+        $tax = $item->setClassifiedTaxCategory($taxCategory);
     }
 }

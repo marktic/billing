@@ -15,7 +15,7 @@ class CalculateLineTotalsTest extends TestCase
         $line->quantity = 2;
         $line->tax_rate = 20;
 
-        $action = new CalculateLineTotals($line);
+        $action = CalculateLineTotals::for($line);
         $action->handle();
 
         self::assertSame(200, $line->getSubtotal());

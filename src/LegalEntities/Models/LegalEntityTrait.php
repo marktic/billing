@@ -11,7 +11,7 @@ use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Billing\BillingOwner\ModelsRelated\HasOwner\HasOwnerRecordTrait;
 
 /**
- * Trait NewsletterConsentTrait
+ * Trait LegalEntityTrait
  *
  * @property string|Metadata $metadata
  */

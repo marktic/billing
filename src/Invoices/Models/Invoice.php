@@ -14,6 +14,8 @@ class Invoice extends Record
     use InvoiceTrait;
     use CommonRecordTrait;
 
+    public const METADATA_EXTERNAL_LINK = 'external_link';
+
     public function getRegistry()
     {
         // TODO: Implement getRegistry() method.

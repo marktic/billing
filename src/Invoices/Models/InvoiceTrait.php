@@ -2,6 +2,8 @@
 
 namespace Marktic\Billing\Invoices\Models;
 
+use ByTIC\DataObjects\Casts\Metadata\AsMetadataObject;
+use ByTIC\DataObjects\Casts\Metadata\Metadata;
 use ByTIC\Models\SmartProperties\RecordsTraits\HasStatus\RecordTrait as HasStatusRecordTrait;
 use Marktic\Billing\Base\Models\Behaviours\HasCurrency\RecordHasCurrency;
 use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
@@ -17,6 +19,8 @@ use Nip\Records\Collections\Collection;
  * Trait InvoiceTrait
  * @method Collection|InvoiceLine[] getBillingLines()
  * @method AbstractStatus getStatusObject()
+ *
+ * @property string|Metadata $metadat
  */
 trait InvoiceTrait
 {
@@ -29,6 +33,13 @@ trait InvoiceTrait
     use RecordHasCurrency;
     use HasTimestampsRecordTrait;
     use HasStatusRecordTrait;
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->addCast('metadata', AsMetadataObject::class . ':json');
+    }
 
     /** @noinspection PhpMissingParentCallCommonInspection
      * @inheritDoc
@@ -45,4 +56,19 @@ trait InvoiceTrait
         return $this->series . '-' . $this->number;
     }
 
+    public function getExternalLink()
+    {
+        return $this->metadata->get(Invoice::METADATA_EXTERNAL_LINK);
+    }
+
+    public function setExternalLink($link): self
+    {
+        $this->metadata->set(Invoice::METADATA_EXTERNAL_LINK, $link);
+        return $this;
+    }
+
+    public function hasExternalLink(): bool
+    {
+        return $this->metadata->has(Invoice::METADATA_EXTERNAL_LINK);
+    }
 }

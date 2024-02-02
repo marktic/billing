@@ -8,7 +8,7 @@ return [
     'mkt_billing-billing_statuses.labels.reports' => 'Rapoarte facturare',
     'mkt_billing-billing_statuses.labels.billed' => 'Facturat',
 
-    'mkt_billing-billing_statuses.statuses.completed' => 'Pending',
+    'mkt_billing-billing_statuses.statuses.completed' => 'Complet',
     'mkt_billing-billing_statuses.statuses.billable' => 'To Bill',
     'mkt_billing-billing_statuses.statuses.billed' => 'Billed',
     'mkt_billing-billing_statuses.statuses.failed' => 'Eroare',

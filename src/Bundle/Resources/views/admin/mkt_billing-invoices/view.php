@@ -4,6 +4,7 @@
     <div class=" col-md-4">
         <div class="d-grid gap-3">
             <?= $this->load("/mkt_billing-invoices/modules/panels/item-details"); ?>
+            <?= $this->load("/mkt_billing-invoices/modules/panels/item-metadata"); ?>
             <?= $this->load("/mkt_billing-invoices/modules/panels/item-communications"); ?>
         </div>
     </div>

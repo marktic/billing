@@ -1,6 +1,6 @@
 <?php
 
-namespace Marktic\Billing\Tests\Fixtures\InvoiceLines\Actions\Calculator;
+namespace Marktic\Billing\Tests\InvoiceLines\Actions\Calculator;
 
 use Marktic\Billing\InvoiceLines\Actions\Calculator\CalculateUnitPrice;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
@@ -32,6 +32,14 @@ class CalculateUnitPriceTest extends TestCase
             [
                 ['total' => 10000, 'tax_rate' => 19, 'quantity' => 1],
                 ['unit_price' => 8403, 'subtotal' => 8403, 'tax_total' => 1597, 'total' => 10000],
+            ],
+            [
+                ['total' => 10000, 'tax_rate' => 9, 'quantity' => 1],
+                ['unit_price' => 9174, 'subtotal' => 9174, 'tax_total' => 826, 'total' => 10000],
+            ],
+            [
+                ['total' => 4500, 'tax_rate' => 19, 'quantity' => 1],
+                ['unit_price' => 3782, 'subtotal' => 3782, 'tax_total' => 718, 'total' => 4500],
             ],
             [
                 ['total' => 12972, 'tax_rate' => 19, 'quantity' => 1],

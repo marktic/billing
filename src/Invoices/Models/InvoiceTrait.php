@@ -20,7 +20,7 @@ use Nip\Records\Collections\Collection;
  * @method Collection|InvoiceLine[] getBillingLines()
  * @method AbstractStatus getStatusObject()
  *
- * @property string|Metadata $metadat
+ * @property string|Metadata $metadata
  */
 trait InvoiceTrait
 {

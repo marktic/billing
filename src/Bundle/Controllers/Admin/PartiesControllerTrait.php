@@ -7,6 +7,7 @@ namespace Marktic\Billing\Bundle\Controllers\Admin;
 use Marktic\Billing\BillingOwner\Dto\AdminOwner;
 use Marktic\Billing\Bundle\Forms\Admin\Parties\CompleteDataForm;
 use Marktic\Billing\Parties\Actions\BillingPartyCreateForSubject;
+use Marktic\Billing\Parties\Models\Party;
 
 /**
  *
@@ -33,6 +34,23 @@ trait PartiesControllerTrait
             'item' => $record,
             'form' => $form,
         ]);
+    }
+
+    /**
+     * @param Party $item
+     * @return void
+     */
+    protected function viewRedirect($item = null)
+    {
+        $afterEdit = $this->getAfterUrl('edit');
+        if (!$afterEdit) {
+            $parent = $item->getBillingSubject();
+            $this->setAfterUrlFlash(
+                $parent->getURL(),
+                $parent->getManager()->getController()
+            );
+        }
+        parent::viewRedirect($item);
     }
 
     protected function createForSubjectActionFromRequest(): BillingPartyCreateForSubject

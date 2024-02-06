@@ -146,7 +146,7 @@ trait HasPostalAddressesFieldsTrait
         $selectElement = $this->getElement('postal_address[country]');
         $countries = (new ISO3166())->all();
         foreach ($countries as $country) {
-            $selectElement->addOption($country['name'], $country['name']);
+            $selectElement->addOption($country['alpha2'], $country['name']);
         }
         $selectElement->setValue($this->getPostalAddressesCountryDefault());
     }

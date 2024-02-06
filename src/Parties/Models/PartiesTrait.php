@@ -33,6 +33,7 @@ trait PartiesTrait
     protected function initRelationsBilling(): void
     {
         $this->initRelationsBillingOwner();
+        $this->initRelationsBillingSubject();
         $this->initRelationsBillingLegalEntity();
         $this->initRelationsBillingContact();
         $this->initRelationsBillingPostalAddress();

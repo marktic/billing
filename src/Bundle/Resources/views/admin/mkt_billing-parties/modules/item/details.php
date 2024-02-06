@@ -2,6 +2,7 @@
 
 use ByTIC\Icons\Icons;
 use Marktic\Billing\Parties\Models\Party;
+use Marktic\Billing\PostalAddresses\Actions\Transformation\PostalAddressesString;
 use Marktic\Billing\Utility\BillingModels;
 
 /** @var Party $item */
@@ -35,7 +36,7 @@ $contact = $item->getBillingContact();
         <td>Address</td>
         <td>
             <?php if ($address) { ?>
-                <?= $address->toString() ?>
+                <?= PostalAddressesString::for($address)->html(); ?>
             <?php } else { ?>
                 ---
             <?php } ?>

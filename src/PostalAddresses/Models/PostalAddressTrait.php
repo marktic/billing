@@ -6,6 +6,7 @@ use Marktic\Billing\Base\Models\Behaviours\HasId\RecordHasId;
 use Marktic\Billing\Base\Models\Behaviours\HasIdentifier\RecordHasIdentifier;
 use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableTrait;
 use Marktic\Billing\BillingOwner\ModelsRelated\HasOwner\HasOwnerRecordTrait;
+use Marktic\Billing\PostalAddresses\Actions\Transformation\PostalAddressesString;
 use Nip\Utility\Country;
 
 /**
@@ -132,13 +133,6 @@ trait PostalAddressTrait
 
     public function toString(): string
     {
-        $parts = [];
-        $parts[] = $this->getStreetName();
-        $parts[] = $this->getAdditionalStreetName();
-        $parts[] = $this->getPostalZone();
-        $parts[] = $this->getCityName();
-        $parts[] = $this->getCountrySubentity();
-        $parts[] = $this->getCountry()->name;
-        return implode(', ', array_filter($parts));
+        return PostalAddressesString::for($this)->string();
     }
 }

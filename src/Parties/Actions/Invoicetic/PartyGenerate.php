@@ -4,6 +4,7 @@ namespace Marktic\Billing\Parties\Actions\Invoicetic;
 
 use Bytic\Actions\Action;
 use Invoicetic\Common\Dto\Party\Party as eParty;
+use Marktic\Billing\Contacts\Actions\Invoicetic\ContactGenerate;
 use Marktic\Billing\LegalEntities\Actions\Invoicetic\LegalEntityGenerate;
 use Marktic\Billing\Parties\Models\Party;
 use Marktic\Billing\PostalAddresses\Actions\Invoicetic\PostalAddressGenerate;
@@ -27,6 +28,7 @@ class PartyGenerate extends Action
         $this->populateAttributes();
         $this->populateLegalEntity();
         $this->populatePostalAddress();
+        $this->populateContact();
         return $this->eParty;
     }
 
@@ -51,6 +53,13 @@ class PartyGenerate extends Action
     {
         $this->eParty->setPostalAddress(
             PostalAddressGenerate::for($this->party->getBillingPostalAddress())->handle()
+        );
+    }
+
+    protected function populateContact(): void
+    {
+        $this->eParty->setContact(
+            ContactGenerate::for($this->party->getBillingContact())->handle()
         );
     }
 

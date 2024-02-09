@@ -58,6 +58,11 @@ trait InvoicesTrait
         return PackageConfig::tableName(BillingModels::INVOICES, Invoices::TABLE);
     }
 
+    protected function generateMorphName(): string
+    {
+        return InvoicesRepository::CONTROLLER;
+    }
+
     /**
      * @return string
      */

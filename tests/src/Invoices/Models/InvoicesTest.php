@@ -22,4 +22,12 @@ class InvoicesTest extends TestCase
             $repository->getStatusProperty('name')
         );
     }
+
+    public function test_naming()
+    {
+        $repository = new Invoices();
+        self::assertSame('mkt_billing_invoices', $repository->getTable());
+        self::assertSame('mkt_billing-invoices', $repository->getController());
+        self::assertSame('mkt_billing-invoices', $repository->getMorphName());
+    }
 }

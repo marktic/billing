@@ -37,7 +37,20 @@ class CalculateLineTotals extends Action
     protected function calculateLineTaxTotal(): void
     {
         $line = $this->getSubject();
-        $line->setTaxTotal($line->getSubtotal() * $line->getTaxRate() / 100);
+        $taxTotal = $line->getTaxTotal();
+        $newTaxTotal = $line->getSubtotal() * $line->getTaxRate() / 100;
+        if ($taxTotal < 1) {
+            $line->setTaxTotal($newTaxTotal);
+            return;
+        }
+        if ($taxTotal === $newTaxTotal) {
+            return;
+        }
+        if ($taxTotal - $newTaxTotal > 1) {
+            throw new \Exception(
+                'Difference is too high for tax total [ ' . $taxTotal . ' ][ ' . $newTaxTotal . ' ]'
+            );
+        }
     }
 
     protected function calculateLineTotalWithTax(): void

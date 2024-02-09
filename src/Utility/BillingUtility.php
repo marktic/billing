@@ -11,6 +11,6 @@ class BillingUtility
         if ($record instanceof AdminOwner) {
             return $record->type;
         }
-        return $record ? $record->getManager()->getController() : null;
+        return $record ? $record->getManager()->getMorphName() : null;
     }
 }

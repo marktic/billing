@@ -79,29 +79,10 @@ $statuses = $this->statuses;
             <?= translator()->trans('status'); ?>:
         </td>
         <td class="value">
-            <?= $selectedStatus->getLabelHTML(); ?>
-
             <?php if ($itemIsSaved) { ?>
-                <div class="btn-group right">
-                    <a class="btn dropdown-toggle btn-xs btn-primary" data-bs-toggle="dropdown" href="#">
-                        <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-left">
-                        <?php foreach ($statuses as $status) { ?>
-                            <?php if ($status->getName() != $selectedStatus->getName()) { ?>
-                                <li>
-                                    <a href="<?= $invoiceRepository->compileURL(
-                                        'changeStatus',
-                                        ['id' => $item->getId(), 'status' => $status->getName()]
-                                    ); ?>">
-                                        <?= $status->getLabel(); ?>
-                                    </a>
-                                </li>
-                            <?php } ?>
-                        <?php } ?>
-                    </ul>
-                </div>
+                <?= $this->load('/abstract/modules/item-actions/status-change', ['item' => $billingStatus, 'statuses' => $statuses]); ?>
+            <?php } else { ?>
+                <?= $selectedStatus->getLabelHTML(); ?>
             <?php } ?>
         </td>
     </tr>

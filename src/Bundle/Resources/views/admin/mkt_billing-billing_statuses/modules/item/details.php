@@ -50,26 +50,7 @@ $customerParty = $billingStatus->getCustomerParty();
             <?= $billingStatusesRepository->getLabel('title.singular'); ?>:
         </td>
         <td class="value">
-            <?= $billingStatus ? $billingStatus->getStatus()->getLabelHTML() : ''; ?>
-
-            <div class="btn-group btn-group-sm float-right">
-                <a class="btn dropdown-toggle btn-xs btn-primary" data-bs-toggle="dropdown" href="#">
-                    <span class="glyphicon glyphicon-pencil glyphicon-white"></span>
-                    <span class="caret"></span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-left">
-                    <?php foreach ($statuses as $status) { ?>
-                        <?php if (!$billingStatus || $status->getName() != $billingStatus->getStatus()->getName()) { ?>
-                            <a class="dropdown-item" href="<?= $billingStatus->compileURL(
-                                'changeStatus',
-                                ['status' => $status->getName()]
-                            ); ?>">
-                                <?= $status->getLabel(); ?>
-                            </a>
-                        <?php } ?>
-                    <?php } ?>
-                </div>
-            </div>
+            <?= $this->load('/abstract/modules/item-actions/status-change', ['item' => $billingStatus, 'statuses' => $statuses]); ?>
         </td>
     </tr>
     </tbody>

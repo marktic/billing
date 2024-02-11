@@ -15,6 +15,6 @@ class Failed extends AbstractStatus
      */
     public function getColorClass()
     {
-        return 'error';
+        return 'danger';
     }
 }

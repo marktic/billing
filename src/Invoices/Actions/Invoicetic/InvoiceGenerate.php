@@ -7,6 +7,7 @@ use Invoicetic\Common\Dto\Invoice\Invoice as EInvoice;
 use Marktic\Billing\Contacts\Models\Contact;
 use Marktic\Billing\InvoiceLines\Actions\Invoicetic\InvoiceLineGenerate;
 use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Invoices\Models\InvoiceInterface;
 use Marktic\Billing\Parties\Actions\Invoicetic\PartyGenerate;
 
 /**
@@ -14,11 +15,11 @@ use Marktic\Billing\Parties\Actions\Invoicetic\PartyGenerate;
  */
 class InvoiceGenerate extends Action
 {
-    protected Invoice $invoice;
+    protected InvoiceInterface $invoice;
 
     protected EInvoice $eInvoice;
 
-    public static function for(Invoice $invoice): self
+    public static function for(InvoiceInterface $invoice): self
     {
         $action = new static();
         $action->invoice = $invoice;

@@ -25,7 +25,7 @@ final class BillingStatusesInvoiceId extends AbstractMigration
             ->addColumn(
                 'invoice_id',
                 'integer',
-                ['null' => true, 'after' => 'customer_party_id']
+                ['null' => true, 'after' => 'customer_party_id', 'signed' => false]
             )
             ->addIndex(['invoice_id'])
             ->save();

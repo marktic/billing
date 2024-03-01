@@ -9,7 +9,7 @@ use Nip\Records\Record;
  * Class Invoice
  * @package Marktic\Billing\Invoices\Models
  */
-class Invoice extends Record
+class Invoice extends Record implements InvoiceInterface
 {
     use InvoiceTrait;
     use CommonRecordTrait;

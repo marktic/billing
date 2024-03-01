@@ -5,10 +5,11 @@ namespace Marktic\Billing\Invoices\Actions\Invoicetic;
 use Bytic\Actions\Action;
 use Invoicetic\Common\InvoiceId\Dto\InvoiceIdSequence;
 use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Invoices\Models\InvoiceInterface;
 
 class InvoiceIdSequenceGenerate extends Action
 {
-    protected Invoice $invoice;
+    protected InvoiceInterface $invoice;
 
     protected ?InvoiceIdSequence $idSequence = null;
 
@@ -16,7 +17,7 @@ class InvoiceIdSequenceGenerate extends Action
 
     public const SEQUENCE_PATTERN = '{SEQUENCE}{SEPARATOR}{NUMBER}';
 
-    public static function for(Invoice $invoice): self
+    public static function for(InvoiceInterface $invoice): self
     {
         $action = new static();
         $action->invoice = $invoice;

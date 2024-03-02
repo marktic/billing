@@ -4,12 +4,13 @@ namespace Marktic\Billing\Invoices\Actions\Generator\Behaviours;
 
 use Marktic\Billing\Invoices\InvoiceStatuses\Draft;
 use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Invoices\Models\InvoiceInterface;
 use Marktic\Billing\Utility\BillingModels;
 
 trait HasInvoiceTrait
 {
     /**
-     * @var Invoice
+     * @var InvoiceInterface
      */
     protected $invoice;
 

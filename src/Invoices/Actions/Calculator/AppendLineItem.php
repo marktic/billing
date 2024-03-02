@@ -5,14 +5,14 @@ namespace Marktic\Billing\Invoices\Actions\Calculator;
 use Bytic\Actions\Action;
 use Marktic\Billing\InvoiceLines\Actions\Calculator\CalculateLineTotals;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
-use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Invoices\Models\InvoiceInterface;
 
 class AppendLineItem extends Action
 {
-    protected Invoice $invoice;
+    protected InvoiceInterface $invoice;
     protected InvoiceLine $item;
 
-    public static function for(Invoice $invoice, InvoiceLine $item)
+    public static function for(InvoiceInterface $invoice, InvoiceLine $item)
     {
         $action = new self();
         $action->invoice = $invoice;

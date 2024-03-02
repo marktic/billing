@@ -4,6 +4,7 @@ namespace Marktic\Billing\Invoices\Actions\Generator;
 
 use Bytic\Actions\Action;
 use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Invoices\Models\InvoiceInterface;
 
 abstract class AbstractGenerator extends Action
 {
@@ -17,7 +18,7 @@ abstract class AbstractGenerator extends Action
     /**
      * @return Invoice
      */
-    public function generate(): Invoice
+    public function generate(): Invoice|InvoiceInterface
     {
         $this->initInvoice();
         $this->populateBillingOwner();

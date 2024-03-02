@@ -4,15 +4,15 @@ namespace Marktic\Billing\InvoiceLines\Actions\Create;
 
 use Bytic\Actions\Action;
 use Marktic\Billing\InvoiceLines\Models\InvoiceLine;
-use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Invoices\Models\InvoiceInterface;
 use Marktic\Billing\Utility\BillingModels;
 use Nip\Records\Record;
 
 class CreateBlankLineForInvoice extends Action
 {
-    protected Invoice $invoice;
+    protected InvoiceInterface $invoice;
 
-    public static function for(Invoice $invoice): self
+    public static function for(InvoiceInterface $invoice): self
     {
         $action = new static();
         $action->invoice = $invoice;

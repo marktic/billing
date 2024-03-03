@@ -22,4 +22,9 @@ trait BillingStatusTrait
     use Behaviours\HasAmounts\HasAmountsRecordTrait;
     use RecordHasCurrency;
     use TimestampableTrait;
+
+    public function getName()
+    {
+        return $this->getManager()->getLabel('title.singular') . ' ' . $this->id;
+    }
 }

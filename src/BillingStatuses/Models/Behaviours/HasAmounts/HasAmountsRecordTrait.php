@@ -50,4 +50,8 @@ trait HasAmountsRecordTrait
     {
         $this->amount_billed = $amount_paid;
     }
+    public function setAmountBilledMoney(?\ByTIC\Money\Money $amount): void
+    {
+        $this->setAmountBilled($amount->getAmount());
+    }
 }

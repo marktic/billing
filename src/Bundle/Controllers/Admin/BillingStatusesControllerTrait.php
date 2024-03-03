@@ -5,11 +5,14 @@ declare(strict_types=1);
 namespace Marktic\Billing\Bundle\Controllers\Admin;
 
 use Marktic\Billing\BillingStatuses\Models\BillingStatus;
+use Marktic\Billing\Bundle\Forms\Admin\BillingStatuses\DetailsForm;
 use Nip\Records\AbstractModels\Record;
 
 trait BillingStatusesControllerTrait
 {
+    use AbstractControllerTrait;
     use \ByTIC\Controllers\Behaviors\HasStatus;
+    use Behaviours\HasFormsTrait;
 
     /**
      * @param BillingStatus $item
@@ -27,4 +30,18 @@ trait BillingStatusesControllerTrait
         return true;
     }
 
+    protected function afterActionUrlDefault($type, $item = null)
+    {
+        if ($item) {
+            return $item->getBillingSubject()->compileURL('view');
+        }
+        return parent::afterActionUrlDefault($type, $item);
+    }
+
+    protected function getModelFormClass($model, $action = null): ?string
+    {
+        return match ($action) {
+            default => DetailsForm::class,
+        };
+    }
 }

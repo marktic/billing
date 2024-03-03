@@ -28,6 +28,11 @@ class BillingPartyCreateForSubject extends Action
         return new static($subject);
     }
 
+    public function getSubject(): Record
+    {
+        return $this->subject;
+    }
+
     protected function findParams(): array
     {
         return [
@@ -63,5 +68,11 @@ class BillingPartyCreateForSubject extends Action
         $data['subject'] = BillingUtility::morphLabelFor($this->subject);
         $data['subject_id'] = $this->subject->id;
         return $data;
+    }
+
+    protected function populateResultRecord()
+    {
+        $this->resultRecord->setBillingOwner($this->getOwner());
+        $this->resultRecord->populateFromSubjectRecord($this->subject);
     }
 }

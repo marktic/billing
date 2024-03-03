@@ -24,10 +24,10 @@ trait PartiesControllerTrait
 
         /** @var CompleteDataForm $form */
         $form = $this->getModelForm($record, 'completeData');
-        $form->setOwner($action->getOwner());
+        $form->setBillingOwner($action->getOwner());
 
         if ($form->execute()) {
-            $this->addRedirect($record);
+            $this->viewRedirect($record);
         }
 
         $this->payload()->with([

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Billing;
 
 use ByTIC\PackageBase\BaseBootableServiceProvider;
+use Marktic\Billing\Utility\BillingModels;
 use Marktic\Billing\Utility\PackageConfig;
 
 /**
@@ -18,6 +19,19 @@ class BillingServiceProvider extends BaseBootableServiceProvider
     {
         parent::register();
         $this->registerResources();
+    }
+
+    public function boot()
+    {
+        parent::boot();
+
+        BillingModels::invoices();
+        BillingModels::invoiceLines();
+        BillingModels::parties();
+        BillingModels::legalEntities();
+        BillingModels::contacts();
+        BillingModels::postalAddresses();
+        BillingModels::billingStatuses();
     }
 
     public function migrations(): ?string

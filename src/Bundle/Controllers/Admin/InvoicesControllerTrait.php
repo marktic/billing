@@ -20,6 +20,13 @@ trait InvoicesControllerTrait
     use Behaviours\HasFormsTrait;
     use HasBillingOwnerTrait;
 
+    public function index()
+    {
+        parent::index();
+
+        $this->initViewStatuses();
+    }
+
     public function postView()
     {
         parent::postView();

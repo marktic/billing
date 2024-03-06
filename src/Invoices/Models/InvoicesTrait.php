@@ -7,6 +7,7 @@ use Marktic\Billing\Base\Models\Behaviours\Timestampable\TimestampableManagerTra
 use Marktic\Billing\Base\Models\Traits\HasDatabaseConnectionTrait;
 use Marktic\Billing\BillingOwner\ModelsRelated\HasOwner\HasOwnerRepositoryTrait;
 use Marktic\Billing\BillingSubject\ModelsRelated\HasSubject\HasSubjectRepositoryTrait;
+use Marktic\Billing\Invoices\Models\Filters\FilterManager;
 use Marktic\Billing\Parties\ModelsRelated\HasCustomerParty\HasCustomerPartyRepositoryTrait;
 use Marktic\Billing\Utility\BillingModels;
 use Marktic\Billing\Utility\PackageConfig;
@@ -77,5 +78,13 @@ trait InvoicesTrait
     public function getStatusNamespace()
     {
         return '\Marktic\Billing\Invoices\InvoiceStatuses\\';
+    }
+
+    /** @noinspection PhpMissingParentCallCommonInspection
+     * @return string
+     */
+    public function generateFilterManagerClass()
+    {
+        return FilterManager::class;
     }
 }

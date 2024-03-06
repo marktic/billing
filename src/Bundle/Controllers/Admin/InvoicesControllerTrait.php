@@ -9,6 +9,7 @@ use Marktic\Billing\BillingOwner\Controllers\Admin\Behaviours\HasBillingOwnerTra
 use Marktic\Billing\Bundle\Forms\Admin\Invoices\DetailsForm;
 use Marktic\Billing\InvoiceLines\Actions\Changes\DeleteInvoiceLine;
 use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Utility\BillingModels;
 
 /**
  *

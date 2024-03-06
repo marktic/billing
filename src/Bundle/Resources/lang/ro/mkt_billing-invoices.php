@@ -7,6 +7,7 @@ return [
     'mkt_billing-invoices.labels.series' => 'Serie',
     'mkt_billing-invoices.labels.number' => 'Numar',
     'mkt_billing-invoices.labels.issued' => 'Data emitere',
+    'mkt_billing-invoices.labels.status' => 'Status',
 
     'mkt_billing-invoices.statuses.draft' => 'Draft',
     'mkt_billing-invoices.statuses.issued' => 'Emisă',

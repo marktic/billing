@@ -11,8 +11,8 @@ use Nip\Records\RecordManager;
  */
 class Invoices extends RecordManager implements InvoicesRepository
 {
-    use InvoicesTrait;
-    use CommonRecordsTrait;
-
+    use InvoicesTrait, CommonRecordsTrait {
+        InvoicesTrait::generateFilterManagerClass insteadof CommonRecordsTrait;
+    }
 
 }

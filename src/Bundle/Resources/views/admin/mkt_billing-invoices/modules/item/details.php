@@ -14,6 +14,7 @@ $itemSubject = $item->getBillingSubject();
 $itemSubjectManager = $itemSubject->getManager();
 
 $selectedStatus = $item->getStatus();
+$billingStatus = $billingStatus ?? null;
 
 /** @var AbstractStatus[] $statuses */
 $statuses = $this->statuses;

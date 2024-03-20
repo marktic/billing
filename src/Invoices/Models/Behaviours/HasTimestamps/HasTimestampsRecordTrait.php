@@ -8,7 +8,7 @@ trait HasTimestampsRecordTrait
 {
     use TimestampableTrait;
 
-    protected $issued_at;
+    public $issued_at;
 
     public function issuedAtNow(): void
     {

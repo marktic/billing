@@ -13,7 +13,7 @@ $card = Card::make()
     ->wrapBody(false)
     ->withView($this)
     ->withViewContent('/mkt_billing-parties/modules/item/details', ['item' => $this->customerParty]);
-if ($this->customerPart) {
+if ($this->customerParty) {
     $card->addHeaderTool(
         ButtonAction::make()
             ->setUrl($this->customerParty->compileURL('edit'))

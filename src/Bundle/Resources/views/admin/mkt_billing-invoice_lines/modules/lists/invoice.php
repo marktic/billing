@@ -29,7 +29,7 @@ $items = $items ?? $this->items;
                     </a>
                 <?php } ?>
                 <?= $item->printNameHTML(); ?>
-                <small class="d-block">
+                <small class="d-block text-muted">
                     <?= $item->getDescription(); ?>
                 </small>
             </td>

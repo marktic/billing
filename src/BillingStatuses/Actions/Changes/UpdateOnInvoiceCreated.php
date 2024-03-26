@@ -9,6 +9,7 @@ use Marktic\Billing\BillingStatuses\Statuses\Billable;
 use Marktic\Billing\BillingStatuses\Statuses\Billed;
 use Marktic\Billing\BillingStatuses\Statuses\Pending;
 use Marktic\Billing\Invoices\Models\Invoice;
+use Marktic\Billing\Invoices\Models\InvoiceInterface;
 
 /**
  * @property BillingStatus $subject
@@ -17,7 +18,7 @@ class UpdateOnInvoiceCreated extends Action
 {
     use HasSubject;
 
-    protected ?Invoice $invoice = null;
+    protected ?InvoiceInterface $invoice = null;
 
     public static function forInvoice($subject, $invoice): static
     {

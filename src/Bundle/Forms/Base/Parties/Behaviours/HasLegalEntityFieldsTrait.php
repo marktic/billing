@@ -68,8 +68,13 @@ trait HasLegalEntityFieldsTrait
     {
         if ($this->legalEntityRecord instanceof LegalEntity) {
             $this->legalEntityRecord->fill($data);
-            $this->legalEntityRecord->save();
+            $existing = $this->legalEntityRecord->exists();
+            if ($existing) {
+                $existing->fill($data);
+                $this->legalEntityRecord = $existing;
+            }
 
+            $this->legalEntityRecord->save();
             return $this->legalEntityRecord;
         }
 

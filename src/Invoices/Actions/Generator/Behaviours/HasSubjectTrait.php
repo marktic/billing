@@ -18,7 +18,7 @@ trait HasSubjectTrait
         /** @var BillingStatus $billingStatus */
         $billingStatus = $subject->getBillingStatus();
         $this->billingStatus = $billingStatus;
-        $this->setCustomerPartyId($billingStatus->getCustomerPartyId());
+        $this->setCustomerPartyId($billingStatus?->getCustomerPartyId());
     }
 
     public static function forSubject($subject): static

@@ -13,14 +13,17 @@ $billingStatusesRepository = $billingStatusesRepository ?? BillingModels::billin
 
 $card = Card::make()
     ->withTitle($billingStatusesRepository->getLabel('title.singular'))
-    ->withIcon(Icons::list_ul())
-    ->addHeaderTool(
+    ->withIcon(Icons::list_ul());
+if ($billingStatus) {
+    $card->addHeaderTool(
         ButtonAction::make()
             ->setUrl($billingStatus->compileURL('edit'))
             ->addHtmlClass('btn-xs')
             ->setLabel(translator()->trans('edit'))
-    )
-    ->withTheme('inverse')
+    );
+}
+
+$card->withTheme('inverse')
     ->wrapBody(false)
     ->withView($this)
     ->withViewContent(

@@ -4,7 +4,7 @@ use Marktic\Billing\BillingStatuses\Models\BillingStatus;
 use Marktic\Billing\Utility\BillingModels;
 
 /** @var BillingStatus $billingStatus */
-$billingStatus = $billingStatus ?? $this->item instanceof BillingStatus ? $this->item : null;
+$billingStatus = $billingStatus ?? ($this->item instanceof BillingStatus ? $this->item : null);
 
 $billingStatusesRepository = $billingStatusesRepository ?? BillingModels::billingStatuses();
 
@@ -25,7 +25,7 @@ $customerParty = $billingStatus?->getCustomerParty();
                     <?= $customerParty->getName(); ?>
                 </a>
             <?php } else { ?>
-             ---
+                ---
             <?php } ?>
         </td>
     </tr>

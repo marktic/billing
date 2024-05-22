@@ -9,6 +9,8 @@ use Marktic\Billing\InvoiceLines\Actions\Invoicetic\InvoiceLineGenerate;
 use Marktic\Billing\Invoices\Models\Invoice;
 use Marktic\Billing\Invoices\Models\InvoiceInterface;
 use Marktic\Billing\Parties\Actions\Invoicetic\PartyGenerate;
+use Marktic\Billing\Parties\Dto\PartyInterface;
+use Marktic\Billing\Parties\Models\Party;
 
 /**
  * @method Contact fetch
@@ -51,12 +53,13 @@ class InvoiceGenerate extends Action
 
     protected function populateCustomerParty(): void
     {
-        $contact = $this->invoice->getCustomerParty();
-        if ($contact !== null) {
-            $this->eInvoice->setAccountingCustomerParty(
-                PartyGenerate::for($contact)->handle()
-            );
+        $party = $this->invoice->getCustomerParty();
+        if (!$party instanceof PartyInterface) {
+            throw new \Exception('Customer party is required');
         }
+        $this->eInvoice->setAccountingCustomerParty(
+            PartyGenerate::for($party)->handle()
+        );
     }
 
     protected function populateInvoiceId(): void

@@ -6,6 +6,7 @@ use Bytic\Actions\Action;
 use Invoicetic\Common\Dto\Party\Party as eParty;
 use Marktic\Billing\Contacts\Actions\Invoicetic\ContactGenerate;
 use Marktic\Billing\LegalEntities\Actions\Invoicetic\LegalEntityGenerate;
+use Marktic\Billing\Parties\Dto\PartyInterface;
 use Marktic\Billing\Parties\Models\Party;
 use Marktic\Billing\PostalAddresses\Actions\Invoicetic\PostalAddressGenerate;
 
@@ -15,7 +16,7 @@ class PartyGenerate extends Action
 
     protected eParty $eParty;
 
-    public static function for(Party $party): self
+    public static function for(PartyInterface $party): self
     {
         $action = new static();
         $action->party = $party;

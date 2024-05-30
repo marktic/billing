@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Billing\BillingOwner\Controllers\Admin\Behaviours;
 
 use Marktic\Billing\Base\Dto\AdminOwner;
+use Marktic\Billing\BillingOwner\Dto\AnyOwner;
 
 trait HasBillingOwnerTrait
 {
@@ -22,6 +23,9 @@ trait HasBillingOwnerTrait
     protected function checkBillingOwnerAccess($model): bool
     {
         $owner = $this->getBillingOwner();
+        if ($owner instanceof AnyOwner) {
+            return true;
+        }
         if ($model == $owner) {
             return true;
         }

@@ -2,6 +2,7 @@
 
 namespace Marktic\Billing\BillingOwner\Actions\Queries;
 
+use Marktic\Billing\BillingOwner\Dto\AnyOwner;
 use Marktic\Billing\Utility\BillingUtility;
 
 class PopulateQueryWithOwnerWhere
@@ -27,6 +28,9 @@ class PopulateQueryWithOwnerWhere
 
     public function handle()
     {
+        if ($this->owner instanceof AnyOwner) {
+            return $this->query;
+        }
         $this->query->where('owner = ?', BillingUtility::morphLabelFor($this->owner));
         $this->query->where('owner_id = ?', $this->owner->id);
         return $this->query;

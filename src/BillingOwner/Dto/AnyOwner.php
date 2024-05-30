@@ -2,9 +2,9 @@
 
 namespace Marktic\Billing\BillingOwner\Dto;
 
-class AdminOwner implements BillingOwner
+class AnyOwner implements BillingOwner
 {
-    public const TYPE = 'any';
+    public const TYPE = 'admin';
 
     public int $id = 0;
 

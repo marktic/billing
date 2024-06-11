@@ -27,6 +27,14 @@ trait CompleteDataFormTrait
         $this->initializeContactFields($mandatory);
         $this->initializePostalAddressesFields($mandatory);
     }
+    
+    protected function setBillingFieldsMandatory($mandatory = true): void
+    {
+        $this->setPartyFieldsMandatory($mandatory);
+        $this->setLegalEntityFieldsMandatory($mandatory);
+        $this->setContactFieldsMandatory($mandatory);
+        $this->setPostalAddressesFieldsMandatory($mandatory);
+    }
 
     public function getDataFromModel(): void
     {

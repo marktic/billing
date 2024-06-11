@@ -25,6 +25,13 @@ trait HasLegalEntityFieldsTrait
         $this->addInput('legal_entity[trading_id]', $this->legalEntityRepository->getLabel('form.trading_id'), false);
     }
 
+    protected function setLegalEntityFieldsMandatory($mandatory = true): void
+    {
+        $this->getElement('legal_entity[name]')->setRequired($mandatory);
+        $this->getElement('legal_entity[identification]')->setRequired($mandatory);
+        $this->getElement('legal_entity[trading_id]')->setRequired($mandatory);
+    }
+
     protected function getDataFromModelLegalEntity()
     {
         $this->legalEntityRecord = $this->getBillingParty()->getBillingLegalEntity();
@@ -41,7 +48,7 @@ trait HasLegalEntityFieldsTrait
             return null;
         }
 
-        foreach (['name','identification','trading_id'] as $field) {
+        foreach (['name', 'identification', 'trading_id'] as $field) {
             $element = $this->getElement('legal_entity[' . $field . ']');
             $element->setRequired(true);
             $element->validate();

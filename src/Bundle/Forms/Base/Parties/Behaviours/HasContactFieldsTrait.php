@@ -24,6 +24,13 @@ trait HasContactFieldsTrait
         $this->addInput('contact[email]', $this->contactsRepository->getLabel('form.email'), $mandatory);
     }
 
+    protected function setContactFieldsMandatory($mandatory = true): void
+    {
+        $this->getElement('contact[name]')->setRequired($mandatory);
+        $this->getElement('contact[telephone]')->setRequired($mandatory);
+        $this->getElement('contact[email]')->setRequired($mandatory);
+    }
+
     protected function getDataFromModelBillingContact()
     {
         $this->contactRecord = $this->getBillingParty()->getBillingContact();

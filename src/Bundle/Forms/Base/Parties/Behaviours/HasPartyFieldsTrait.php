@@ -18,7 +18,11 @@ trait HasPartyFieldsTrait
         $typeSelect->addOption('person', $this->partyRepository->getLabel('form.type.person'));
         $typeSelect->addOption('legal_entity', $this->partyRepository->getLabel('form.type.legal_entity'));
         $typeSelect->setValue('person');
+    }
 
+    protected function setPartyFieldsMandatory($mandatory = true): void
+    {
+        $this->getElement('party[type]')->setRequired($mandatory);
     }
 
     protected function getDataFromModelPartyFields()

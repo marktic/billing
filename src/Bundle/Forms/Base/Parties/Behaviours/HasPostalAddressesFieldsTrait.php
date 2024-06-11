@@ -40,6 +40,21 @@ trait HasPostalAddressesFieldsTrait
         $this->initializePostalAddressesCountry($mandatory);
     }
 
+    protected function setPostalAddressesFieldsMandatory($mandatory = true): void
+    {
+        $this->getElement('postal_address[street_name]')->setRequired($mandatory);
+        if ($this->hasElement('postal_address[additional_street_name]')) {
+            $this->getElement('postal_address[additional_street_name]')->setRequired($mandatory);
+        }
+        $this->getElement('postal_address[city_name]')->setRequired($mandatory);
+
+        if ($this->hasElement('postal_address[postal_zone]')) {
+            $this->getElement('postal_address[postal_zone]')->setRequired($mandatory);
+        }
+
+        $this->getElement('postal_address[country_subentity]')->setRequired($mandatory);
+    }
+
     protected function getDataFromModelPostalAddresses()
     {
         $this->postalAddressRecord = $this->getBillingParty()->getBillingPostalAddress();

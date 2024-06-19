@@ -31,7 +31,10 @@ trait CompleteDataFormTrait
     protected function setBillingFieldsMandatory($mandatory = true): void
     {
         $this->setPartyFieldsMandatory($mandatory);
-        $this->setLegalEntityFieldsMandatory($mandatory);
+
+        // Not mandatory unless type is legal entity
+//        $this->setLegalEntityFieldsMandatory($mandatory);
+
         $this->setContactFieldsMandatory($mandatory);
         $this->setPostalAddressesFieldsMandatory($mandatory);
     }

@@ -7,6 +7,7 @@ namespace Marktic\Billing\Bundle\Controllers\Admin;
 use Marktic\Billing\BillingOwner\Dto\AdminOwner;
 use Marktic\Billing\Bundle\Forms\Admin\Parties\CompleteDataForm;
 use Marktic\Billing\Parties\Actions\BillingPartyCreateForSubject;
+use Marktic\Billing\Parties\Actions\Transformation\PartiesConvertToPerson;
 use Marktic\Billing\Parties\Models\Party;
 
 /**
@@ -34,6 +35,20 @@ trait PartiesControllerTrait
             'item' => $record,
             'form' => $form,
         ]);
+    }
+
+    public function convertPerson()
+    {
+        $item = $this->getModelFromRequest();
+        PartiesConvertToPerson::for($item)->handle();
+
+        $redirect = $_SERVER['HTTP_REFERER'];
+
+        $this->setAfterUrlFlash(
+            $redirect,
+            $item->getManager()->getController()
+        );
+        parent::viewRedirect($item);
     }
 
     /**

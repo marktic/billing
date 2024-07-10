@@ -20,6 +20,16 @@ if ($this->customerParty) {
             ->addHtmlClass('btn-xs')
             ->setLabel('Edit')
     );
+
+    if ($this->customerParty->isCompany()) {
+        $card->addHeaderTool(
+            ButtonAction::make()
+                ->setUrl($this->customerParty->compileURL('convertPerson'))
+                ->addHtmlClass('btn-xs')
+                ->addHtmlClass('btn-warning')
+                ->setLabel('Convert to person')
+        );
+    }
 }
 ?>
 <?= $card; ?>

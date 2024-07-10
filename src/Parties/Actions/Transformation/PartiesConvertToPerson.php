@@ -25,6 +25,7 @@ class PartiesConvertToPerson extends Action
             return;
         }
         $this->getSubject()->setLegalEntityId(null);
+        $this->getSubject()->setName($this->getSubject()->getBillingContact()->getName());
         $this->getSubject()->save();
     }
 }

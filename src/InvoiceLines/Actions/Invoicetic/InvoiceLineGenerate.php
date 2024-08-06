@@ -59,6 +59,9 @@ class InvoiceLineGenerate extends Action
         $price = $this->eInvoiceLine->getPrice();
         $price->setPriceAmount($this->invoiceLine->getUnitPrice() / 100);
         $price->setBaseQuantity($this->invoiceLine->getQuantity());
+
+        $this->eInvoiceLine->setLineExtensionAmount($this->invoiceLine->getSubtotal() / 100);
+        $this->eInvoiceLine->setTotalAmount($this->invoiceLine->getTotal() / 100);
 //        $price->setUnitCode();
     }
 

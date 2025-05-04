@@ -21,7 +21,7 @@ class BillingServiceProvider extends BaseBootableServiceProvider
         $this->registerResources();
     }
 
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 
